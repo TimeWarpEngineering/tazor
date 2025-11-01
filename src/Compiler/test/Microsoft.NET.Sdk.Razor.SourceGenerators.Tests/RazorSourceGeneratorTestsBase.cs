@@ -152,7 +152,7 @@ public abstract class RazorSourceGeneratorTestsBase
         var app = appBuilder.Build();
         var httpContext = new DefaultHttpContext
         {
-            RequestServices = app.Services
+            RequestServices = app.Services.CreateScope().ServiceProvider
         };
         var requestFeature = new HttpRequestFeature
         {
