@@ -16,5 +16,25 @@
   "dotnet.defaultSolution": "Razor.sln",
   "omnisharp.defaultLaunchSolution": "Razor.sln",
   "files.encoding": "utf8bom",
-  "dotnet.testWindow.disableBuildOnRefresh": true
+  "dotnet.testWindow.disableBuildOnRefresh": true,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#0356be",
+    "activityBar.background": "#0356be",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#5e012b",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#0356be",
+    "statusBar.background": "#023f8c",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#0356be",
+    "statusBarItem.remoteBackground": "#023f8c",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#023f8c",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#023f8c99",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.remoteColor": "#023F8C"
 }
