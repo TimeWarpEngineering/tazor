@@ -17,4 +17,35 @@
       <Analyzer Include="@(_RazorAnalyzerOverride)" />
     </ItemGroup>
   </Target>
+
+  <PropertyGroup>
+    <RazorUpToDateReloadFileTypes>$(RazorUpToDateReloadFileTypes);.tazor</RazorUpToDateReloadFileTypes>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(EnableDefaultItems)'=='true' and '$(EnableDefaultContentItems)'=='true'">
+    <Content Include="**\*.tazor"
+             ExcludeFromSingleFile="true"
+             Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(DefaultWebContentItemExcludes)"
+             CopyToPublishDirectory="Never" />
+    <None Remove="**\*.tazor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Include="@(Content->WithMetadataValue('Extension', '.tazor'))" />
+  </ItemGroup>
+
+  <Target Name="_ClassifyTazorRazorComponents"
+          BeforeTargets="ResolveRazorComponentInputs">
+    <ItemGroup Condition="'$(EnableDefaultRazorComponentItems)'=='true'">
+      <RazorComponent Include="@(Content)"
+                      Condition="'%(Content.Extension)'=='.tazor'" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="_NormalizeTazorContentMetadata"
+          AfterTargets="ResolveRazorComponentInputs">
+    <ItemGroup>
+      <Content Condition="'%(Content.Extension)'=='.tazor'" CopyToPublishDirectory="Never" />
+    </ItemGroup>
+  </Target>
 </Project>
