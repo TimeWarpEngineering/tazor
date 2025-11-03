@@ -1,6 +1,6 @@
 # Change File Extension from .razor to .tazor
 
-**Status**: To Do
+**Status**: In Progress
 **Priority**: High
 **Type**: Breaking Change
 **Effort**: Medium
@@ -18,15 +18,15 @@ This task focuses ONLY on the file extension change. Other transitions (SDK inde
 
 ## Acceptance Criteria
 
-- [ ] Compiler recognizes `*.tazor` files instead of `*.razor` files
-- [ ] Source generator processes `*.tazor` files
-- [ ] Generated files use `_tazor.g.cs` suffix instead of `_razor.g.cs`
-- [ ] Import files use `_Imports.tazor` instead of `_Imports.razor`
-- [ ] MSBuild targets include `*.tazor` in compilation
-- [ ] Sample application uses `.tazor` extension and builds successfully
+- [x] Compiler recognizes `*.tazor` files instead of `*.razor` files
+- [x] Source generator processes `*.tazor` files
+- [x] Generated files use `_tazor.g.cs` suffix instead of `_razor.g.cs`
+- [x] Import files use `_Imports.tazor` instead of `_Imports.razor`
+- [x] MSBuild targets include `*.tazor` in compilation
+- [x] Sample application uses `.tazor` extension and builds successfully
 - [ ] All diagnostics reference `.tazor` in error messages
 - [ ] Documentation updated to reflect new extension
-- [ ] Build script (`build-sample.ps1`) works with new extension
+- [x] Build script (`build-sample.ps1`) works with new extension
 - [ ] No breaking changes to generated C# code structure (only file naming)
 
 ## Affected Areas
@@ -127,25 +127,25 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 - [x] Determine if gradual migration or all-at-once is better (Decision: **All-at-once** - confirmed feasible)
 
 ### Phase 2: Core Compiler Changes
-- [ ] Update source generator file filter
-- [ ] Update generated file naming convention
-- [ ] Update import file discovery (`_Imports.razor` → `_Imports.tazor`)
+- [x] Update source generator file filter
+- [x] Update generated file naming convention
+- [x] Update import file discovery (`_Imports.razor` → `_Imports.tazor`)
 - [ ] Update all hardcoded file extension checks
 
 ### Phase 3: Build System Changes
-- [ ] Update MSBuild targets/props to include `*.tazor`
+- [x] Update MSBuild targets/props to include `*.tazor`
 - [ ] Update NuGet.config if needed
 - [ ] Update build scripts
 
 ### Phase 4: Sample Application Migration
-- [ ] Rename all `.razor` files to `.tazor` in sample app
-- [ ] Update any explicit file references
-- [ ] Test with `build-sample.ps1`
-- [ ] Verify generated files have correct naming
+- [x] Rename all `.razor` files to `.tazor` in sample app
+- [x] Update any explicit file references
+- [x] Test with `build-sample.ps1`
+- [x] Verify generated files have correct naming
 
 ### Phase 5: Testing and Validation
-- [ ] Build sample app successfully
-- [ ] Verify generated file names (`*_tazor.g.cs`)
+- [x] Build sample app successfully
+- [x] Verify generated file names (`*_tazor.g.cs`)
 - [ ] Check generated code content (should be identical except file references)
 - [ ] Test IntelliSense/IDE integration if possible
 - [ ] Verify error messages reference correct file extension
