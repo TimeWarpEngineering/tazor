@@ -19,7 +19,7 @@ internal sealed class TestImportProjectFeature(
     HierarchicalImports hierarchicalImports,
     params ImmutableArray<RazorProjectItem> imports) : RazorProjectEngineFeatureBase, IImportProjectFeature
 {
-    private const string DefaultImportsFileName = "_Imports.razor";
+    private const string DefaultImportsFileName = "_Imports.tazor";
     private const string LegacyImportsFileName = "_ViewImports.cshtml";
 
     private readonly HierarchicalImports _hierarchicalImports = hierarchicalImports;

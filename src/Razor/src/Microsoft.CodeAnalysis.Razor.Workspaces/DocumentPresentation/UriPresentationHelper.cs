@@ -20,14 +20,14 @@ internal static class UriPresentationHelper
         }
 
         var razorFileUri = uris.Where(
-            x => Path.GetFileName(x.GetAbsoluteOrUNCPath()).EndsWith(".razor", PathUtilities.OSSpecificPathComparison)).FirstOrDefault();
+            x => Path.GetFileName(x.GetAbsoluteOrUNCPath()).EndsWith(".tazor", PathUtilities.OSSpecificPathComparison)).FirstOrDefault();
 
-        // We only want to handle requests for a single .razor file, but when there are files nested under a .razor
-        // file (for example, Goo.razor.css, Goo.razor.cs etc.) then we'll get all of those files as well, when the user
+        // We only want to handle requests for a single .tazor file, but when there are files nested under a .tazor
+        // file (for example, Goo.tazor.css, Goo.tazor.cs etc.) then we'll get all of those files as well, when the user
         // thinks they're just dragging the parent one, so we have to be a little bit clever with the filter here
         if (razorFileUri == null)
         {
-            logger.LogDebug($"No file in the drop was a razor file URI.");
+            logger.LogDebug($"No file in the drop was a tazor file URI.");
             return null;
         }
 

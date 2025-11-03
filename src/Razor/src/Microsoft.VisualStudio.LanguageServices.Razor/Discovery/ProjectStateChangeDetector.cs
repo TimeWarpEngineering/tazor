@@ -246,10 +246,10 @@ internal partial class ProjectStateChangeDetector : IRazorStartupService, IDispo
 
         // Using EndsWith because Path.GetExtension will ignore everything before .cs
         return filePath.EndsWith(_options.CSharpVirtualDocumentSuffix, PathUtilities.OSSpecificPathComparison) ||
-               // Still have .cshtml.g.cs and .razor.g.cs for Razor.VSCode scenarios.
+               // Still have .cshtml.g.cs and .tazor.g.cs for Razor.VSCode scenarios.
                filePath.EndsWith(".cshtml.g.cs", PathUtilities.OSSpecificPathComparison) ||
-               filePath.EndsWith(".razor.g.cs", PathUtilities.OSSpecificPathComparison) ||
-               filePath.EndsWith(".razor", PathUtilities.OSSpecificPathComparison) ||
+               filePath.EndsWith(".tazor.g.cs", PathUtilities.OSSpecificPathComparison) ||
+               filePath.EndsWith(".tazor", PathUtilities.OSSpecificPathComparison) ||
 
                // VSCode's background C# document
                // Using Ordinal because the SDK generates these filenames.

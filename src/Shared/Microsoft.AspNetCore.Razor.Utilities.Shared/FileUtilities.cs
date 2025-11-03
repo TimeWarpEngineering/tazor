@@ -9,7 +9,7 @@ namespace Microsoft.AspNetCore.Razor.Utilities;
 
 internal static class FileUtilities
 {
-    private const string RazorExtension = ".razor";
+    private const string RazorExtension = ".tazor";
     private const string CSHtmlExtension = ".cshtml";
 
     public static bool IsAnyRazorFilePath(ReadOnlySpan<char> filePath, StringComparison comparison)

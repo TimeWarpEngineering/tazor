@@ -66,7 +66,7 @@ namespace Microsoft.NET.Sdk.Razor.SourceGenerators
             var importFiles = sourceItems.Where(static file =>
             {
                 var path = file.FilePath;
-                if (path.EndsWith(".razor", StringComparison.OrdinalIgnoreCase))
+                if (path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
                 {
                     var fileName = Path.GetFileNameWithoutExtension(path);
                     return string.Equals(fileName, "_Imports", StringComparison.OrdinalIgnoreCase);

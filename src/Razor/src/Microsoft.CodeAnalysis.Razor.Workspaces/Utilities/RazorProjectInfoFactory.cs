@@ -201,14 +201,14 @@ internal static class RazorProjectInfoFactory
         // Must match C# extension: https://github.com/dotnet/vscode-csharp/blob/main/src/razor/src/razorConventions.ts#L10
         const string prefix = "virtualcsharp-razor:///";
         const string suffix = "__virtual.cs";
-        const string generatedRazorExtension = $".razor{suffix}";
+        const string generatedTazorExtension = $".tazor{suffix}";
         const string generatedCshtmlExtension = $".cshtml{suffix}";
 
         var path = filePath.AsSpan();
 
         // Generated files have a path like: virtualcsharp-razor:///e:/Scratch/RazorInConsole/Goo.cshtml__virtual.cs
         if (path.StartsWith(prefix.AsSpan(), StringComparison.OrdinalIgnoreCase) &&
-            (path.EndsWith(generatedRazorExtension.AsSpan(), s_stringComparison) || path.EndsWith(generatedCshtmlExtension.AsSpan(), s_stringComparison)))
+            (path.EndsWith(generatedTazorExtension.AsSpan(), s_stringComparison) || path.EndsWith(generatedCshtmlExtension.AsSpan(), s_stringComparison)))
         {
             // Go through the file path normalizer because it also does Uri decoding, and we're converting from a Uri to a path
             // but "new Uri(filePath).LocalPath" seems wasteful

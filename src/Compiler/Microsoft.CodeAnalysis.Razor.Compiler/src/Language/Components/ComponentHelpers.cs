@@ -7,7 +7,7 @@ namespace Microsoft.AspNetCore.Razor.Language.Components;
 
 internal static class ComponentHelpers
 {
-    public const string ImportsFileName = "_Imports.razor";
+    public const string ImportsFileName = "_Imports.tazor";
 
     private const string MangledClassNamePrefix = "__generated__";
 

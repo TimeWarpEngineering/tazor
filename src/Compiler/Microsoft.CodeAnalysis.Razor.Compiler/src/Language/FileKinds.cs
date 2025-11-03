@@ -9,7 +9,7 @@ namespace Microsoft.AspNetCore.Razor.Language;
 
 public static class FileKinds
 {
-    private const string ComponentFileExtension = ".razor";
+    private const string ComponentFileExtension = ".tazor";
     private const string LegacyFileExtension = ".cshtml";
 
     /// <summary>
