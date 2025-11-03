@@ -123,8 +123,8 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 ### Phase 1: Research and Planning (This Task)
 - [x] Document all current outputs and pipeline (see `docs/architecture/razor-compiler-outputs.md`)
 - [x] Create this kanban task
-- [ ] Identify all hardcoded `.razor` string references in codebase
-- [ ] Determine if gradual migration or all-at-once is better
+- [x] Identify all hardcoded `.razor` string references in codebase (see `docs/architecture/razor-to-tazor-migration-inventory.md`)
+- [x] Determine if gradual migration or all-at-once is better (Decision: **All-at-once** - confirmed feasible)
 
 ### Phase 2: Core Compiler Changes
 - [ ] Update source generator file filter
@@ -224,8 +224,27 @@ grep -r 'razor\.g\.cs' --include="*.cs"
 
 ## References
 
+- **Migration inventory**: `docs/architecture/razor-to-tazor-migration-inventory.md` ⭐ **START HERE**
 - Baseline documentation: `docs/architecture/razor-compiler-outputs.md`
 - Package analysis: `docs/architecture/nuget-packages-analysis.md`
 - Current sample app: `sample/TestBlazorApp/`
 - Build script: `build-sample.ps1`
 - Documentation: `docs/contributing/BuildingSamples.md`
+
+## Research Findings Summary
+
+**Total Scope** (from migration inventory):
+- ~1,900+ string references to `.razor` in codebase
+- **9 critical files** to change (4 constants + 5 file detection points)
+- **9 sample files** to rename
+- **50+ test files** to update
+- **10+ documentation files** to update
+- **Estimated effort**: 5-7 hours for complete, tested migration
+
+**Key Finding**: The change is very **contained** and **systematic**:
+- Only **4 core constants** define the extension (in FileKinds.cs, FileUtilities.cs, ComponentHelpers.cs, TestImportProjectFeature.cs)
+- Only **5 file detection logic points** check the extension
+- Everything else cascades from those core changes
+- Generated files auto-regenerate with new names
+
+**Decision**: All-at-once approach is **confirmed feasible** and recommended.
