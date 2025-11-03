@@ -43,6 +43,9 @@
     <!-- Working around https://github.com/dotnet/sdk/issues/24747 -->
     <NoWarn>$(NoWarn);NU1505</NoWarn>
 
+    <!-- Disable NuGet package vulnerability audit to avoid errors on inaccessible feeds -->
+    <NuGetAudit>false</NuGetAudit>
+
     <!-- Working around https://github.com/microsoft/msbuild/pull/4764 -->
     <EmbeddedResourceUseDependentUponConvention>false</EmbeddedResourceUseDependentUponConvention>
 

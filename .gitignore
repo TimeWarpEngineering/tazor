@@ -154,3 +154,4 @@ src/Razor/benchmarks/Microsoft.AspNetCore.Razor.Microbenchmarks/BenchmarkDotNet.
 # testapp modifications
 src/Razor/benchmarks/testapps/ComponentApp/Components/Pages/Generated.razor
 .agent/workspace/
+sample/TestBlazorApp/Generated/
