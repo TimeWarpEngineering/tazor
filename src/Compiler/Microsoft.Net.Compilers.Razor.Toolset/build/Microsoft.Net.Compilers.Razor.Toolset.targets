@@ -23,11 +23,10 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(EnableDefaultItems)'=='true' and '$(EnableDefaultContentItems)'=='true'">
-    <Content Include="**\*.tazor"
-             ExcludeFromSingleFile="true"
-             Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(DefaultWebContentItemExcludes)"
-             CopyToPublishDirectory="Never" />
-    <None Remove="**\*.tazor" />
+  <Content Update="**/*.tazor"
+       ExcludeFromSingleFile="true"
+       CopyToPublishDirectory="Never" />
+    <None Remove="**/*.tazor" />
   </ItemGroup>
 
   <ItemGroup>

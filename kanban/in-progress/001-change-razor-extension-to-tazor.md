@@ -1,13 +1,13 @@
-# Change File Extension from .tazor to .tazor
+# Change File Extension from .razor to .tazor
 
-**Status**: In Progress
+**Status**: Ready for Review
 **Priority**: High
 **Type**: Breaking Change
 **Effort**: Medium
 
 ## Objective
 
-Replace the `.tazor` file extension with `.tazor` throughout the compiler, tooling, and build system. This is the first step toward creating an independent Tazor compiler fork that will eventually:
+Replace the `.razor` file extension with `.tazor` throughout the compiler, tooling, and build system. This is the first step toward creating an independent Tazor compiler fork that will eventually:
 - Move out of Microsoft.NET.Sdk.Razor dependency
 - Support TUI (Terminal UI) instead of Blazor components
 - Target .NET 10+ only
@@ -16,18 +16,26 @@ Replace the `.tazor` file extension with `.tazor` throughout the compiler, tooli
 
 This task focuses ONLY on the file extension change. Other transitions (SDK independence, TUI rendering) will be handled in separate tasks.
 
+## Latest Update (2025-11-04)
+
+- Core compiler, tooling, and tests now consume `.tazor` files exclusively (commit `f739e9c2d0`).
+- `./build.sh` succeeds on Linux; Windows/VSIX validation still pending.
+- VS host assets now vend in-repo rule files (`RazorConfiguration.xaml`, etc.) rather than pulling from `Microsoft.NET.Sdk.Razor`.
+- `./build-sample.ps1` now succeeds on Linux after switching the toolset target to `Content Update="**/*.tazor"` and removing unsupported metadata; Windows run still queued.
+- Documentation and diagnostic string sweep remain open follow-ups.
+
 ## Acceptance Criteria
 
-- [x] Compiler recognizes `*.tazor` files instead of `*.tazor` files
+- [x] Compiler recognizes `*.tazor` files instead of `*.razor` files
 - [x] Source generator processes `*.tazor` files
-- [x] Generated files use `_tazor.g.cs` suffix instead of `_tazor.g.cs`
-- [x] Import files use `_Imports.tazor` instead of `_Imports.tazor`
+- [x] Generated files use `_tazor.g.cs` suffix instead of `_razor.g.cs`
+- [x] Import files use `_Imports.tazor` instead of `_Imports.razor`
 - [x] MSBuild targets include `*.tazor` in compilation
 - [x] Sample application uses `.tazor` extension and builds successfully
-- [ ] All diagnostics reference `.tazor` in error messages
+- [ ] All diagnostics reference `.tazor` in error messages (strings audit outstanding)
 - [ ] Documentation updated to reflect new extension
-- [x] Build script (`build-sample.ps1`) works with new extension
-- [ ] No breaking changes to generated C# code structure (only file naming)
+- [ ] Build script (`build-sample.ps1`) works with new extension (pending Windows run)
+- [ ] No breaking changes to generated C# code structure (spot-check still needed)
 
 ## Affected Areas
 
@@ -35,13 +43,13 @@ This task focuses ONLY on the file extension change. Other transitions (SDK inde
 **Location**: `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/SourceGenerators/`
 
 **Files to Modify**:
-- `RazorSourceGenerator.cs` - Change file filter from `*.tazor` to `*.tazor`
+- `RazorSourceGenerator.cs` - Change file filter from `*.razor` to `*.tazor`
 - `SourceGeneratorProjectEngine.cs` - Update file discovery logic
 
 **Changes**:
 ```csharp
 // Before
-if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
+if (additionalFile.Path.EndsWith(".razor", StringComparison.OrdinalIgnoreCase))
 
 // After
 if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
@@ -51,8 +59,8 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: Multiple locations in code generation pipeline
 
 **Changes**:
-- Output file pattern: `{ComponentPath}_tazor.g.cs` → `{ComponentPath}_tazor.g.cs`
-- Example: `Components_Pages_Counter_tazor.g.cs` → `Components_Pages_Counter_tazor.g.cs`
+- Output file pattern: `{ComponentPath}_razor.g.cs` → `{ComponentPath}_tazor.g.cs`
+- Example: `Components_Pages_Counter_razor.g.cs` → `Components_Pages_Counter_tazor.g.cs`
 
 **Files to Check**:
 - Code generation utilities
@@ -63,7 +71,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: Import resolution logic
 
 **Changes**:
-- `_Imports.tazor` → `_Imports.tazor`
+- `_Imports.razor` → `_Imports.tazor`
 - `_ViewImports.cshtml` remains unchanged (legacy MVC/Razor Pages)
 
 **Logic**:
@@ -87,10 +95,10 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: `sample/TestBlazorApp/`
 
 **Changes**:
-- Rename all `.tazor` files to `.tazor`:
-  - `Components/App.tazor` → `Components/App.tazor`
-  - `Components/Pages/Counter.tazor` → `Components/Pages/Counter.tazor`
-  - `Components/_Imports.tazor` → `Components/_Imports.tazor`
+- Rename all `.razor` files to `.tazor`:
+  - `Components/App.razor` → `Components/App.tazor`
+  - `Components/Pages/Counter.razor` → `Components/Pages/Counter.tazor`
+  - `Components/_Imports.razor` → `Components/_Imports.tazor`
   - etc.
 - Update any explicit file references in code or config
 - Verify generated output folder updates accordingly
@@ -107,7 +115,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: `docs/`, `CLAUDE.md`
 
 **Changes**:
-- Update all references from `.tazor` to `.tazor`
+- Update all references from `.razor` to `.tazor`
 - Update `BuildingSamples.md` to reflect new extension
 - Update `docs/architecture/razor-compiler-outputs.md`
 
@@ -129,22 +137,22 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 ### Phase 2: Core Compiler Changes
 - [x] Update source generator file filter
 - [x] Update generated file naming convention
-- [x] Update import file discovery (`_Imports.tazor` → `_Imports.tazor`)
-- [ ] Update all hardcoded file extension checks
+- [x] Update import file discovery (`_Imports.razor` → `_Imports.tazor`)
+- [x] Update all hardcoded file extension checks
 
 ### Phase 3: Build System Changes
 - [x] Update MSBuild targets/props to include `*.tazor`
-- [ ] Update NuGet.config if needed
-- [ ] Update build scripts
+- [ ] Update NuGet.config if needed (not currently required)
+- [x] Update build scripts (PowerShell variant validated on Linux; Windows still to run)
 
 ### Phase 4: Sample Application Migration
-- [x] Rename all `.tazor` files to `.tazor` in sample app
+- [x] Rename all `.razor` files to `.tazor` in sample app
 - [x] Update any explicit file references
-- [x] Test with `build-sample.ps1`
+- [x] Test with `build-sample.ps1` (PowerShell run succeeded on Linux; Windows run pending)
 - [x] Verify generated files have correct naming
 
 ### Phase 5: Testing and Validation
-- [x] Build sample app successfully
+- [x] Build sample app successfully (via `./build.sh` Linux run)
 - [x] Verify generated file names (`*_tazor.g.cs`)
 - [ ] Check generated code content (should be identical except file references)
 - [ ] Test IntelliSense/IDE integration if possible
@@ -159,12 +167,12 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 ## Implementation Strategy
 
 ### Current Reality Check (Nov 2025)
-- Generator, MSBuild, and samples prefer `.tazor`, but many services still infer `Legacy` file kind, cascading into thousands of failing tests (missing diagnostics, null hovers, semantic token diffs, VSCode cohost exceptions).
-- Immediate priority is to re-establish component classification and discovery for `.tazor` across compiler, workspace, and language server layers.
+- `.tazor` is now the primary component extension across compiler, workspace, and language server layers; automated tests run green on Linux.
+- Remaining work involves Windows/Visual Studio validation plus documentation and diagnostic text updates.
 
 ### Step 1 – Centralize Extension Constants
 1. Audit canonical extension sources (`FileKinds`, `ComponentFileKindClassifier`, `ProjectEngineFactory`, path helpers).
-2. Introduce shared helpers listing `.tazor` (primary) plus optional `.tazor` compatibility until tests green.
+2. Introduce shared helpers listing `.tazor` (primary) plus optional `.razor` compatibility until tests green.
 3. Update unit tests that assert supported extensions.
 
 ### Step 2 – Restore Component FileKind Inference
@@ -183,8 +191,8 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 3. Re-run `Microsoft.AspNetCore.Razor.LanguageServer.Test` to validate completions, folds, and tokens.
 
 ### Step 5 – Targeted Cleanup
-1. After tests pass, sweep remaining `.tazor` literals (commands, docs, tooling messages) and replace with `.tazor` where intended.
-2. Document any deliberate `.tazor` compatibility paths maintained for migration.
+1. After tests pass, sweep remaining `.razor` literals (commands, docs, tooling messages) and replace with `.tazor` where intended.
+2. Document any deliberate `.razor` compatibility paths maintained for migration.
 
 ### Step 6 – End-to-End Verification
 1. Execute `./build.sh -test` (or equivalent) and archive updated HTML reports.
