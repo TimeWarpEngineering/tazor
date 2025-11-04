@@ -29,11 +29,11 @@ internal static class TestProjectData
         SomeProjectNestedFile3 = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "File3.cshtml"), "Nested\\File3.cshtml", RazorFileKind.Legacy);
         SomeProjectNestedFile4 = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "File4.cshtml"), "Nested\\File4.cshtml", RazorFileKind.Legacy);
         SomeProjectNestedImportFile = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "_ViewImports.cshtml"), "Nested\\_ViewImports.cshtml", RazorFileKind.Legacy);
-        SomeProjectComponentFile1 = new HostDocument(Path.Combine(SomeProjectPath, "File1.razor"), "File1.razor", RazorFileKind.Component);
-        SomeProjectComponentFile2 = new HostDocument(Path.Combine(SomeProjectPath, "File2.razor"), "File2.razor", RazorFileKind.Component);
-        SomeProjectComponentImportFile1 = new HostDocument(Path.Combine(SomeProjectPath, "_Imports.razor"), "_Imports.razor", RazorFileKind.Component);
-        SomeProjectNestedComponentFile3 = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "File3.razor"), "Nested\\File3.razor", RazorFileKind.Component);
-        SomeProjectNestedComponentFile4 = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "File4.razor"), "Nested\\File4.razor", RazorFileKind.Component);
+        SomeProjectComponentFile1 = new HostDocument(Path.Combine(SomeProjectPath, "File1.tazor"), "File1.tazor", RazorFileKind.Component);
+        SomeProjectComponentFile2 = new HostDocument(Path.Combine(SomeProjectPath, "File2.tazor"), "File2.tazor", RazorFileKind.Component);
+        SomeProjectComponentImportFile1 = new HostDocument(Path.Combine(SomeProjectPath, "_Imports.tazor"), "_Imports.tazor", RazorFileKind.Component);
+        SomeProjectNestedComponentFile3 = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "File3.tazor"), "Nested\\File3.tazor", RazorFileKind.Component);
+        SomeProjectNestedComponentFile4 = new HostDocument(Path.Combine(SomeProjectPath, "Nested", "File4.tazor"), "Nested\\File4.tazor", RazorFileKind.Component);
         SomeProjectCshtmlComponentFile5 = new HostDocument(Path.Combine(SomeProjectPath, "File5.cshtml"), "File5.cshtml", RazorFileKind.Component);
 
         var anotherProjectPath = Path.Combine(baseDirectory, "AnotherProject");
@@ -46,10 +46,10 @@ internal static class TestProjectData
         AnotherProjectNestedFile3 = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "File3.cshtml"), "Nested\\File1.cshtml", RazorFileKind.Legacy);
         AnotherProjectNestedFile4 = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "File4.cshtml"), "Nested\\File2.cshtml", RazorFileKind.Legacy);
         AnotherProjectNestedImportFile = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "_ViewImports.cshtml"), "Nested\\_ViewImports.cshtml", RazorFileKind.Legacy);
-        AnotherProjectComponentFile1 = new HostDocument(Path.Combine(anotherProjectPath, "File1.razor"), "File1.razor", RazorFileKind.Component);
-        AnotherProjectComponentFile2 = new HostDocument(Path.Combine(anotherProjectPath, "File2.razor"), "File2.razor", RazorFileKind.Component);
-        AnotherProjectNestedComponentFile3 = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "File3.razor"), "Nested\\File1.razor", RazorFileKind.Component);
-        AnotherProjectNestedComponentFile4 = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "File4.razor"), "Nested\\File2.razor", RazorFileKind.Component);
+        AnotherProjectComponentFile1 = new HostDocument(Path.Combine(anotherProjectPath, "File1.tazor"), "File1.tazor", RazorFileKind.Component);
+        AnotherProjectComponentFile2 = new HostDocument(Path.Combine(anotherProjectPath, "File2.tazor"), "File2.tazor", RazorFileKind.Component);
+        AnotherProjectNestedComponentFile3 = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "File3.tazor"), "Nested\\File1.tazor", RazorFileKind.Component);
+        AnotherProjectNestedComponentFile4 = new HostDocument(Path.Combine(anotherProjectPath, "Nested", "File4.tazor"), "Nested\\File2.tazor", RazorFileKind.Component);
     }
 
     public static readonly HostProject SomeProject;

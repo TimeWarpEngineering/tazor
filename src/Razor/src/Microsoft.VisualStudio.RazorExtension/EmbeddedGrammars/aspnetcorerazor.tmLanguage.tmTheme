@@ -85,7 +85,7 @@
 
       <dict>
         <key>scope</key>
-        <string>keyword.control.cshtml, keyword.control.razor.comment.star</string>
+        <string>keyword.control.cshtml, keyword.control.tazor.comment.star</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -95,7 +95,7 @@
 
       <dict>
         <key>scope</key>
-        <string>keyword.control.razor.directive</string>
+        <string>keyword.control.tazor.directive</string>
         <key>settings</key>
         <dict>
           <key>vsclassificationtype</key>
@@ -105,7 +105,7 @@
 
       <dict>
         <key>scope</key>
-        <string>meta.attribute.razor keyword.other, meta.attribute.razor keyword.operator</string>
+        <string>meta.attribute.tazor keyword.other, meta.attribute.tazor keyword.operator</string>
         <key>settings</key>
         <dict>
             <key>vsclassificationtype</key>
@@ -115,7 +115,7 @@
 
       <dict>
         <key>scope</key>
-        <string>meta.attribute.razor constant.numeric</string>
+        <string>meta.attribute.tazor constant.numeric</string>
         <key>settings</key>
         <dict>
             <key>vsclassificationtype</key>
@@ -125,7 +125,7 @@
 
       <dict>
         <key>scope</key>
-        <string>meta.attribute.razor punctuation.separator, meta.attribute.razor punctuation.accessor.cs, meta.attribute.razor punctuation.parenthesis, , meta.attribute.razor punctuation.curlybrace, meta.attribute.razor punctuation.squarebracket, meta.attribute.razor punctuation.definition.typeparameters, meta.attribute.razor punctuation.terminator.statement.cs, meta.attribute.razor punctuation.tilde.cs</string>
+        <string>meta.attribute.tazor punctuation.separator, meta.attribute.tazor punctuation.accessor.cs, meta.attribute.tazor punctuation.parenthesis, , meta.attribute.tazor punctuation.curlybrace, meta.attribute.tazor punctuation.squarebracket, meta.attribute.tazor punctuation.definition.typeparameters, meta.attribute.tazor punctuation.terminator.statement.cs, meta.attribute.tazor punctuation.tilde.cs</string>
         <key>settings</key>
         <dict>
             <key>vsclassificationtype</key>

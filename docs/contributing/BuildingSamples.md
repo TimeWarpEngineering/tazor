@@ -67,7 +67,7 @@ Builds all projects in the repository and creates NuGet packages in `artifacts/p
 dotnet build ./sample/TestBlazorApp/TestBlazorApp.csproj
 ```
 
-Builds the sample Blazor app, which triggers the Razor source generators and compiler to process `.razor` files.
+Builds the sample Blazor app, which triggers the Razor source generators and compiler to process `.tazor` files.
 
 The sample project has `EmitCompilerGeneratedFiles` enabled, so you can inspect the generated C# code in [sample/TestBlazorApp/Generated/](../../sample/TestBlazorApp/Generated/).
 
@@ -101,7 +101,7 @@ The test Blazor app at [sample/TestBlazorApp/](../../sample/TestBlazorApp/) is c
 ### What to Check After Building
 
 1. **Build success** - The sample should build without errors
-2. **Generated files** - Check [sample/TestBlazorApp/Generated/](../../sample/TestBlazorApp/Generated/) for the C# files generated from `.razor` components
+2. **Generated files** - Check [sample/TestBlazorApp/Generated/](../../sample/TestBlazorApp/Generated/) for the C# files generated from `.tazor` components
 3. **Compiler output** - Look for any warnings or messages from the Razor compiler
 
 ## Troubleshooting

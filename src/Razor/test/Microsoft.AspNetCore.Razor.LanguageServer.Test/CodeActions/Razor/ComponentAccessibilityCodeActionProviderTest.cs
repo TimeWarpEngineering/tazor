@@ -26,7 +26,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_NoTagName_DoesNotProvideLightBulb()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$
             """;
@@ -54,7 +54,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_InvalidSyntaxTree_NoStartNode()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             $$
             """;
@@ -88,7 +88,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_CursorOutsideComponent()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             $$ <Component></Component>
             """;
@@ -116,7 +116,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_ExistingComponent_SupportsFileCreationTrue_ReturnsResults()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$Component></Component>
             """;
@@ -163,7 +163,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_ExistingComponent_CaseIncorrect_ReturnsResults()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$CompOnent></CompOnent>
             """;
@@ -210,7 +210,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_ExistingComponent_CaseIncorrect_WithUsing_ReturnsResults()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @using Fully.Qualified
 
@@ -253,7 +253,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_ExistingGenericComponent_SupportsFileCreationTrue_ReturnsResults()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$GenericComponent></GenericComponent>
             """;
@@ -300,7 +300,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_NewComponent_SupportsFileCreationTrue_ReturnsResult()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$NewComponent></NewComponent>
             """;
@@ -330,7 +330,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_NewComponent_CaretInAttribute_ReturnsResult()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <NewComponent checked $$goo="blah"></NewComponent>
             """;
@@ -360,7 +360,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_NewComponent_SupportsFileCreationFalse_ReturnsEmpty()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$NewComponent></NewComponent>
             """;
@@ -388,7 +388,7 @@ public class ComponentAccessibilityCodeActionProviderTest(ITestOutputHelper test
     public async Task Handle_ExistingComponent_SupportsFileCreationFalse_ReturnsResults()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             <$$Component></Component>
             """;

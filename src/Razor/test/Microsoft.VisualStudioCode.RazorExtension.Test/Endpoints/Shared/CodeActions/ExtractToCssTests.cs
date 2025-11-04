@@ -44,7 +44,7 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$$"""
+                (FileUri("File1.tazor.css"), $$$"""
                     body {
                             background-color: red;
                         }
@@ -143,13 +143,13 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalFiles: [
-                (FilePath("File1.razor.css"), $$$"""
+                (FilePath("File1.tazor.css"), $$$"""
                     h1 {
                             color: blue;
                         }
                     """)],
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$$"""
+                (FileUri("File1.tazor.css"), $$$"""
                     h1 {
                             color: blue;
                         }
@@ -190,14 +190,14 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalFiles: [
-                (FilePath("File1.razor.css"), $$$"""
+                (FilePath("File1.tazor.css"), $$$"""
                     h1 {
                         color: blue;
                     }
 
                     """)],
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$$"""
+                (FileUri("File1.tazor.css"), $$$"""
                     h1 {
                         color: blue;
                     }
@@ -239,9 +239,9 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalFiles: [
-                (FilePath("File1.razor.css"), "")],
+                (FilePath("File1.tazor.css"), "")],
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$$"""
+                (FileUri("File1.tazor.css"), $$$"""
                     body {
                             background-color: red;
                         }
@@ -278,9 +278,9 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalFiles: [
-                (FilePath("File1.razor.css"), "h1 { color: red }")],
+                (FilePath("File1.tazor.css"), "h1 { color: red }")],
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$$"""
+                (FileUri("File1.tazor.css"), $$$"""
                     h1 { color: red }
 
                     body {
@@ -336,7 +336,7 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$"""
+                (FileUri("File1.tazor.css"), $$"""
                     body {
                             background-color: red;
                         }
@@ -373,7 +373,7 @@ public class ExtractToCssTests(ITestOutputHelper testOutputHelper) : CohostCodeA
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCss,
             additionalExpectedFiles: [
-                (FileUri("File1.razor.css"), $$$"""
+                (FileUri("File1.tazor.css"), $$$"""
                     body {
                             background-color: red;
                         }

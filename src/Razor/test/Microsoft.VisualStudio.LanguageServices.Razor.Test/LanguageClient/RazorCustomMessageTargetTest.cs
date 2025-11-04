@@ -66,7 +66,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
             LoggerFactory);
         var request = new UpdateBufferRequest()
         {
-            HostDocumentFilePath = "C:/path/to/file.razor",
+            HostDocumentFilePath = "C:/path/to/file.tazor",
             Changes = null,
             Checksum = "",
             ChecksumAlgorithm = SourceHashAlgorithm.Sha256,
@@ -81,7 +81,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     public async Task UpdateCSharpBuffer_UpdatesDocument()
     {
         // Arrange
-        var doc1 = new CSharpVirtualDocumentSnapshot(projectKey: default, new Uri("C:/path/to/file.razor.g.cs"), _textBuffer.CurrentSnapshot, 0);
+        var doc1 = new CSharpVirtualDocumentSnapshot(projectKey: default, new Uri("C:/path/to/file.tazor.g.cs"), _textBuffer.CurrentSnapshot, 0);
         var documents = new[] { doc1 };
         var document = Mock.Of<LSPDocumentSnapshot>(d => d.VirtualDocuments == documents, MockBehavior.Strict);
         var documentManager = new Mock<TrackingLSPDocumentManager>(MockBehavior.Strict);
@@ -109,7 +109,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
             LoggerFactory);
         var request = new UpdateBufferRequest()
         {
-            HostDocumentFilePath = "C:/path/to/file.razor",
+            HostDocumentFilePath = "C:/path/to/file.tazor",
             HostDocumentVersion = 1337,
             Changes = [],
             Checksum = "",
@@ -130,8 +130,8 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
         // Arrange
         var projectKey1 = new ProjectKey("C:/path/to/p1/obj");
         var projectKey2 = new ProjectKey("C:/path/to/p2/obj");
-        var doc1 = new CSharpVirtualDocumentSnapshot(projectKey1, new Uri("C:/path/to/p1/file.razor.g.cs"), _textBuffer.CurrentSnapshot, 0);
-        var doc2 = new CSharpVirtualDocumentSnapshot(projectKey2, new Uri("C:/path/to/p2/file.razor.g.cs"), _textBuffer.CurrentSnapshot, 0);
+        var doc1 = new CSharpVirtualDocumentSnapshot(projectKey1, new Uri("C:/path/to/p1/file.tazor.g.cs"), _textBuffer.CurrentSnapshot, 0);
+        var doc2 = new CSharpVirtualDocumentSnapshot(projectKey2, new Uri("C:/path/to/p2/file.tazor.g.cs"), _textBuffer.CurrentSnapshot, 0);
         var documents = new[] { doc1, doc2 };
         var document = Mock.Of<LSPDocumentSnapshot>(d => d.VirtualDocuments == documents, MockBehavior.Strict);
         var documentManager = new Mock<TrackingLSPDocumentManager>(MockBehavior.Strict);
@@ -164,7 +164,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
         var request = new UpdateBufferRequest()
         {
             ProjectKeyId = projectKey2.Id,
-            HostDocumentFilePath = "C:/path/to/file.razor",
+            HostDocumentFilePath = "C:/path/to/file.tazor",
             HostDocumentVersion = 1337,
             Changes = [],
             Checksum = "",
@@ -211,7 +211,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
             {
                 TextDocument = new VSTextDocumentIdentifier()
                 {
-                    DocumentUri = new(new Uri("C:/path/to/file.razor"))
+                    DocumentUri = new(new Uri("C:/path/to/file.tazor"))
                 },
                 Range = LspFactory.DefaultRange,
                 Context = new VSInternalCodeActionContext()
@@ -229,9 +229,9 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     public async Task ProvideCodeActionsAsync_ReturnsCodeActionsAsync()
     {
         // Arrange
-        var testDocUri = new Uri("C:/path/to/file.razor");
-        var testVirtualDocUri = new Uri("C:/path/to/file2.razor.g");
-        var testCSharpDocUri = new Uri("C:/path/to/file.razor.g.cs");
+        var testDocUri = new Uri("C:/path/to/file.tazor");
+        var testVirtualDocUri = new Uri("C:/path/to/file2.tazor.g");
+        var testCSharpDocUri = new Uri("C:/path/to/file.tazor.g.cs");
 
         var testVirtualDocument = new TestVirtualDocumentSnapshot(testVirtualDocUri, 0);
         var csharpVirtualDocument = new CSharpVirtualDocumentSnapshot(projectKey: default, testCSharpDocUri, _textBuffer.CurrentSnapshot, 0);
@@ -302,9 +302,9 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     {
         // Arrange
         var requestInvoker = new Mock<LSPRequestInvoker>(MockBehavior.Strict);
-        var csharpVirtualDocument = new CSharpVirtualDocumentSnapshot(projectKey: default, new Uri("C:/path/to/file.razor.g.cs"), _textBuffer.CurrentSnapshot, hostDocumentSyncVersion: 0);
+        var csharpVirtualDocument = new CSharpVirtualDocumentSnapshot(projectKey: default, new Uri("C:/path/to/file.tazor.g.cs"), _textBuffer.CurrentSnapshot, hostDocumentSyncVersion: 0);
         var documentManager = new TestDocumentManager();
-        var razorUri = new Uri("C:/path/to/file.razor");
+        var razorUri = new Uri("C:/path/to/file.tazor");
         documentManager.AddDocument(razorUri, new TestLSPDocumentSnapshot(razorUri, version: 0, "Some Content", csharpVirtualDocument));
         var expectedCodeAction = new VSInternalCodeAction()
         {
@@ -385,7 +385,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
         var request = new ProvideSemanticTokensRangesParams(
             textDocument: new TextDocumentIdentifier()
             {
-                DocumentUri = new(new Uri("C:/path/to/file.razor"))
+                DocumentUri = new(new Uri("C:/path/to/file.tazor"))
             },
             requiredHostDocumentVersion: 1,
             ranges: [LspFactory.DefaultRange],
@@ -402,7 +402,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     public async Task ProvideSemanticTokensAsync_CannotLookupVirtualDocument_ReturnsNullAsync()
     {
         // Arrange
-        var testDocUri = new Uri("C:/path/to/file.razor");
+        var testDocUri = new Uri("C:/path/to/file.tazor");
         LSPDocumentSnapshot testDocument = new TestLSPDocumentSnapshot(testDocUri, 0);
 
         var documentManager = new Mock<TrackingLSPDocumentManager>(MockBehavior.Strict);
@@ -428,7 +428,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
         var request = new ProvideSemanticTokensRangesParams(
             textDocument: new TextDocumentIdentifier()
             {
-                DocumentUri = new(new Uri("C:/path/to/file.razor"))
+                DocumentUri = new(new Uri("C:/path/to/file.tazor"))
             },
             requiredHostDocumentVersion: 0,
             ranges: [LspFactory.DefaultRange],
@@ -445,9 +445,9 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     public async Task ProvideSemanticTokensAsync_ContainsRange_ReturnsSemanticTokens()
     {
         // Arrange
-        var testDocUri = new Uri("C:/path/to%20-%20project/file.razor");
-        var testVirtualDocUri = new Uri("C:/path/to - project/file2.razor.g");
-        var testCSharpDocUri = new Uri("C:/path/to - project/file.razor.g.cs");
+        var testDocUri = new Uri("C:/path/to%20-%20project/file.tazor");
+        var testVirtualDocUri = new Uri("C:/path/to - project/file2.tazor.g");
+        var testCSharpDocUri = new Uri("C:/path/to - project/file.tazor.g.cs");
 
         var documentVersion = 0;
         var testVirtualDocument = new TestVirtualDocumentSnapshot(testVirtualDocUri, 0);
@@ -504,7 +504,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
         var request = new ProvideSemanticTokensRangesParams(
             textDocument: new TextDocumentIdentifier()
             {
-                DocumentUri = new(new Uri("C:/path/to%20-%20project/file.razor"))
+                DocumentUri = new(new Uri("C:/path/to%20-%20project/file.tazor"))
             },
             requiredHostDocumentVersion: 0,
             ranges: [LspFactory.DefaultRange],
@@ -522,9 +522,9 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     public async Task ProvideSemanticTokensAsync_EmptyRange_ReturnsNoSemanticTokens()
     {
         // Arrange
-        var testDocUri = new Uri("C:/path/to%20-%20project/file.razor");
-        var testVirtualDocUri = new Uri("C:/path/to - project/file2.razor.g");
-        var testCSharpDocUri = new Uri("C:/path/to - project/file.razor.g.cs");
+        var testDocUri = new Uri("C:/path/to%20-%20project/file.tazor");
+        var testVirtualDocUri = new Uri("C:/path/to - project/file2.tazor.g");
+        var testCSharpDocUri = new Uri("C:/path/to - project/file.tazor.g.cs");
 
         var documentVersion = 0;
         var testVirtualDocument = new TestVirtualDocumentSnapshot(testVirtualDocUri, 0);
@@ -581,7 +581,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
         var request = new ProvideSemanticTokensRangesParams(
             textDocument: new TextDocumentIdentifier()
             {
-                DocumentUri = new(new Uri("C:/path/to%20-%20project/file.razor"))
+                DocumentUri = new(new Uri("C:/path/to%20-%20project/file.tazor"))
             },
             requiredHostDocumentVersion: 0,
             ranges: [LspFactory.DefaultRange],
@@ -615,7 +615,7 @@ public class RazorCustomMessageTargetTest : ToolingTestBase
     {
         if (uri is null)
         {
-            uri = new Uri("C:/thing.razor");
+            uri = new Uri("C:/thing.tazor");
         }
 
         var textBuffer = new Mock<ITextBuffer>(MockBehavior.Strict);

@@ -33,7 +33,7 @@ public class RazorProximityExpressionResolverTest : ToolingTestBase
     public RazorProximityExpressionResolverTest(ITestOutputHelper testOutput)
         : base(testOutput)
     {
-        _documentUri = new Uri("file://C:/path/to/file.razor", UriKind.Absolute);
+        _documentUri = new Uri("file://C:/path/to/file.tazor", UriKind.Absolute);
         _csharpDocumentUri = new Uri(_documentUri.OriginalString + ".ide.g.cs", UriKind.Absolute);
 
         _validProximityExpressionRoot = "var abc = 123;";

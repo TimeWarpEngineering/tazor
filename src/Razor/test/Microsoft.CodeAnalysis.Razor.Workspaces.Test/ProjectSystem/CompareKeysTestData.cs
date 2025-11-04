@@ -12,8 +12,8 @@ internal static class CompareKeysTestData
     private static readonly ProjectKey s_forwardSlash2 = new("/path/to/proj/obj");
     private static readonly ProjectKey s_backslash2 = new(@"\path\to\proj\obj");
 
-    private const string DocumentFilePath1 = @"\path\to\project\file1.razor";
-    private const string DocumentFilePath2 = @"\path\to\project\file2.razor";
+    private const string DocumentFilePath1 = @"\path\to\project\file1.tazor";
+    private const string DocumentFilePath2 = @"\path\to\project\file2.tazor";
 
     internal enum CompareResult { Equal, LessThan, GreaterThan }
 

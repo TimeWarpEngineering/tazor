@@ -52,7 +52,7 @@ internal class DefaultRazorProjectFileSystem : RazorProjectFileSystem
             yield return CreateItem(filePath, fileKind: null, basePath, absoluteBasePath);
         }
 
-        foreach (var filePath in Directory.EnumerateFiles(absoluteBasePath, "*.razor", SearchOption.AllDirectories))
+        foreach (var filePath in Directory.EnumerateFiles(absoluteBasePath, "*.tazor", SearchOption.AllDirectories))
         {
             yield return CreateItem(filePath, fileKind: null, basePath, absoluteBasePath);
         }

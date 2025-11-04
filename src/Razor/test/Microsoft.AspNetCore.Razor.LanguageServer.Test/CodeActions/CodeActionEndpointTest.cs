@@ -35,7 +35,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_NoDocument()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeActionEndpoint = CreateEndpoint();
 
         var request = new VSCodeActionParams()
@@ -58,7 +58,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_NoProviders()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
         var codeActionEndpoint = CreateEndpoint();
@@ -84,7 +84,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_OneRazorCodeActionProvider()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
         var codeActionEndpoint = CreateEndpoint(razorCodeActionProviders: [CreateRazorCodeActionProvider()]);
@@ -110,7 +110,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_OneCSharpCodeActionProvider()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -140,7 +140,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_OneCodeActionProviderWithMultipleCodeActions()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
         var codeActionEndpoint = CreateEndpoint(razorCodeActionProviders: [CreateMultipleRazorCodeActionProvider()]);
@@ -166,7 +166,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_MultipleCodeActionProvidersWithMultipleCodeActions()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -201,7 +201,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_MultipleProviders()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -237,7 +237,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_OneNullReturningProvider()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
         var codeActionEndpoint = CreateEndpoint(razorCodeActionProviders: [CreateEmptyRazorCodeActionProvider()]);
@@ -263,7 +263,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_MultipleMixedProvider()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -300,7 +300,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_MultipleMixedProvider_SupportsCodeActionResolveTrue()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -342,7 +342,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_MixedProvider_SupportsCodeActionResolveTrue_UsesGroups()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -386,7 +386,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task Handle_MultipleMixedProvider_SupportsCodeActionResolveFalse()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -428,7 +428,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task GetCSharpCodeActionsFromLanguageServerAsync_InvalidRangeMapping()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
 
@@ -453,7 +453,7 @@ public class CodeActionEndpointTest(ITestOutputHelper testOutput) : LanguageServ
     public async Task GetCSharpCodeActionsFromLanguageServerAsync_ReturnsCodeActions()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/Page.razor");
+        var documentPath = new Uri("C:/path/to/Page.tazor");
         var codeDocument = CreateCodeDocument("@code {}");
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
         var projectedRange = LspFactory.CreateZeroWidthRange(15, 2);

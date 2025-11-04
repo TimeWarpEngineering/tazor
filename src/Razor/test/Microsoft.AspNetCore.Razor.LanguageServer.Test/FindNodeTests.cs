@@ -250,7 +250,7 @@ public class FindNodeTests(ITestOutputHelper testOutput) : ToolingTestBase(testO
 
     private static void Verify(string input, int start, int end, SyntaxKind kind, bool includeWhitespace, bool innermostForTie)
     {
-        var syntaxTree = RazorSyntaxTree.Parse(RazorSourceDocument.Create(input, "test.razor"));
+        var syntaxTree = RazorSyntaxTree.Parse(RazorSourceDocument.Create(input, "test.tazor"));
 
         var node = syntaxTree.Root.FindNode(TextSpan.FromBounds(start, end), includeWhitespace, innermostForTie);
 

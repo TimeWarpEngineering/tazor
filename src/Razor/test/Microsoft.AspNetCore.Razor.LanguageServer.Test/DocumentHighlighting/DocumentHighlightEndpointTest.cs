@@ -100,7 +100,7 @@ public class DocumentHighlightEndpointTest(ITestOutputHelper testOutput) : Langu
         TestFileMarkupParser.GetPositionAndSpans(input, out var output, out int cursorPosition, out ImmutableArray<TextSpan> spans);
         var codeDocument = CreateCodeDocument(output);
         var csharpSourceText = codeDocument.GetCSharpSourceText();
-        var csharpDocumentUri = new Uri("C:/path/to/file.razor__virtual.g.cs");
+        var csharpDocumentUri = new Uri("C:/path/to/file.tazor__virtual.g.cs");
         var serverCapabilities = new VSInternalServerCapabilities()
         {
             DocumentHighlightProvider = true
@@ -109,7 +109,7 @@ public class DocumentHighlightEndpointTest(ITestOutputHelper testOutput) : Langu
             csharpSourceText, csharpDocumentUri, serverCapabilities, razorMappingService: null, capabilitiesUpdater: null, DisposalToken);
         await csharpServer.OpenDocumentAsync(csharpDocumentUri, csharpSourceText.ToString(), DisposalToken);
 
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
         var documentContextFactory = new TestDocumentContextFactory(razorFilePath, codeDocument);
         var languageServerFeatureOptions = Mock.Of<LanguageServerFeatureOptions>(options =>
             options.SupportsFileManipulation == true &&

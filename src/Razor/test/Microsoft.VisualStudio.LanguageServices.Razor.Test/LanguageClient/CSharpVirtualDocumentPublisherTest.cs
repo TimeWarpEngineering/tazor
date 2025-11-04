@@ -70,8 +70,8 @@ public class CSharpVirtualDocumentPublisherTest : ToolingTestBase
     public void DocumentManager_Changed_VirtualDocumentChanged_UpdatesFileInfo()
     {
         // Arrange
-        var csharpSnapshot = new CSharpVirtualDocumentSnapshot(projectKey: default, new Uri("C:/path/to/something.razor.g.cs"), Mock.Of<ITextSnapshot>(MockBehavior.Strict), hostDocumentSyncVersion: 1337);
-        var lspDocument = new TestLSPDocumentSnapshot(new Uri("C:/path/to/something.razor"), 1337, csharpSnapshot);
+        var csharpSnapshot = new CSharpVirtualDocumentSnapshot(projectKey: default, new Uri("C:/path/to/something.tazor.g.cs"), Mock.Of<ITextSnapshot>(MockBehavior.Strict), hostDocumentSyncVersion: 1337);
+        var lspDocument = new TestLSPDocumentSnapshot(new Uri("C:/path/to/something.tazor"), 1337, csharpSnapshot);
         var fileInfoProvider = new Mock<IRazorDynamicFileInfoProviderInternal>(MockBehavior.Strict);
         fileInfoProvider.Setup(provider => provider.UpdateLSPFileInfo(lspDocument.Uri, It.IsAny<IDynamicDocumentContainer>()))
             .Verifiable();

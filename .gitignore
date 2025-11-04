@@ -140,7 +140,7 @@ dist/
 out/
 
 # Test generated
-src/Razor/test/OutOfWorkspaceFile.razor
+src/Razor/test/OutOfWorkspaceFile.tazor
 
 # Benchmark generated
 src/Razor/benchmarks/Microsoft.AspNetCore.Razor.Microbenchmarks/BenchmarkDotNet.Artifacts/results/*
@@ -152,6 +152,6 @@ src/Razor/benchmarks/Microsoft.AspNetCore.Razor.Microbenchmarks/BenchmarkDotNet.
 *.vsix
 
 # testapp modifications
-src/Razor/benchmarks/testapps/ComponentApp/Components/Pages/Generated.razor
+src/Razor/benchmarks/testapps/ComponentApp/Components/Pages/Generated.tazor
 .agent/workspace/
 sample/TestBlazorApp/Generated/

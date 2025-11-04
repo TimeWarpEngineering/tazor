@@ -52,7 +52,7 @@ internal abstract class AbstractFilePathService(LanguageServerFeatureOptions lan
             }
 
             // If this is a C# generated file, and we're including the project suffix, then filename will be
-            // <Page>.razor.<project slug><c# suffix>
+            // <Page>.tazor.<project slug><c# suffix>
             if (_languageServerFeatureOptions.IncludeProjectKeyInGeneratedFilePath)
             {
                 // We can remove the project key easily, by just looking for the last '.'. The project

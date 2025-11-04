@@ -59,8 +59,8 @@ public class RazorSemanticTokensRangeEndpointBenchmark : RazorLanguageServerBenc
         var projectRoot = Path.Combine(Helpers.GetTestAppsPath(), "ComponentApp");
         ProjectFilePath = Path.Combine(projectRoot, "ComponentApp.csproj");
         PagesDirectory = Path.Combine(projectRoot, "Components", "Pages");
-        var filePath = Path.Combine(PagesDirectory, "SemanticTokens.razor");
-        TargetPath = "/Components/Pages/SemanticTokens.razor";
+        var filePath = Path.Combine(PagesDirectory, "SemanticTokens.tazor");
+        TargetPath = "/Components/Pages/SemanticTokens.tazor";
 
         var documentUri = new Uri(filePath);
         var documentSnapshot = await GetDocumentSnapshotAsync(ProjectFilePath, filePath, TargetPath);

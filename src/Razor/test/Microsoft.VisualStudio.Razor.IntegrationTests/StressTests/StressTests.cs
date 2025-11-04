@@ -32,13 +32,13 @@ public class StressTests(ITestOutputHelper testOutputHelper) : AbstractStressTes
 
             await TestServices.Editor.InvokeCodeActionAsync("Extract element to new component", cancellationToken);
 
-            await TestServices.Editor.WaitForActiveWindowByFileAsync("Component.razor", cancellationToken);
+            await TestServices.Editor.WaitForActiveWindowByFileAsync("Component.tazor", cancellationToken);
 
             var componentFileName = (await TestServices.Editor.GetActiveTextViewAsync(cancellationToken)).TextBuffer.GetFileName();
 
             await TestServices.Editor.CloseCurrentlyFocusedWindowAsync(cancellationToken, save: true);
 
-            await TestServices.Editor.WaitForActiveWindowByFileAsync("Counter.razor", cancellationToken);
+            await TestServices.Editor.WaitForActiveWindowByFileAsync("Counter.tazor", cancellationToken);
 
             await TestServices.Editor.WaitForComponentClassificationAsync(cancellationToken, count: 3, exact: true);
 
@@ -80,8 +80,8 @@ public class StressTests(ITestOutputHelper testOutputHelper) : AbstractStressTes
             await TestServices.Editor.InvokeRenameAsync(cancellationToken);
             TestServices.Input.Send($"{attributeName}{{ENTER}}");
 
-            // The rename operation causes SurveyPrompt.razor to be opened
-            await TestServices.Editor.WaitForActiveWindowByFileAsync("SurveyPrompt.razor", cancellationToken);
+            // The rename operation causes SurveyPrompt.tazor to be opened
+            await TestServices.Editor.WaitForActiveWindowByFileAsync("SurveyPrompt.tazor", cancellationToken);
             await TestServices.Editor.VerifyTextContainsAsync($"public string? {attributeName} {{ get; set; }}", cancellationToken);
             await TestServices.Editor.VerifyTextContainsAsync($"@{attributeName}", cancellationToken);
 
@@ -89,7 +89,7 @@ public class StressTests(ITestOutputHelper testOutputHelper) : AbstractStressTes
 
             await TestServices.Editor.CloseCurrentlyFocusedWindowAsync(HangMitigatingCancellationToken, save: true);
 
-            await TestServices.Editor.WaitForActiveWindowByFileAsync("Index.razor", cancellationToken);
+            await TestServices.Editor.WaitForActiveWindowByFileAsync("Index.tazor", cancellationToken);
             await TestServices.Editor.VerifyTextContainsAsync($"<SurveyPrompt {attributeName}=", cancellationToken);
 
             // Wait for our new attribute to color correctly

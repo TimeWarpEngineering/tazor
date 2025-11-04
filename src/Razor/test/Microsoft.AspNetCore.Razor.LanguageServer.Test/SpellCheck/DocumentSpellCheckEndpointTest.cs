@@ -48,7 +48,7 @@ public class DocumentSpellCheckEndpointTest(ITestOutputHelper testOutput) : Sing
                 }
                 """;
 
-        await ValidateSpellCheckRangesAsync(input, filePath: "file.razor", [("SurveyPrompt.razor", surveyPrompt)]);
+        await ValidateSpellCheckRangesAsync(input, filePath: "file.tazor", [("SurveyPrompt.tazor", surveyPrompt)]);
     }
 
     [Fact]
@@ -168,7 +168,7 @@ public class DocumentSpellCheckEndpointTest(ITestOutputHelper testOutput) : Sing
 
         var codeDocument = CreateCodeDocument(testInput, filePath: filePath);
         var sourceText = codeDocument.Source.Text;
-        var razorFilePath = "file://C:/path/test.razor";
+        var razorFilePath = "file://C:/path/test.tazor";
         var uri = new Uri(razorFilePath);
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath, additionalRazorDocuments);
         var documentContext = CreateDocumentContext(uri, codeDocument);

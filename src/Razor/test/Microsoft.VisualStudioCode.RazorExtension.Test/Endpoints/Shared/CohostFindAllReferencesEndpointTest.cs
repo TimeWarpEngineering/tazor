@@ -54,7 +54,7 @@ public class CohostFindAllReferencesEndpointTest(ITestOutputHelper testOutputHel
             """;
 
         await VerifyFindAllReferencesAsync(input,
-            (FilePath("SurveyPrompt.razor"), surveyPrompt));
+            (FilePath("SurveyPrompt.tazor"), surveyPrompt));
     }
 
     [Fact]

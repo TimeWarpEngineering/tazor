@@ -2,7 +2,7 @@
 #pragma warning disable 1591
 namespace 
 #nullable restore
-#line (1,12)-(1,20) "x:\dir\subdir\Test\Pages/Counter.razor"
+#line (1,12)-(1,20) "x:\dir\subdir\Test\Pages/Counter.tazor"
 New.Test
 
 #line default
@@ -16,13 +16,13 @@ New.Test
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line (1,2)-(1,19) "x:\dir\subdir\Test\_Imports.razor"
+#line (1,2)-(1,19) "x:\dir\subdir\Test\_Imports.tazor"
 using System.Text
 
 #nullable disable
     ;
 #nullable restore
-#line (2,2)-(2,25) "x:\dir\subdir\Test\_Imports.razor"
+#line (2,2)-(2,25) "x:\dir\subdir\Test\_Imports.tazor"
 using System.Reflection
 
 #nullable disable
@@ -38,7 +38,7 @@ using System.Reflection
         {
             __builder.OpenComponent<global::New.Test.
 #nullable restore
-#line (2,2)-(2,10) "x:\dir\subdir\Test\Pages/Counter.razor"
+#line (2,2)-(2,10) "x:\dir\subdir\Test\Pages/Counter.tazor"
 Counter2
 
 #line default

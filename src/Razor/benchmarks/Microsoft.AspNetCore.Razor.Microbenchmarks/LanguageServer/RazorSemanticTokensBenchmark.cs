@@ -52,8 +52,8 @@ public class RazorSemanticTokensBenchmark : RazorLanguageServerBenchmarkBase
         PagesDirectory = Path.Combine(projectRoot, "Components", "Pages");
 
         var fileName = WithMultiLineComment ? "SemanticTokens_LargeMultiLineComment" : "SemanticTokens";
-        var filePath = Path.Combine(PagesDirectory, $"{fileName}.razor");
-        TargetPath = $"/Components/Pages/{fileName}.razor";
+        var filePath = Path.Combine(PagesDirectory, $"{fileName}.tazor");
+        TargetPath = $"/Components/Pages/{fileName}.tazor";
 
         var documentUri = new Uri(filePath);
         var documentSnapshot = await GetDocumentSnapshotAsync(ProjectFilePath, filePath, TargetPath);

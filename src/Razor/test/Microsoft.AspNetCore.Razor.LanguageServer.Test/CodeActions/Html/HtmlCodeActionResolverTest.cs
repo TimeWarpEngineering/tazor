@@ -30,7 +30,7 @@ public class HtmlCodeActionResolverTest(ITestOutputHelper testOutput) : Language
         var contents = "[|<$$h1>Goo @(DateTime.Now) Bar</h1>|]";
         TestFileMarkupParser.GetPositionAndSpan(contents, out contents, out var cursorPosition, out var span);
 
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var documentUri = new Uri(documentPath);
         var documentContextFactory = CreateDocumentContextFactory(documentUri, contents);
         Assert.True(documentContextFactory.TryCreate(documentUri, out var context));
@@ -72,7 +72,7 @@ public class HtmlCodeActionResolverTest(ITestOutputHelper testOutput) : Language
                             {
                                 TextDocument = new OptionalVersionedTextDocumentIdentifier
                                 {
-                                    DocumentUri = new(new Uri("c:/Test.razor.html")),
+                                    DocumentUri = new(new Uri("c:/Test.tazor.html")),
                                 },
                                 Edits = [LspFactory.CreateTextEdit(position: (0, 0), "Goo")]
                             }

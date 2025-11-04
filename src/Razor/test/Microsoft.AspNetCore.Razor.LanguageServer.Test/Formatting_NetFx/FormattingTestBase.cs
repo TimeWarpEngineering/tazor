@@ -155,7 +155,7 @@ public abstract class FormattingTestBase : RazorToolingIntegrationTestBase
         var tagHelpers = await s_standardTagHelpers.GetValueAsync(DisposalToken);
 
         var razorSourceText = SourceText.From(input);
-        var path = "file:///path/to/Document.razor";
+        var path = "file:///path/to/Document.tazor";
         var uri = new Uri(path);
         var (codeDocument, documentSnapshot) = CreateCodeDocumentAndSnapshot(razorSourceText, uri.AbsolutePath, tagHelpers, fileKind: fileKindValue, inGlobalNamespace: inGlobalNamespace);
 
@@ -250,7 +250,7 @@ public abstract class FormattingTestBase : RazorToolingIntegrationTestBase
             @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
             """;
 
-        var importPath = new Uri("file:///path/to/_Imports.razor").AbsolutePath;
+        var importPath = new Uri("file:///path/to/_Imports.tazor").AbsolutePath;
         var importText = SourceText.From(DefaultImports);
         var importSource = RazorSourceDocument.Create(importText, RazorSourceDocumentProperties.Create(importPath, importPath));
         var importSnapshotMock = new StrictMock<IDocumentSnapshot>();

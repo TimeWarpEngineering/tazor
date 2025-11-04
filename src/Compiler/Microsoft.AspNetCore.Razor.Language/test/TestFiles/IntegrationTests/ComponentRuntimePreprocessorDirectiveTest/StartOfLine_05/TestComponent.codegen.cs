@@ -18,7 +18,7 @@ namespace Test
         protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
 #nullable restore
-#line (1,3)-(2,1) "x:\dir\subdir\Test\TestComponent.razor"
+#line (1,3)-(2,1) "x:\dir\subdir\Test\TestComponent.tazor"
 
 
 #line default
@@ -27,14 +27,14 @@ namespace Test
 
             __builder.AddMarkupContent(0, "<div>#if true</div>");
 #nullable restore
-#line (3,1)-(3,1) "x:\dir\subdir\Test\TestComponent.razor"
+#line (3,1)-(3,1) "x:\dir\subdir\Test\TestComponent.tazor"
 
 #line default
 #line hidden
 #nullable disable
 
 #nullable restore
-#line (4,3)-(5,1) "x:\dir\subdir\Test\TestComponent.razor"
+#line (4,3)-(5,1) "x:\dir\subdir\Test\TestComponent.tazor"
 
 
 #line default
@@ -43,7 +43,7 @@ namespace Test
 
             __builder.AddMarkupContent(1, "<div>#endif</div>");
 #nullable restore
-#line (6,1)-(6,1) "x:\dir\subdir\Test\TestComponent.razor"
+#line (6,1)-(6,1) "x:\dir\subdir\Test\TestComponent.tazor"
 
 #line default
 #line hidden

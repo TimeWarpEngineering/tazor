@@ -56,7 +56,7 @@ public class CreateNewOnMetadataUpdateAttributePassTest : RazorProjectEngineTest
     public void Execute_NoOpsForBlazorComponents()
     {
         // Arrange
-        var source = TestRazorSourceDocument.Create("Hello world", filePath: "ignored", relativePath: "Test.razor");
+        var source = TestRazorSourceDocument.Create("Hello world", filePath: "ignored", relativePath: "Test.tazor");
         var codeDocument = ProjectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(codeDocument);
 

@@ -252,7 +252,7 @@ public class HoverFactoryTest(ITestOutputHelper testOutput) : ToolingTestBase(te
             }
             """;
 
-        var codeDocument = RazorCodeDocumentFactory.CreateCodeDocument(code.Text, "text.razor", SimpleTagHelpers.Default);
+        var codeDocument = RazorCodeDocumentFactory.CreateCodeDocument(code.Text, "text.tazor", SimpleTagHelpers.Default);
 
         // Act
         var hover = await HoverFactory.GetHoverAsync(codeDocument, code.Position, UseMarkdown, CreateComponentAvailabilityService(), DisposalToken);

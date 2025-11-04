@@ -57,6 +57,6 @@ public class RazorCodeActionsTests(ITestOutputHelper testOutputHelper) : Abstrac
 
         await TestServices.Editor.InvokeCodeActionAsync(codeAction, ControlledHangMitigatingCancellationToken);
 
-        await TestServices.Editor.WaitForActiveWindowByFileAsync("Counter.razor.cs", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowByFileAsync("Counter.tazor.cs", ControlledHangMitigatingCancellationToken);
     }
 }

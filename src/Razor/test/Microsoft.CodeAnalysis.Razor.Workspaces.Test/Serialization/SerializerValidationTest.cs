@@ -17,8 +17,8 @@ namespace Microsoft.CodeAnalysis.Razor.Serialization;
 public class SerializerValidationTest(ITestOutputHelper testOutput) : ToolingTestBase(testOutput)
 {
     [Theory]
-    [InlineData("Kendo.Mvc.Examples.project.razor.json", "Telerik")]
-    [InlineData("project.razor.json")]
+    [InlineData("Kendo.Mvc.Examples.project.tazor.json", "Telerik")]
+    [InlineData("project.tazor.json")]
     public void VerifyMessagePack_RazorProjectInfo(string resourceName, string? folderName = null)
     {
         // Arrange
@@ -65,8 +65,8 @@ public class SerializerValidationTest(ITestOutputHelper testOutput) : ToolingTes
     }
 
     [Theory]
-    [InlineData("Kendo.Mvc.Examples.project.razor.json", "Telerik")]
-    [InlineData("project.razor.json")]
+    [InlineData("Kendo.Mvc.Examples.project.tazor.json", "Telerik")]
+    [InlineData("project.tazor.json")]
     public void VerifyJson_RazorProjectInfo(string resourceName, string? folderName = null)
     {
         // Arrange

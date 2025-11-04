@@ -34,7 +34,7 @@ public class ComputedTargetPathTest(ITestOutputHelper testOutputHelper) : Cohost
             GenerateMSBuildProjectDirectory = false
         };
 
-        var id = builder.AddAdditionalDocument(FilePath("File1.razor"), SourceText.From(""));
+        var id = builder.AddAdditionalDocument(FilePath("File1.tazor"), SourceText.From(""));
 
         var solution = LocalWorkspace.CurrentSolution;
         solution = builder.Build(solution);
@@ -45,7 +45,7 @@ public class ComputedTargetPathTest(ITestOutputHelper testOutputHelper) : Cohost
 
         var generatedDocument = await document.Project.TryGetSourceGeneratedDocumentForRazorDocumentAsync(document, DisposalToken);
         Assert.NotNull(generatedDocument);
-        Assert.Equal($"{s_hintNamePrefix}_File1_razor.g.cs", generatedDocument.HintName);
+        Assert.Equal($"{s_hintNamePrefix}_File1_tazor.g.cs", generatedDocument.HintName);
     }
 
     [Theory]
@@ -59,8 +59,8 @@ public class ComputedTargetPathTest(ITestOutputHelper testOutputHelper) : Cohost
             GenerateAdditionalDocumentMetadata = generateTargetPath
         };
 
-        var doc1Id = builder.AddAdditionalDocument(FilePath(@"Pages\Index.razor"), SourceText.From(""));
-        var doc2Id = builder.AddAdditionalDocument(FilePath(@"Components\Index.razor"), SourceText.From(""));
+        var doc1Id = builder.AddAdditionalDocument(FilePath(@"Pages\Index.tazor"), SourceText.From(""));
+        var doc2Id = builder.AddAdditionalDocument(FilePath(@"Components\Index.tazor"), SourceText.From(""));
 
         var solution = LocalWorkspace.CurrentSolution;
         solution = builder.Build(solution);
@@ -70,11 +70,11 @@ public class ComputedTargetPathTest(ITestOutputHelper testOutputHelper) : Cohost
 
         var generatedDocument = await doc1.Project.TryGetSourceGeneratedDocumentForRazorDocumentAsync(doc1, DisposalToken);
         Assert.NotNull(generatedDocument);
-        Assert.Equal($"Pages_Index_razor.g.cs", generatedDocument.HintName);
+        Assert.Equal($"Pages_Index_tazor.g.cs", generatedDocument.HintName);
 
         generatedDocument = await doc2.Project.TryGetSourceGeneratedDocumentForRazorDocumentAsync(doc2, DisposalToken);
         Assert.NotNull(generatedDocument);
-        Assert.Equal($"Components_Index_razor.g.cs", generatedDocument.HintName);
+        Assert.Equal($"Components_Index_tazor.g.cs", generatedDocument.HintName);
     }
 
     [Theory]
@@ -91,8 +91,8 @@ public class ComputedTargetPathTest(ITestOutputHelper testOutputHelper) : Cohost
             GenerateMSBuildProjectDirectory = false
         };
 
-        var doc1Id = builder.AddAdditionalDocument(FilePath(@"Pages\Index.razor"), SourceText.From(""));
-        var doc2Id = builder.AddAdditionalDocument(FilePath(@"Components\Index.razor"), SourceText.From(""));
+        var doc1Id = builder.AddAdditionalDocument(FilePath(@"Pages\Index.tazor"), SourceText.From(""));
+        var doc2Id = builder.AddAdditionalDocument(FilePath(@"Components\Index.tazor"), SourceText.From(""));
 
         var solution = LocalWorkspace.CurrentSolution;
         solution = builder.Build(solution);
@@ -102,10 +102,10 @@ public class ComputedTargetPathTest(ITestOutputHelper testOutputHelper) : Cohost
 
         var generatedDocument = await doc1.Project.TryGetSourceGeneratedDocumentForRazorDocumentAsync(doc1, DisposalToken);
         Assert.NotNull(generatedDocument);
-        Assert.Equal($"{s_hintNamePrefix}_Pages_Index_razor.g.cs", generatedDocument.HintName);
+        Assert.Equal($"{s_hintNamePrefix}_Pages_Index_tazor.g.cs", generatedDocument.HintName);
 
         generatedDocument = await doc2.Project.TryGetSourceGeneratedDocumentForRazorDocumentAsync(doc2, DisposalToken);
         Assert.NotNull(generatedDocument);
-        Assert.Equal($"{s_hintNamePrefix}_Components_Index_razor.g.cs", generatedDocument.HintName);
+        Assert.Equal($"{s_hintNamePrefix}_Components_Index_tazor.g.cs", generatedDocument.HintName);
     }
 }

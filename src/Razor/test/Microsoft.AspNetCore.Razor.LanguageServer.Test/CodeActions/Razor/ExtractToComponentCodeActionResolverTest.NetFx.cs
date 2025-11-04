@@ -285,8 +285,8 @@ public class ExtractToComponentCodeActionResolverTest(ITestOutputHelper testOutp
     {
         TestFileMarkupParser.GetSpan(input, out input, out var textSpan);
 
-        var razorFilePath = "C:/path/to/test.razor";
-        var componentFilePath = "C:/path/to/Component.razor";
+        var razorFilePath = "C:/path/to/test.tazor";
+        var componentFilePath = "C:/path/to/Component.tazor";
         var codeDocument = CreateCodeDocument(input, filePath: razorFilePath);
         var sourceText = codeDocument.Source.Text;
         var uri = new Uri(razorFilePath);

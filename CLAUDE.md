@@ -49,7 +49,7 @@ source ./activate.sh    # Linux/macOS
 ## Razor Language Concepts
 
 ### File Types
-- `.razor` - Blazor components (client/server-side)
+- `.tazor` - Blazor components (client/server-side)
 - `.cshtml` - Razor views/pages (MVC/Pages) - also called "Legacy" in codebase
 
 ### Language Kinds

@@ -47,7 +47,7 @@ public class UnifiedSettingsTest
     private static JsonDocument ReadRegistrationJson()
     {
         var assembly = Assembly.GetExecutingAssembly();
-        var resourceName = "Microsoft.VisualStudio.Razor.IntegrationTests.razor.registration.json";
+        var resourceName = "Microsoft.VisualStudio.Razor.IntegrationTests.tazor.registration.json";
         using var stream = assembly.GetManifestResourceStream(resourceName);
         using var reader = new StreamReader(stream);
         var json = reader.ReadToEnd();

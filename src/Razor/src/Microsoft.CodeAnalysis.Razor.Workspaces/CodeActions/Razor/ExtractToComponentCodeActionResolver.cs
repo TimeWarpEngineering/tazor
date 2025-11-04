@@ -47,8 +47,8 @@ internal class ExtractToComponentCodeActionResolver(
         var text = componentDocument.Source.Text;
         var path = FilePathNormalizer.Normalize(documentContext.Uri.GetAbsoluteOrUNCPath());
         var directoryName = Path.GetDirectoryName(path).AssumeNotNull();
-        var templatePath = Path.Combine(directoryName, "Component.razor");
-        var componentPath = FileUtilities.GenerateUniquePath(templatePath, ".razor");
+        var templatePath = Path.Combine(directoryName, "Component.tazor");
+        var componentPath = FileUtilities.GenerateUniquePath(templatePath, ".tazor");
         var componentName = Path.GetFileNameWithoutExtension(componentPath);
         var newComponentUri = new DocumentUri(LspFactory.CreateFilePathUri(componentPath, _languageServerFeatureOptions));
 

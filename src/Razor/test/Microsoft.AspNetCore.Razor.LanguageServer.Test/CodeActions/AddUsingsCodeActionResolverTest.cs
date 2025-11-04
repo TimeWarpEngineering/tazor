@@ -64,7 +64,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneUsingToEmpty()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = string.Empty;
         var codeDocument = CreateCodeDocument(contents);
 
@@ -99,7 +99,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneUsingToComponentPageDirective()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/"
 
@@ -189,7 +189,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneUsingToHTML()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             <table>
             <tr>
@@ -228,7 +228,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneUsingToNamespace()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @namespace Testing
 
@@ -265,7 +265,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneUsingToPageAndNamespace()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/"
             @namespace Testing
@@ -303,7 +303,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneUsingToUsings()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = "@using System";
         var codeDocument = CreateCodeDocument(contents);
 
@@ -337,7 +337,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
     public async Task Handle_AddOneNonSystemUsingToSystemUsings()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @using System
             @using System.Linq
@@ -373,7 +373,7 @@ public class AddUsingsCodeActionResolverTest(ITestOutputHelper testOutput) : Lan
 
     private static RazorCodeDocument CreateCodeDocument(string text)
     {
-        var fileName = "Test.razor";
+        var fileName = "Test.tazor";
         var filePath = $"c:/{fileName}";
         var projectItem = new TestRazorProjectItem(
             filePath,

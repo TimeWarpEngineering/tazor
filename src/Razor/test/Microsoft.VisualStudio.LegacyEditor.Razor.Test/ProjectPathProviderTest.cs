@@ -20,7 +20,7 @@ public class ProjectPathProviderTest(ITestOutputHelper testOutput) : ToolingTest
     {
         // Arrange
         var projectFilePath = "/my/project/path.csproj";
-        var documentFilePath = "/my/document/path.razor";
+        var documentFilePath = "/my/document/path.tazor";
 
         var vsHierarchy = CreateVsHierarchy(projectFilePath);
         var vsRunningDocumentTable = CreateVsRunningDocumentTable(documentFilePath, vsHierarchy);
@@ -78,7 +78,7 @@ public class ProjectPathProviderTest(ITestOutputHelper testOutput) : ToolingTest
     public void TryGetProjectPath_ReturnsFalseIfNoProject()
     {
         // Arrange
-        var documentFilePath = "/my/document/path.razor";
+        var documentFilePath = "/my/document/path.tazor";
         var vsRunningDocumentTable = CreateVsRunningDocumentTable(documentFilePath, vsHierarchy: null);
 
         var serviceProvider = VsMocks.CreateServiceProvider(b =>
@@ -113,7 +113,7 @@ public class ProjectPathProviderTest(ITestOutputHelper testOutput) : ToolingTest
     {
         // Arrange
         var projectFilePath = "/my/project/path.csproj";
-        var documentFilePath = "/my/document/path.razor";
+        var documentFilePath = "/my/document/path.tazor";
 
         var vsHierarchy = CreateVsHierarchy(projectFilePath);
         var vsRunningDocumentTable = CreateVsRunningDocumentTable(documentFilePath, vsHierarchy);

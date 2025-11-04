@@ -164,7 +164,7 @@ internal class DesignTimeDirectiveTargetExtension : IDesignTimeDirectiveTargetEx
                     // part of ASP.NET Core will run that colorizes the route string.
                     var stringSyntax = context.DocumentKind switch
                     {
-                        "mvc.1.0.razor-page" => "Route",
+                        "mvc.1.0.tazor-page" => "Route",
                         "component.1.0" => "Route,Component",
                         _ => null
                     };

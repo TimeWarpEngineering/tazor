@@ -19,7 +19,7 @@ public class ViewCodeCommandHandlerTests(ITestOutputHelper testOutput) : Tooling
     [UIFact]
     public void RazorFile_Available()
     {
-        using var _ = CreateTestFiles("test.razor", out var razorFilePath);
+        using var _ = CreateTestFiles("test.tazor", out var razorFilePath);
 
         var (handler, args) = CreateHandlerAndArgs(razorFilePath);
 
@@ -43,7 +43,7 @@ public class ViewCodeCommandHandlerTests(ITestOutputHelper testOutput) : Tooling
     [UIFact]
     public void RazorFile_Cached_Available()
     {
-        using var files = CreateTestFiles("test.razor", out var razorFilePath);
+        using var files = CreateTestFiles("test.tazor", out var razorFilePath);
 
         var (handler, args) = CreateHandlerAndArgs(razorFilePath);
 
@@ -73,7 +73,7 @@ public class ViewCodeCommandHandlerTests(ITestOutputHelper testOutput) : Tooling
     [UIFact]
     public void RazorFile_NoCSharpFile_NotAvailable()
     {
-        var razorFilePath = "nonexistent.razor";
+        var razorFilePath = "nonexistent.tazor";
 
         var (handler, args) = CreateHandlerAndArgs(razorFilePath);
 

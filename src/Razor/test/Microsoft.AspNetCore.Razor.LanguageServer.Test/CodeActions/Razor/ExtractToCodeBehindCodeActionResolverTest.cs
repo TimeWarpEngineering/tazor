@@ -33,7 +33,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlock()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -97,7 +97,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlock2()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -162,7 +162,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlock_MultipleMembers()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -244,7 +244,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlock_MultipleMembers2()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -327,7 +327,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlock_MultipleMembers3()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -412,7 +412,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractFunctionsBlock()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -476,7 +476,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlockWithUsing()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
             @using System.Diagnostics
@@ -542,7 +542,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlockWithDirectives()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -610,7 +610,7 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     public async Task Handle_ExtractCodeBlock_CallsRoslyn()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = """
             @page "/test"
 
@@ -666,9 +666,9 @@ public class ExtractToCodeBehindCodeActionResolverTest(ITestOutputHelper testOut
     private static RazorCodeDocument CreateCodeDocument(string text, RazorFileKind? fileKind = null)
     {
         var projectItem = new TestRazorProjectItem(
-            filePath: "c:/Test.razor",
-            physicalPath: "c:/Test.razor",
-            relativePhysicalPath: "Test.razor",
+            filePath: "c:/Test.tazor",
+            physicalPath: "c:/Test.tazor",
+            relativePhysicalPath: "Test.tazor",
             fileKind: fileKind ?? RazorFileKind.Component)
         {
             Content = text

@@ -19,13 +19,13 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange
         var project = CreateTestProject(new()
         {
-            ["Folder1/_Imports.razor"] = """
+            ["Folder1/_Imports.tazor"] = """
                 @using MyApp.MyNamespace.AndAnother
                 """,
-            ["Folder1/Component1.razor"] = """
+            ["Folder1/Component1.tazor"] = """
                 @{ var c = new Class1(); }
                 """,
-            ["Folder2/Component2.razor"] = """
+            ["Folder2/Component2.tazor"] = """
                 @{ var c = new Class1(); }
                 """,
         }, new()
@@ -41,7 +41,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
 
         // Act
         var result = RunGenerator(compilation!, ref driver,
-            // Folder2/Component2.razor(1,16): error CS0246: The type or namespace name 'Class1' could not be found (are you missing a using directive or an assembly reference?)
+            // Folder2/Component2.tazor(1,16): error CS0246: The type or namespace name 'Class1' could not be found (are you missing a using directive or an assembly reference?)
             //  var c = new Class1(); 
             Diagnostic(ErrorCode.ERR_SingleTypeNameNotFound, "Class1").WithArguments("Class1").WithLocation(1, 16));
 
@@ -57,7 +57,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange
         var project = CreateTestProject(new()
         {
-            ["_Imports.razor"] = """
+            ["_Imports.tazor"] = """
                 @using System.Net.Http
                 <p>test</p>
                 """,
@@ -70,7 +70,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
 
         // Assert
         result.Diagnostics.Verify(
-            // _Imports.razor(2,1): error RZ10003: Markup, code and block directives are not valid in component imports.
+            // _Imports.tazor(2,1): error RZ10003: Markup, code and block directives are not valid in component imports.
             Diagnostic("RZ10003").WithLocation(2, 1));
         Assert.Single(result.GeneratedSources);
         result.VerifyOutputsMatchBaseline();
@@ -82,7 +82,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange
         var project = CreateTestProject(new()
         {
-            ["System/_Imports.razor"] = """
+            ["System/_Imports.tazor"] = """
                 @using global::System.Net.Http
                 """,
         });
@@ -107,10 +107,10 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <Component2 Param="42" />
                 """,
-            ["Shared/Component2.razor"] = """
+            ["Shared/Component2.tazor"] = """
                 @inherits ComponentBase
 
                 Value: @(Param + 1)
@@ -122,7 +122,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
                 """
         }, new()
         {
-            ["Component2.razor.cs"] = """
+            ["Component2.tazor.cs"] = """
                 using Microsoft.AspNetCore.Components;
 
                 namespace MyApp.Shared;
@@ -154,10 +154,10 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <Component2 Param="42" />
                 """,
-            ["Shared/Component2.razor"] = """
+            ["Shared/Component2.tazor"] = """
                 @inherits ComponentBase
 
                 Value: @(Param + 1)
@@ -169,7 +169,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
                 """
         }, new()
         {
-            ["Component2.razor.cs"] = """
+            ["Component2.tazor.cs"] = """
                 using Microsoft.AspNetCore.Components;
 
                 namespace MyApp.Shared;
@@ -198,7 +198,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 @inject IServiceProvider ServiceProvider
                 """,
         });
@@ -223,14 +223,14 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 Hello from Component1
                 <DerivedComponent />
                 """,
-            ["Shared/BaseComponent.razor"] = """
+            ["Shared/BaseComponent.tazor"] = """
                 Hello from Base
                 """,
-            ["Shared/DerivedComponent.razor"] = """
+            ["Shared/DerivedComponent.tazor"] = """
                 @inherits BaseComponent
                 Hello from Derived
                 """
@@ -260,15 +260,15 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
                 @(await Html.RenderComponentAsync<Shared.Component1>(RenderMode.Static))
                 @(await Html.RenderComponentAsync<Component3>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 Component1 in Shared namespace
                 <Component2 />
                 <Component4 />
                 """,
-            ["Component2.razor"] = """
+            ["Component2.tazor"] = """
                 Component2 in global namespace
                 """,
-            ["Component3.razor"] = """
+            ["Component3.tazor"] = """
                 Component3 in global namespace
                 <Shared.Component1 />
                 """
@@ -302,7 +302,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange.
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <Component1 Param="42" />
 
                 @code {
@@ -343,7 +343,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange.
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <Component1 Param="42" />
 
                 @code {
@@ -410,7 +410,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 @typeparam T
 
                 <Component1 />
@@ -429,13 +429,13 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
 
         // Act
         var result = RunGenerator(compilation!, ref driver,
-            // Shared/Component1.razor(9,9): error CS0411: The type arguments for method 'Component1<T>.M1<T1>()' cannot be inferred from the usage. Try specifying the type arguments explicitly.
+            // Shared/Component1.tazor(9,9): error CS0411: The type arguments for method 'Component1<T>.M1<T1>()' cannot be inferred from the usage. Try specifying the type arguments explicitly.
             //         M1();
             Diagnostic(ErrorCode.ERR_CantInferMethTypeArgs, "M1").WithArguments("MyApp.Shared.Component1<T>.M1<T1>()").WithLocation(9, 9));
 
         // Assert
         result.Diagnostics.Verify(
-            // Shared/Component1.razor(3,1): error RZ10001: The type of component 'Component1' cannot be inferred based on the values provided. Consider specifying the type arguments directly using the following attributes: 'T'.
+            // Shared/Component1.tazor(3,1): error RZ10001: The type of component 'Component1' cannot be inferred based on the values provided. Consider specifying the type arguments directly using the following attributes: 'T'.
             // <Component1 />
             Diagnostic("RZ10001").WithLocation(3, 1));
         Assert.Single(result.GeneratedSources);
@@ -450,7 +450,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <!DOCTYPE html>
                 <html>
                 <head><title>Test</title></head>
@@ -509,7 +509,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <!DOCTYPE html> <html>
                 <head><title>Test</title></head>
                 <body>
@@ -566,7 +566,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <!DOCTYPE html> <!-- comment --> <html>
                 </html>
                 """,
@@ -615,7 +615,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <!DOCTYPE html> @* comment *@ <html>
                 </html>
                 """,
@@ -664,7 +664,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <!DOCTYPE html> @("from" + " csharp") and HTML <html>
                 </html>
                 """,
@@ -718,7 +718,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
                 alert('hello')</script>
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 Component:
                 1: <script>alert('hello')</script>
                 2: @{ var c = "alert('hello')"; }<script>@c</script>
@@ -768,7 +768,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
                 {code}
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = $"""
+            ["Shared/Component1.tazor"] = $"""
                 Component:
                 {code}
                 """,
@@ -807,7 +807,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             """;
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = source,
+            ["Shared/Component1.tazor"] = source,
         });
         var compilation = await project.GetCompilationAsync();
         var driver = await GetDriverAsync(project);
@@ -848,7 +848,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             var mapped = generated.SyntaxTree.GetMappedLineSpan(generatedSpan);
             Assert.True(mapped.IsValid);
             Assert.True(mapped.HasMappedPath);
-            Assert.Equal("Shared/Component1.razor", mapped.Path);
+            Assert.Equal("Shared/Component1.tazor", mapped.Path);
             var expectedLine = expectedLines[count];
             Assert.Equal(expectedLine, mapped.StartLinePosition.Line);
             Assert.Equal(expectedLine, mapped.EndLinePosition.Line);
@@ -873,7 +873,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             """;
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = source,
+            ["Shared/Component1.tazor"] = source,
         });
         var compilation = await project.GetCompilationAsync();
         var driver = await GetDriverAsync(project);
@@ -906,7 +906,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             var mapped = generated.SyntaxTree.GetMappedLineSpan(generatedSpan);
             Assert.True(mapped.IsValid);
             Assert.True(mapped.HasMappedPath);
-            Assert.Equal("Shared/Component1.razor", mapped.Path);
+            Assert.Equal("Shared/Component1.tazor", mapped.Path);
             Assert.Equal(expectedLine, mapped.StartLinePosition.Line);
             Assert.Equal(expectedLine, mapped.EndLinePosition.Line);
             var mappedSpan = originalText.Lines.GetTextSpan(mapped.Span);
@@ -924,7 +924,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 @{
                     @:@{ <i>x y z </i> }
                     <text>a b c</text>
@@ -949,7 +949,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
         // Arrange
         var project = CreateTestProject(new()
         {
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <X1 />
                 <X2 @key="null" />
                 <X3 @ref="x" />
@@ -994,11 +994,11 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = $$"""
+            ["Shared/Component1.tazor"] = $$"""
                 @{ var c = new MyClass(); }
                 <MyComponent {{paramName}}="@c" />
                 """,
-            ["Shared/MyComponent.razor"] = """
+            ["Shared/MyComponent.tazor"] = """
                 MyComponent: @StringParameter
                 @code {
                     [Parameter]
@@ -1040,11 +1040,11 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = $$"""
+            ["Shared/Component1.tazor"] = $$"""
                 @{ var s = "abc"; }
                 <MyComponent {{paramName}}="@s" />
                 """,
-            ["Shared/MyComponent.razor"] = """
+            ["Shared/MyComponent.tazor"] = """
                 MyComponent: @StringParameter
                 @code {
                     [Parameter] public string StringParameter { get; set; } = "";
@@ -1075,7 +1075,7 @@ public sealed class RazorSourceGeneratorComponentTests : RazorSourceGeneratorTes
             ["Views/Home/Index.cshtml"] = """
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 <div class="test""></div>
                 """,
         });

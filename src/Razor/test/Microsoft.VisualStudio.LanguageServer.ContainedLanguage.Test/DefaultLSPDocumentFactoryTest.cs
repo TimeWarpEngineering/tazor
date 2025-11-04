@@ -28,7 +28,7 @@ public class DefaultLSPDocumentFactoryTest : ToolingTestBase
     {
         // Arrange
         var textBuffer = Mock.Of<ITextBuffer>(MockBehavior.Strict);
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(p => p.GetOrCreate(textBuffer) == uri, MockBehavior.Strict);
         var factory = new DefaultLSPDocumentFactory(uriProvider, Enumerable.Empty<Lazy<VirtualDocumentFactory, IContentTypeMetadata>>());
 
@@ -54,7 +54,7 @@ public class DefaultLSPDocumentFactoryTest : ToolingTestBase
         var textBuffer = Mock.Of<ITextBuffer>(b =>
             b.ContentType == contentType,
             MockBehavior.Strict);
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(p => p.GetOrCreate(textBuffer) == uri, MockBehavior.Strict);
         var emptyVirtualDocuments = Array.Empty<VirtualDocument>();
         var virtualDocument1 = Mock.Of<VirtualDocument>(MockBehavior.Strict);
@@ -92,7 +92,7 @@ public class DefaultLSPDocumentFactoryTest : ToolingTestBase
         var textBuffer = Mock.Of<ITextBuffer>(b =>
             b.ContentType == contentType,
             MockBehavior.Strict);
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(p => p.GetOrCreate(textBuffer) == uri, MockBehavior.Strict);
         var factory1 = Mock.Of<VirtualDocumentFactory>(MockBehavior.Strict);
         var factory1Lazy = new Lazy<VirtualDocumentFactory, IContentTypeMetadata>(() => factory1, metadata);
@@ -120,7 +120,7 @@ public class DefaultLSPDocumentFactoryTest : ToolingTestBase
         var textBuffer = Mock.Of<ITextBuffer>(b =>
             b.ContentType == contentType,
             MockBehavior.Strict);
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(p => p.GetOrCreate(textBuffer) == uri, MockBehavior.Strict);
         var emptyVirtualDocuments = Array.Empty<VirtualDocument>();
         var virtualDocument1 = Mock.Of<VirtualDocument>(MockBehavior.Strict);
@@ -158,7 +158,7 @@ public class DefaultLSPDocumentFactoryTest : ToolingTestBase
             b.CurrentSnapshot == null &&
             b.CurrentSnapshot.Version.VersionNumber == 1337,
             MockBehavior.Strict);
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(p => p.GetOrCreate(textBuffer) == uri, MockBehavior.Strict);
 
         var snapshot = new TestVirtualDocumentSnapshot(uri, 1337);
@@ -200,7 +200,7 @@ public class DefaultLSPDocumentFactoryTest : ToolingTestBase
             b.CurrentSnapshot == null &&
             b.CurrentSnapshot.Version.VersionNumber == 1337,
             MockBehavior.Strict);
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(p => p.GetOrCreate(textBuffer) == uri, MockBehavior.Strict);
 
         var snapshot = new TestVirtualDocumentSnapshot(uri, 1337);

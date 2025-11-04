@@ -23,7 +23,7 @@ public class RazorProjectInfoDriverTest(ITestOutputHelper testOutput) : Language
         configuration: RazorConfiguration.Default,
         rootNamespace: "TestNamespace");
 
-    private static readonly HostDocument s_hostDocument1 = new("C:/path/to/project1/file.razor", "file.razor");
+    private static readonly HostDocument s_hostDocument1 = new("C:/path/to/project1/file.tazor", "file.tazor");
 
     private static readonly HostProject s_hostProject2 = new(
         filePath: "C:/path/to/project2/project2.csproj",
@@ -31,7 +31,7 @@ public class RazorProjectInfoDriverTest(ITestOutputHelper testOutput) : Language
         configuration: RazorConfiguration.Default,
         rootNamespace: "TestNamespace");
 
-    private static readonly HostDocument s_hostDocument2 = new("C:/path/to/project2/file.razor", "file.razor");
+    private static readonly HostDocument s_hostDocument2 = new("C:/path/to/project2/file.tazor", "file.tazor");
 
     [UIFact]
     public async Task ProcessesExistingProjectsDuringInitialization()

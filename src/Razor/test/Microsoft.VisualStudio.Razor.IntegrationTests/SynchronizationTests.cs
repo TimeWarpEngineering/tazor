@@ -14,7 +14,7 @@ public class SynchronizationTests(ITestOutputHelper testOutputHelper) : Abstract
     public async Task CSharpComponentBacking_UpdatesComponents()
     {
         // Create the file
-        const string MyComponentRazorPath = "MyComponent.razor";
+        const string MyComponentRazorPath = "MyComponent.tazor";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentRazorPath,
             """
@@ -25,7 +25,7 @@ public class SynchronizationTests(ITestOutputHelper testOutputHelper) : Abstract
         await WaitForComponentInitializeAsync(ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.CloseCodeFileAsync(RazorProjectConstants.BlazorProjectName, MyComponentRazorPath, saveFile: true, ControlledHangMitigatingCancellationToken);
 
-        const string MyComponentCSharpPath = "MyComponent.razor.cs";
+        const string MyComponentCSharpPath = "MyComponent.tazor.cs";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentCSharpPath,
             """
@@ -44,7 +44,7 @@ public class SynchronizationTests(ITestOutputHelper testOutputHelper) : Abstract
         await TestServices.Editor.CloseCodeFileAsync(RazorProjectConstants.BlazorProjectName, MyComponentCSharpPath, saveFile: true, ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
                 <MyComponent MyProperty="123" />
                 """,
@@ -59,7 +59,7 @@ public class SynchronizationTests(ITestOutputHelper testOutputHelper) : Abstract
     public async Task BlindDocumentCreation_InitializesComponents()
     {
         // Create the file
-        const string MyComponentRazorPath = "MyComponent.razor";
+        const string MyComponentRazorPath = "MyComponent.tazor";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentRazorPath,
             """
@@ -68,7 +68,7 @@ public class SynchronizationTests(ITestOutputHelper testOutputHelper) : Abstract
             open: false,
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
-        const string MyComponentCSharpPath = "MyComponent.razor.cs";
+        const string MyComponentCSharpPath = "MyComponent.tazor.cs";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentCSharpPath,
             """
@@ -85,7 +85,7 @@ public class SynchronizationTests(ITestOutputHelper testOutputHelper) : Abstract
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
                 <MyComponent MyProperty="123" />
                 """,

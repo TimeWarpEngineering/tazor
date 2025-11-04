@@ -228,7 +228,7 @@ public class RazorWorkspaceListenerTest(ITestOutputHelper testOutputHelper) : To
 
         projectInfo = projectInfo.WithCompilationOutputInfo(projectInfo.CompilationOutputInfo.WithAssemblyPath(@"C:\test\out\test.dll"));
         projectInfo = projectInfo.WithFilePath(@"C:\test\test.csproj");
-        projectInfo = projectInfo.WithAdditionalDocuments([DocumentInfo.Create(DocumentId.CreateNewId(projectInfo.Id), @"Page.razor", filePath: @"C:\test\Page.razor")]);
+        projectInfo = projectInfo.WithAdditionalDocuments([DocumentInfo.Create(DocumentId.CreateNewId(projectInfo.Id), @"Page.tazor", filePath: @"C:\test\Page.tazor")]);
 
         var intermediateDirectory = Path.GetDirectoryName(projectInfo.CompilationOutputInfo.AssemblyPath);
 

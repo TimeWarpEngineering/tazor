@@ -58,7 +58,7 @@ public class RazorProjectItemTest
     [Theory]
     [InlineData("/Home/Index.cshtml", ".cshtml")]
     [InlineData("/Home/Index.en-gb.cshtml", ".cshtml")]
-    [InlineData("EditUser.razor", ".razor")]
+    [InlineData("EditUser.tazor", ".tazor")]
     public void Extension_ReturnsFileExtension(string path, string expected)
     {
         // Arrange
@@ -73,7 +73,7 @@ public class RazorProjectItemTest
 
     [Theory]
     [InlineData("Home/Index.cshtml", "Index.cshtml")]
-    [InlineData("/Accounts/Customers/Manage-en-us.razor", "Manage-en-us.razor")]
+    [InlineData("/Accounts/Customers/Manage-en-us.tazor", "Manage-en-us.tazor")]
     public void FileName_ReturnsFileNameWithExtension(string path, string expected)
     {
         // Arrange
@@ -89,8 +89,8 @@ public class RazorProjectItemTest
     [Theory]
     [InlineData("Home/Index", "Home/Index")]
     [InlineData("Home/Index.cshtml", "Home/Index")]
-    [InlineData("/Accounts/Customers/Manage.en-us.razor", "/Accounts/Customers/Manage.en-us")]
-    [InlineData("/Accounts/Customers/Manage-en-us.razor", "/Accounts/Customers/Manage-en-us")]
+    [InlineData("/Accounts/Customers/Manage.en-us.tazor", "/Accounts/Customers/Manage.en-us")]
+    [InlineData("/Accounts/Customers/Manage-en-us.tazor", "/Accounts/Customers/Manage-en-us")]
     public void PathWithoutExtension_ExcludesExtension(string path, string expected)
     {
         // Arrange

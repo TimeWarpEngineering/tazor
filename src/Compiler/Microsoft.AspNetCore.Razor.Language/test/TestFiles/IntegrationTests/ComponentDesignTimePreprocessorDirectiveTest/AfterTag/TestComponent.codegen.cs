@@ -27,7 +27,7 @@ namespace Test
   
     
 #nullable restore
-#line 6 "x:\dir\subdir\Test\TestComponent.razor"
+#line 6 "x:\dir\subdir\Test\TestComponent.tazor"
   
 #endif
 

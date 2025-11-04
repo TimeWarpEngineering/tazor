@@ -20,7 +20,7 @@ namespace Microsoft.VisualStudio.Razor.ProjectSystem;
 /// <summary>
 /// This class is responsible for maintaining project information for projects that don't
 /// use the Razor or Web SDK, or otherwise don't get picked up by our CPS bits, but have
-/// .razor or .cshtml files regardless.
+/// .tazor or .cshtml files regardless.
 /// </summary>
 [Export(typeof(FallbackProjectManager))]
 [Export(typeof(IFallbackProjectManager))]
@@ -92,7 +92,7 @@ internal sealed class FallbackProjectManager : IFallbackProjectManager
             }
             else
             {
-                // We have been asked to provide dynamic file info, which means there is a .razor or .cshtml file in the project
+                // We have been asked to provide dynamic file info, which means there is a .tazor or .cshtml file in the project
                 // but for some reason our project system doesn't know about the project. In these cases (often when people don't
                 // use the Razor or Web SDK) we spin up a fallback experience for them
                 AddFallbackProject(projectId, filePath, cancellationToken);

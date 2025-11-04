@@ -229,7 +229,7 @@ internal class RazorDynamicFileInfoProvider : IRazorDynamicFileInfoProviderInter
         ArgHelper.ThrowIfNull(projectFilePath);
         ArgHelper.ThrowIfNull(filePath);
 
-        // We are activated for all Roslyn projects that have a .cshtml or .razor file, but they are not necessarily
+        // We are activated for all Roslyn projects that have a .cshtml or .tazor file, but they are not necessarily
         // C# projects that we expect.
         if (!TryFindProjectKeyForProjectId(projectId, out var projectKey))
         {

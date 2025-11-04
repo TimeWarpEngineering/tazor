@@ -28,25 +28,25 @@ public class DiagnosticTests(ITestOutputHelper testOutputHelper) : AbstractRazor
 ", ControlledHangMitigatingCancellationToken);
 
         // Act
-        var errors = await TestServices.ErrorList.WaitForErrorsAsync("Counter.razor", expectedCount: 3, ControlledHangMitigatingCancellationToken);
+        var errors = await TestServices.ErrorList.WaitForErrorsAsync("Counter.tazor", expectedCount: 3, ControlledHangMitigatingCancellationToken);
 
         // Assert
         Assert.Collection(errors,
             (error) =>
             {
-                AssertEx.EqualOrDiff("Counter.razor(2, 1): error RZ9980: Unclosed tag 'h1' with no matching end tag.", error);
+                AssertEx.EqualOrDiff("Counter.tazor(2, 1): error RZ9980: Unclosed tag 'h1' with no matching end tag.", error);
             },
             (error) =>
             {
-                AssertEx.EqualOrDiff("Counter.razor(3, 2): error RZ1034: Found a malformed 'PageTitle' tag helper. Tag helpers must have a start and end tag or be self closing.", error);
+                AssertEx.EqualOrDiff("Counter.tazor(3, 2): error RZ1034: Found a malformed 'PageTitle' tag helper. Tag helpers must have a start and end tag or be self closing.", error);
             },
             (error) =>
             {
-                AssertEx.EqualOrDiff("Counter.razor(7, 18): error CS1002: ; expected", error);
+                AssertEx.EqualOrDiff("Counter.tazor(7, 18): error CS1002: ; expected", error);
             },
             (error) =>
             {
-                AssertEx.EqualOrDiff("Counter.razor(7, 9): error CS0127: Since 'Counter.Function()' returns void, a return keyword must not be followed by an object expression", error);
+                AssertEx.EqualOrDiff("Counter.tazor(7, 9): error CS0127: Since 'Counter.Function()' returns void, a return keyword must not be followed by an object expression", error);
             });
     }
 

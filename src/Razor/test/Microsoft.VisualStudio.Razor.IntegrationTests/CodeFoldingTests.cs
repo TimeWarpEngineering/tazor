@@ -134,7 +134,7 @@ public class CodeFoldingTests(ITestOutputHelper testOutputHelper) : AbstractRazo
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
 
             @page "/Test"
@@ -183,7 +183,7 @@ public class CodeFoldingTests(ITestOutputHelper testOutputHelper) : AbstractRazo
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
 
             @page "/Test"
@@ -240,7 +240,7 @@ public class CodeFoldingTests(ITestOutputHelper testOutputHelper) : AbstractRazo
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
 
             @page "/Test"
@@ -286,7 +286,7 @@ public class CodeFoldingTests(ITestOutputHelper testOutputHelper) : AbstractRazo
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
 
             @page "/Test"
@@ -332,7 +332,7 @@ public class CodeFoldingTests(ITestOutputHelper testOutputHelper) : AbstractRazo
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             @page "/Test"
 

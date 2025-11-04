@@ -81,7 +81,7 @@ public class RazorBreakpointSpanEndpointTest : LanguageServerTestBase
     public async Task Handle_StartsInHtml_BreakpointMoved_Razor()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/document.razor");
+        var documentPath = new Uri("C:/path/to/document.tazor");
         var codeDocument = CreateCodeDocument(@"
 <p>@{var abc = 123;}</p>", RazorFileKind.Component);
         var documentContext = CreateDocumentContext(documentPath, codeDocument);
@@ -107,7 +107,7 @@ public class RazorBreakpointSpanEndpointTest : LanguageServerTestBase
     public async Task Handle_ImplicitExpression_StartsInHtml_BreakpointMoved_Razor()
     {
         // Arrange
-        var documentPath = new Uri("C:/path/to/document.razor");
+        var documentPath = new Uri("C:/path/to/document.tazor");
         var codeDocument = CreateCodeDocument(@"
 <p>@currentCount</p>", RazorFileKind.Component);
         var documentContext = CreateDocumentContext(documentPath, codeDocument);

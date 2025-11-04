@@ -128,7 +128,7 @@ public class RazorPageDocumentClassifierPassTest : RazorProjectEngineTestBase
         // Assert
         var documentNode = processor.GetDocumentNode();
 
-        Assert.Equal("mvc.1.0.razor-page", documentNode.DocumentKind);
+        Assert.Equal("mvc.1.0.tazor-page", documentNode.DocumentKind);
     }
 
     [Fact]

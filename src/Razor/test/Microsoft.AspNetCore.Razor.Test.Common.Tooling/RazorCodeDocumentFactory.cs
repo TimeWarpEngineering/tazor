@@ -10,7 +10,7 @@ namespace Microsoft.AspNetCore.Razor.Test.Common;
 internal static class RazorCodeDocumentFactory
 {
     private const string CSHtmlFile = "test.cshtml";
-    private const string RazorFile = "test.razor";
+    private const string RazorFile = "test.tazor";
 
     public static string GetFileName(bool isRazorFile)
         => isRazorFile ? RazorFile : CSHtmlFile;

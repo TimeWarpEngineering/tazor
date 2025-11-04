@@ -15,7 +15,7 @@ namespace Microsoft.AspNetCore.Razor.LanguageServer;
 public class WorkspaceSemanticTokensRefreshTriggerTest : LanguageServerTestBase
 {
     private static readonly HostProject s_hostProject = new("/path/to/project.csproj", "/path/to/obj", RazorConfiguration.Default, "TestRootNamespace");
-    private static readonly HostDocument s_hostDocument = new("/path/to/file.razor", "file.razor");
+    private static readonly HostDocument s_hostDocument = new("/path/to/file.tazor", "file.tazor");
 
     private readonly TestProjectSnapshotManager _projectManager;
 
@@ -46,7 +46,7 @@ public class WorkspaceSemanticTokensRefreshTriggerTest : LanguageServerTestBase
         var refreshTrigger = new TestWorkspaceSemanticTokensRefreshTrigger(publisher.Object, _projectManager);
 
         // Act
-        var newDocument = new HostDocument("/path/to/newFile.razor", "newFile.razor");
+        var newDocument = new HostDocument("/path/to/newFile.tazor", "newFile.tazor");
 
         await _projectManager.UpdateAsync(updater =>
         {

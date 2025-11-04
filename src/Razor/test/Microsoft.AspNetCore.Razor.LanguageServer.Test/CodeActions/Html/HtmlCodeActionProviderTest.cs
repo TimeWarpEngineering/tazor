@@ -34,7 +34,7 @@ public class HtmlCodeActionProviderTest(ITestOutputHelper testOutput) : Language
         var contents = "<$$h1>Goo</h1>";
         TestFileMarkupParser.GetPosition(contents, out contents, out var cursorPosition);
 
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var request = new VSCodeActionParams()
         {
             TextDocument = new VSTextDocumentIdentifier { DocumentUri = new(new Uri(documentPath)) },
@@ -65,7 +65,7 @@ public class HtmlCodeActionProviderTest(ITestOutputHelper testOutput) : Language
         var contents = "[|<$$h1>Goo @(DateTime.Now) Bar</h1>|]";
         TestFileMarkupParser.GetPositionAndSpan(contents, out contents, out var cursorPosition, out var span);
 
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var request = new VSCodeActionParams()
         {
             TextDocument = new VSTextDocumentIdentifier { DocumentUri = new(new Uri(documentPath)) },
@@ -108,7 +108,7 @@ public class HtmlCodeActionProviderTest(ITestOutputHelper testOutput) : Language
                         new() {
                             TextDocument = new OptionalVersionedTextDocumentIdentifier
                             {
-                                DocumentUri = new(new Uri("c:/Test.razor.html")),
+                                DocumentUri = new(new Uri("c:/Test.tazor.html")),
                             },
                             Edits = [LspFactory.CreateTextEdit(position: (0, 0), "Goo")]
                         }

@@ -43,7 +43,7 @@ public class ProjectTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdi
 
         await TestServices.Workspace.WaitForProjectSystemAsync(ControlledHangMitigatingCancellationToken);
 
-        // We open the Index.razor file, and wait for 3 RazorComponentElement's to be classified, as that
+        // We open the Index.tazor file, and wait for 3 RazorComponentElement's to be classified, as that
         // way we know the LSP server is up, running, and has processed both local and library-sourced Components
         await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, RazorProjectConstants.IndexRazorFile, ControlledHangMitigatingCancellationToken);
 
@@ -53,11 +53,11 @@ public class ProjectTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdi
         await TestServices.Editor.WaitForComponentClassificationAsync(ControlledHangMitigatingCancellationToken, count: 3);
 
         // This is a little odd, but there is no "real" way to check this via VS, and one of the most important things this test can do
-        // is ensure that each target framework gets its own project.razor.bin file, and doesn't share one from a cache or anything.
+        // is ensure that each target framework gets its own project.tazor.bin file, and doesn't share one from a cache or anything.
         Assert.Equal(2, GetProjectRazorJsonFileCount());
 
         int GetProjectRazorJsonFileCount()
-            => Directory.EnumerateFiles(solutionPath, "project.razor.*.bin", SearchOption.AllDirectories).Count();
+            => Directory.EnumerateFiles(solutionPath, "project.tazor.*.bin", SearchOption.AllDirectories).Count();
     }
 
     [IdeFact]
@@ -73,7 +73,7 @@ public class ProjectTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdi
 
         await TestServices.Workspace.WaitForProjectSystemAsync(ControlledHangMitigatingCancellationToken);
 
-        // We open the Index.razor file, and wait for 3 RazorComponentElement's to be classified, as that
+        // We open the Index.tazor file, and wait for 3 RazorComponentElement's to be classified, as that
         // way we know the LSP server is up, running, and has processed both local and library-sourced Components
         await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, RazorProjectConstants.IndexRazorFile, ControlledHangMitigatingCancellationToken);
 

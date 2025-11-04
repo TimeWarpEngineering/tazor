@@ -1,9 +1,9 @@
-# .razor to .tazor Migration Inventory
+# .tazor to .tazor Migration Inventory
 
 **Date**: 2025-11-03
-**Purpose**: Complete inventory of all `.razor` references in the codebase to guide the file extension migration from `.razor` to `.tazor`.
+**Purpose**: Complete inventory of all `.tazor` references in the codebase to guide the file extension migration from `.tazor` to `.tazor`.
 
-**Total References Found**: ~1,900+ string literal references to `.razor`
+**Total References Found**: ~1,900+ string literal references to `.tazor`
 
 ---
 
@@ -15,15 +15,15 @@ These are the core constant definitions and logic that control file processing. 
 
 | File | Line | Current Code | New Code | Priority |
 |------|------|--------------|----------|----------|
-| `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/Language/FileKinds.cs` | 12 | `private const string ComponentFileExtension = ".razor";` | `".tazor"` | 🔴 CRITICAL |
-| `src/Shared/Microsoft.AspNetCore.Razor.Utilities.Shared/FileUtilities.cs` | 12 | `private const string RazorExtension = ".razor";` | `".tazor"` | 🔴 CRITICAL |
+| `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/Language/FileKinds.cs` | 12 | `private const string ComponentFileExtension = ".tazor";` | `".tazor"` | 🔴 CRITICAL |
+| `src/Shared/Microsoft.AspNetCore.Razor.Utilities.Shared/FileUtilities.cs` | 12 | `private const string RazorExtension = ".tazor";` | `".tazor"` | 🔴 CRITICAL |
 
 ### 2. Import File Name Constants
 
 | File | Line | Current Code | New Code | Priority |
 |------|------|--------------|----------|----------|
-| `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/Language/Components/ComponentHelpers.cs` | 10 | `public const string ImportsFileName = "_Imports.razor";` | `"_Imports.tazor"` | 🔴 CRITICAL |
-| `src/Shared/Microsoft.AspNetCore.Razor.Test.Common/Language/TestImportProjectFeature.cs` | 22 | `private const string DefaultImportsFileName = "_Imports.razor";` | `"_Imports.tazor"` | 🔴 CRITICAL |
+| `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/Language/Components/ComponentHelpers.cs` | 10 | `public const string ImportsFileName = "_Imports.tazor";` | `"_Imports.tazor"` | 🔴 CRITICAL |
+| `src/Shared/Microsoft.AspNetCore.Razor.Test.Common/Language/TestImportProjectFeature.cs` | 22 | `private const string DefaultImportsFileName = "_Imports.tazor";` | `"_Imports.tazor"` | 🔴 CRITICAL |
 
 ### 3. Source Generator File Filtering
 
@@ -31,15 +31,15 @@ These are the core constant definitions and logic that control file processing. 
 
 | Line | Current Code | New Code | Priority |
 |------|--------------|----------|----------|
-| 69 | `if (path.EndsWith(".razor", StringComparison.OrdinalIgnoreCase))` | `".tazor"` | 🔴 CRITICAL |
+| 69 | `if (path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))` | `".tazor"` | 🔴 CRITICAL |
 | 72 | `string.Equals(fileName, "_Imports", ...)` | Keep as `"_Imports"` | 🔴 CRITICAL |
 
 ### 4. IDE File Detection
 
 | File | Line | Current Code | New Code | Priority |
 |------|------|--------------|----------|----------|
-| `src/Razor/src/Microsoft.CodeAnalysis.Razor.Workspaces/DocumentPresentation/UriPresentationHelper.cs` | 23 | `EndsWith(".razor", PathUtilities.OSSpecificPathComparison)` | `".tazor"` | 🔴 CRITICAL |
-| `src/Razor/src/Microsoft.VisualStudio.LanguageServices.Razor/Discovery/ProjectStateChangeDetector.cs` | 252 | `filePath.EndsWith(".razor", PathUtilities.OSSpecificPathComparison)` | `".tazor"` | 🔴 CRITICAL |
+| `src/Razor/src/Microsoft.CodeAnalysis.Razor.Workspaces/DocumentPresentation/UriPresentationHelper.cs` | 23 | `EndsWith(".tazor", PathUtilities.OSSpecificPathComparison)` | `".tazor"` | 🔴 CRITICAL |
+| `src/Razor/src/Microsoft.VisualStudio.LanguageServices.Razor/Discovery/ProjectStateChangeDetector.cs` | 252 | `filePath.EndsWith(".tazor", PathUtilities.OSSpecificPathComparison)` | `".tazor"` | 🔴 CRITICAL |
 
 ### 5. MSBuild Targets
 
@@ -47,13 +47,13 @@ These are the core constant definitions and logic that control file processing. 
 
 | Line | Current Code | New Code | Priority |
 |------|--------------|----------|----------|
-| 33 | `<_RazorOrCshtmlFiles Include="**\*.razor;**\*.cshtml" />` | `**\*.tazor` | 🔴 CRITICAL |
+| 33 | `<_RazorOrCshtmlFiles Include="**\*.tazor;**\*.cshtml" />` | `**\*.tazor` | 🔴 CRITICAL |
 
 ### 6. Generated File Extension Construction
 
 **File**: `src/Razor/src/Microsoft.CodeAnalysis.Razor.Workspaces/Utilities/RazorProjectInfoFactory.cs`
 
-Look for: `const string generatedRazorExtension = $".razor{suffix}";`
+Look for: `const string generatedRazorExtension = $".tazor{suffix}";`
 
 Change to: `const string generatedTazorExtension = $".tazor{suffix}";`
 
@@ -65,7 +65,7 @@ Change to: `const string generatedTazorExtension = $".tazor{suffix}";`
 
 ### Test Assertion Files for Generated Names
 
-These test files assert specific generated file names ending in `_razor.g.cs`. Update to `_tazor.g.cs`:
+These test files assert specific generated file names ending in `_tazor.g.cs`. Update to `_tazor.g.cs`:
 
 | File | Lines with Assertions | Priority |
 |------|----------------------|----------|
@@ -75,27 +75,27 @@ These test files assert specific generated file names ending in `_razor.g.cs`. U
 
 ### Test Helper Methods
 
-Files with `CompileToCSharp("_Imports.razor", ...)` or similar test helper calls:
+Files with `CompileToCSharp("_Imports.tazor", ...)` or similar test helper calls:
 
 - `src/Compiler/Microsoft.AspNetCore.Razor.Language/test/IntegrationTests/ComponentImportsIntegrationTest.cs`
 - `src/Compiler/Microsoft.AspNetCore.Razor.Language/test/IntegrationTests/ComponentCodeGenerationTestBase.cs`
 - `src/Compiler/test/Microsoft.NET.Sdk.Razor.SourceGenerators.Tests/RazorSourceGeneratorComponentTests.cs`
 - `src/Compiler/Microsoft.AspNetCore.Razor.Language/test/RazorCodeDocumentExtensionsTest.cs` (lines 235-334)
 
-**Action**: Search and replace `"_Imports.razor"` → `"_Imports.tazor"` in test files
+**Action**: Search and replace `"_Imports.tazor"` → `"_Imports.tazor"` in test files
 
 **Priority**: 🟡 HIGH
 
 ### Test File Path Literals
 
-Files with test path literals like `"Test.razor"`, `"Counter.razor"`, etc.:
+Files with test path literals like `"Test.tazor"`, `"Counter.tazor"`, etc.:
 
 - `src/Compiler/Microsoft.AspNetCore.Razor.Language/test/Components/ComponentDocumentClassifierPassTest.cs` (lines 22, 44, 67, 92, 118, 138)
 - `src/Compiler/test/Microsoft.NET.Sdk.Razor.SourceGenerators.Tests/SourceGeneratorProjectItemTest.cs` (lines 57, 78, 100-101)
 - `src/Compiler/perf/Microsoft.AspNetCore.Razor.Microbenchmarks.Generator/RazorBenchmarks.cs` (lines 13-28)
 - Multiple benchmark and test files in `src/Razor/benchmarks/`
 
-**Action**: Search and replace `.razor"` → `.tazor"` in test/benchmark files
+**Action**: Search and replace `.tazor"` → `.tazor"` in test/benchmark files
 
 **Priority**: 🟡 HIGH
 
@@ -105,13 +105,13 @@ Files with test path literals like `"Test.razor"`, `"Counter.razor"`, etc.:
 
 | Line | Current Code | Priority |
 |------|--------------|----------|
-| 43 | `if (testFileName.EndsWith(".razor", StringComparison.OrdinalIgnoreCase))` | 🟡 HIGH |
+| 43 | `if (testFileName.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))` | 🟡 HIGH |
 
 ---
 
 ## DOCUMENTATION CHANGES
 
-### Code Comments Mentioning _Imports.razor
+### Code Comments Mentioning _Imports.tazor
 
 | File | Context | Priority |
 |------|---------|----------|
@@ -126,12 +126,12 @@ Files with test path literals like `"Test.razor"`, `"Counter.razor"`, etc.:
 
 | Line | Current Comment | Priority |
 |------|----------------|----------|
-| 22 | `If there are any .razor or .cshtml files in this project` | 🟢 MEDIUM |
-| 26 | `Add each .razor and .cshtml file to the project` | 🟢 MEDIUM |
+| 22 | `If there are any .tazor or .cshtml files in this project` | 🟢 MEDIUM |
+| 26 | `Add each .tazor and .cshtml file to the project` | 🟢 MEDIUM |
 
 ### Documentation Files
 
-Update all `.razor` references in documentation:
+Update all `.tazor` references in documentation:
 
 | File | Priority |
 |------|----------|
@@ -154,21 +154,21 @@ Update all `.razor` references in documentation:
 
 | Current Path | New Path | Priority |
 |-------------|----------|----------|
-| `sample/TestBlazorApp/Components/App.razor` | `App.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Pages/Counter.razor` | `Counter.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Pages/Error.razor` | `Error.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Pages/Home.razor` | `Home.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Pages/Weather.razor` | `Weather.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Layout/MainLayout.razor` | `MainLayout.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Layout/NavMenu.razor` | `NavMenu.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/Routes.razor` | `Routes.tazor` | 🔴 CRITICAL |
-| `sample/TestBlazorApp/Components/_Imports.razor` | `_Imports.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/App.tazor` | `App.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Pages/Counter.tazor` | `Counter.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Pages/Error.tazor` | `Error.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Pages/Home.tazor` | `Home.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Pages/Weather.tazor` | `Weather.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Layout/MainLayout.tazor` | `MainLayout.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Layout/NavMenu.tazor` | `NavMenu.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/Routes.tazor` | `Routes.tazor` | 🔴 CRITICAL |
+| `sample/TestBlazorApp/Components/_Imports.tazor` | `_Imports.tazor` | 🔴 CRITICAL |
 
 ### Benchmark Data Files
 
 | Current Path | New Path | Priority |
 |-------------|----------|----------|
-| `src/Compiler/perf/Microbenchmarks/BlazorServerTagHelpers.razor` | `BlazorServerTagHelpers.tazor` | 🟡 HIGH |
+| `src/Compiler/perf/Microbenchmarks/BlazorServerTagHelpers.tazor` | `BlazorServerTagHelpers.tazor` | 🟡 HIGH |
 
 ---
 
@@ -178,10 +178,10 @@ These files are generated outputs and will be automatically regenerated with new
 
 ### Generated Files in sample/TestBlazorApp/Generated/
 
-- `Components_App_razor.g.cs` → will become `Components_App_tazor.g.cs`
-- `Components_Pages_Counter_razor.g.cs` → will become `Components_Pages_Counter_tazor.g.cs`
-- `Components_Pages_Error_razor.g.cs` → will become `Components_Pages_Error_tazor.g.cs`
-- And all other `*_razor.g.cs` files
+- `Components_App_tazor.g.cs` → will become `Components_App_tazor.g.cs`
+- `Components_Pages_Counter_tazor.g.cs` → will become `Components_Pages_Counter_tazor.g.cs`
+- `Components_Pages_Error_tazor.g.cs` → will become `Components_Pages_Error_tazor.g.cs`
+- And all other `*_tazor.g.cs` files
 
 ### Test Fixture Files
 
@@ -202,7 +202,7 @@ Current line 157:
 sample/TestBlazorApp/Generated/
 ```
 
-This is correct - the generated folder is already ignored. No change needed unless there are specific `.razor` file patterns in gitignore (there aren't any).
+This is correct - the generated folder is already ignored. No change needed unless there are specific `.tazor` file patterns in gitignore (there aren't any).
 
 ---
 
@@ -224,7 +224,7 @@ This is correct - the generated folder is already ignored. No change needed unle
 9. ✅ Update MSBuild targets file line 33
 
 ### Phase 4: Sample Application
-10. ✅ Rename all 9 `.razor` files in `sample/TestBlazorApp/`
+10. ✅ Rename all 9 `.tazor` files in `sample/TestBlazorApp/`
 
 ### Phase 5: Test Infrastructure
 11. ✅ Update test assertion files (generated name checks)
@@ -251,13 +251,13 @@ After making changes, verify completeness with these searches:
 
 ```bash
 # Should find ZERO results in source code (excluding legacy .cshtml)
-grep -r '\.razor"' --include="*.cs" --include="*.props" --include="*.targets" src/
+grep -r '\.tazor"' --include="*.cs" --include="*.props" --include="*.targets" src/
 
 # Should find appropriate references to .tazor
 grep -r '\.tazor"' --include="*.cs" src/
 
 # Verify import file references updated
-grep -r '_Imports\.razor' --include="*.cs" src/
+grep -r '_Imports\.tazor' --include="*.cs" src/
 
 # Should find updated import references
 grep -r '_Imports\.tazor' --include="*.cs" src/
@@ -282,7 +282,7 @@ grep -r '_Imports\.tazor' --include="*.cs" src/
 1. **Legacy .cshtml support**: We are NOT changing `.cshtml` references - those remain for legacy MVC/Razor Pages support
 2. **Test baselines**: Many test baseline files will need regeneration after the change
 3. **Atomic commit**: All changes should be in a single atomic commit to avoid partial state
-4. **Generated files**: Do NOT manually edit `*_razor.g.cs` files - they will be regenerated automatically
+4. **Generated files**: Do NOT manually edit `*_tazor.g.cs` files - they will be regenerated automatically
 
 ---
 

@@ -36,7 +36,7 @@ internal class RenameService(
         ISolutionQueryOperations solutionQueryOperations,
         CancellationToken cancellationToken)
     {
-        // We only support renaming of .razor components, not .cshtml tag helpers
+        // We only support renaming of .tazor components, not .cshtml tag helpers
         if (!documentContext.FileKind.IsComponent())
         {
             return null;

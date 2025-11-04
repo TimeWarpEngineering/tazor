@@ -171,7 +171,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             @page "/test"
             
@@ -366,7 +366,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             @page "Test"
 
@@ -412,7 +412,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             @page "Test"
 
@@ -447,7 +447,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             @page "/Test"
 
@@ -493,7 +493,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             <Test Param="@MyEnum." />
 
@@ -536,7 +536,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             @page "/counter"
 
@@ -582,7 +582,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             """
             <PageTitle>Test</PageTitle>
             """,
@@ -605,7 +605,7 @@ public class CompletionIntegrationTests(ITestOutputHelper testOutputHelper) : Ab
     {
         await TestServices.SolutionExplorer.AddFileAsync(
             RazorProjectConstants.BlazorProjectName,
-            "Test.razor",
+            "Test.tazor",
             input,
             open: true,
             ControlledHangMitigatingCancellationToken);

@@ -52,16 +52,16 @@ public class ProjectStateDetectorTest(ITestOutputHelper testOutput) : VisualStud
         var cshtmlDocumentInfo = projectInfo1.CreateDocumentInfo("file.cshtml.g.cs");
         _cshtmlDocumentId = cshtmlDocumentInfo.Id;
 
-        var razorDocumentInfo = projectInfo1.CreateDocumentInfo("file.razor.g.cs");
+        var razorDocumentInfo = projectInfo1.CreateDocumentInfo("file.tazor.g.cs");
         _razorDocumentId = razorDocumentInfo.Id;
 
-        var backgroundDocumentInfo = projectInfo1.CreateDocumentInfo("file.razor__bg__virtual.cs");
+        var backgroundDocumentInfo = projectInfo1.CreateDocumentInfo("file.tazor__bg__virtual.cs");
         _backgroundVirtualCSharpDocumentId = backgroundDocumentInfo.Id;
 
-        var partialComponentClassDocumentInfo = projectInfo1.CreateDocumentInfo("file.razor.cs");
+        var partialComponentClassDocumentInfo = projectInfo1.CreateDocumentInfo("file.tazor.cs");
         _partialComponentClassDocumentId = partialComponentClassDocumentInfo.Id;
 
-        var razorDocumentInfoForProjectThree = projectInfo3.CreateDocumentInfo("file.razor.g.cs");
+        var razorDocumentInfoForProjectThree = projectInfo3.CreateDocumentInfo("file.tazor.g.cs");
         _razorDocumentIdForProjectThree = razorDocumentInfoForProjectThree.Id;
 
         _solutionWithTwoProjects = _emptySolution

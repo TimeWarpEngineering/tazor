@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <None Include="$(SharedFilesRoot)Compiler\MSN.cshtml" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="$(SharedFilesRoot)Compiler\BlazorServerTagHelpers.razor" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(SharedFilesRoot)Compiler\BlazorServerTagHelpers.tazor" CopyToOutputDirectory="PreserveNewest" />
     <None Include="$(SharedFilesRoot)Compiler\taghelpers.json" CopyToOutputDirectory="PreserveNewest" />
 
     <Compile Remove="Resources\**\*.*" />

@@ -27,7 +27,7 @@ public class HtmlRequestInvokerTest(ITestOutputHelper testOutput) : VisualStudio
     protected override void ConfigureWorkspace(AdhocWorkspace workspace)
     {
         var project = workspace.CurrentSolution.AddProject("Project", "Project.dll", LanguageNames.CSharp);
-        var document = project.AddAdditionalDocument("File.razor", SourceText.From("<div></div>"), filePath: "file://File.razor");
+        var document = project.AddAdditionalDocument("File.tazor", SourceText.From("<div></div>"), filePath: "file://File.tazor");
         _documentId = document.Id;
 
         Assert.True(workspace.TryApplyChanges(document.Project.Solution));
@@ -38,7 +38,7 @@ public class HtmlRequestInvokerTest(ITestOutputHelper testOutput) : VisualStudio
     {
         var document = Workspace.CurrentSolution.GetAdditionalDocument(_documentId).AssumeNotNull();
 
-        var htmlDocumentUri = new Uri("file://File.razor.html", UriKind.Absolute);
+        var htmlDocumentUri = new Uri("file://File.tazor.html", UriKind.Absolute);
         var requestValidator = (object request) =>
         {
             var diagnosticParams = Assert.IsType<VSInternalDiagnosticParams>(request);
@@ -60,7 +60,7 @@ public class HtmlRequestInvokerTest(ITestOutputHelper testOutput) : VisualStudio
     {
         var document = Workspace.CurrentSolution.GetAdditionalDocument(_documentId).AssumeNotNull();
 
-        var htmlDocumentUri = new Uri("file://File.razor.html", UriKind.Absolute);
+        var htmlDocumentUri = new Uri("file://File.tazor.html", UriKind.Absolute);
         var requestValidator = (object request) =>
         {
             var hoverParams = Assert.IsAssignableFrom<ITextDocumentParams>(request);
@@ -82,7 +82,7 @@ public class HtmlRequestInvokerTest(ITestOutputHelper testOutput) : VisualStudio
     {
         var document = Workspace.CurrentSolution.GetAdditionalDocument(_documentId).AssumeNotNull();
 
-        var htmlDocumentUri = new Uri("file://File.razor.html", UriKind.Absolute);
+        var htmlDocumentUri = new Uri("file://File.tazor.html", UriKind.Absolute);
         var requestValidator = (object request) =>
         {
             var codeActionParams = Assert.IsType<VSCodeActionParams>(request);

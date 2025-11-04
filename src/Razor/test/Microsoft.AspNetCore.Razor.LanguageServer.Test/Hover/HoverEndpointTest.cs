@@ -60,7 +60,7 @@ public class HoverEndpointTest(ITestOutputHelper testOutput) : TagHelperServiceT
 
         var request = new TextDocumentPositionParams
         {
-            TextDocument = new() { DocumentUri = new(new Uri("C:/text.razor")) },
+            TextDocument = new() { DocumentUri = new(new Uri("C:/text.tazor")) },
             Position = position,
         };
 
@@ -140,7 +140,7 @@ public class HoverEndpointTest(ITestOutputHelper testOutput) : TagHelperServiceT
     {
         var codeDocument = CreateCodeDocument(code.Text, DefaultTagHelpers);
         var csharpSourceText = codeDocument.GetCSharpSourceText();
-        var csharpDocumentUri = new Uri("C:/path/to/file.razor__virtual.g.cs");
+        var csharpDocumentUri = new Uri("C:/path/to/file.tazor__virtual.g.cs");
         var serverCapabilities = new VSInternalServerCapabilities()
         {
             HoverProvider = true
@@ -150,7 +150,7 @@ public class HoverEndpointTest(ITestOutputHelper testOutput) : TagHelperServiceT
             csharpSourceText, csharpDocumentUri, serverCapabilities, razorMappingService: null, capabilitiesUpdater: null, DisposalToken);
         await csharpServer.OpenDocumentAsync(csharpDocumentUri, csharpSourceText.ToString(), DisposalToken);
 
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
         var documentContextFactory = new TestDocumentContextFactory(razorFilePath, codeDocument);
         var languageServerFeatureOptions = StrictMock.Of<LanguageServerFeatureOptions>(options =>
             options.SupportsFileManipulation == true &&
@@ -207,7 +207,7 @@ public class HoverEndpointTest(ITestOutputHelper testOutput) : TagHelperServiceT
             }
             """;
 
-        var path = "C:/text.razor";
+        var path = "C:/text.tazor";
         var codeDocument = CreateCodeDocument(code.Text, path, DefaultTagHelpers);
         var projectWorkspaceState = ProjectWorkspaceState.Create(DefaultTagHelpers);
 

@@ -20,9 +20,9 @@ namespace Microsoft.VisualStudio.Razor.LanguageClient.DocumentMapping;
 
 public class LSPDocumentMappingProviderTest : ToolingTestBase
 {
-    private static readonly Uri s_razorFile = new("file:///some/folder/to/file.razor");
-    private static readonly Uri s_razorVirtualCSharpFile = new("file:///some/folder/to/file.razor.ide.g.cs");
-    private static readonly Uri s_anotherRazorFile = new("file:///some/folder/to/anotherfile.razor");
+    private static readonly Uri s_razorFile = new("file:///some/folder/to/file.tazor");
+    private static readonly Uri s_razorVirtualCSharpFile = new("file:///some/folder/to/file.tazor.ide.g.cs");
+    private static readonly Uri s_anotherRazorFile = new("file:///some/folder/to/anotherfile.tazor");
 
     private readonly Lazy<LSPDocumentManager> _documentManager;
 
@@ -42,7 +42,7 @@ public class LSPDocumentMappingProviderTest : ToolingTestBase
     public async Task RazorMapToDocumentRangeAsync_InvokesLanguageServer()
     {
         // Arrange
-        var uri = new Uri("file:///some/folder/to/file.razor");
+        var uri = new Uri("file:///some/folder/to/file.tazor");
 
         var response = new RazorMapToDocumentRangesResponse()
         {

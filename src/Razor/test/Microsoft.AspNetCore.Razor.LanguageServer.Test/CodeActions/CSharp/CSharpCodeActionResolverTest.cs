@@ -130,7 +130,7 @@ public class CSharpCodeActionResolverTest(ITestOutputHelper testOutput) : Langua
                 DocumentChanges = new SumType<TextDocumentEdit, CreateFile, RenameFile, DeleteFile>[] {
                         new CreateFile()
                         {
-                            DocumentUri = new(new Uri("c:/some/uri.razor"))
+                            DocumentUri = new(new Uri("c:/some/uri.tazor"))
                         }
                     }
             }
@@ -150,7 +150,7 @@ public class CSharpCodeActionResolverTest(ITestOutputHelper testOutput) : Langua
         out DocumentContext documentContext,
         IRazorFormattingService? razorFormattingService = null)
     {
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var documentUri = new Uri(documentPath);
         var contents = string.Empty;
         var codeDocument = CreateCodeDocument(contents, documentPath);

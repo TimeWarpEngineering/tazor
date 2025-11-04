@@ -209,7 +209,7 @@ public class DefaultRazorProjectEngineIntegrationTest
     public void Process_SetsInferredFileKindOnCodeDocument_Component()
     {
         // Arrange
-        var projectItem = new TestRazorProjectItem("Index.razor");
+        var projectItem = new TestRazorProjectItem("Index.tazor");
 
         var projectEngine = RazorProjectEngine.Create(RazorConfiguration.Default, TestRazorProjectFileSystem.Empty);
 
@@ -296,7 +296,7 @@ public class DefaultRazorProjectEngineIntegrationTest
     public void ProcessDesignTime_SetsInferredFileKindOnCodeDocument_Component()
     {
         // Arrange
-        var projectItem = new TestRazorProjectItem("Index.razor");
+        var projectItem = new TestRazorProjectItem("Index.tazor");
 
         var projectEngine = RazorProjectEngine.Create(RazorConfiguration.Default, TestRazorProjectFileSystem.Empty);
 

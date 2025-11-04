@@ -36,7 +36,7 @@ internal static class AddUsingsHelper
         // We do this by comparing the original generated C# code, and the changed C# code, and look for a difference
         // in using statements. We can't use edits for this for two main reasons:
         //
-        // 1. Using statements in the generated code might come from _Imports.razor, or from this file, and C# will shove them anywhere
+        // 1. Using statements in the generated code might come from _Imports.tazor, or from this file, and C# will shove them anywhere
         // 2. The edit might not be clean. eg given:
         //      using System;
         //      using System.Text;

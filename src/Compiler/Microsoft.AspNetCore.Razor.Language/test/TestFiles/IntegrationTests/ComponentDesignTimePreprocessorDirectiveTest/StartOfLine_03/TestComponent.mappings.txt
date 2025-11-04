@@ -1,4 +1,4 @@
-﻿Source Location: (2:0,2 [52] x:\dir\subdir\Test\TestComponent.razor)
+﻿Source Location: (2:0,2 [52] x:\dir\subdir\Test\TestComponent.tazor)
 |
 #pragma warning disable 219
 var x = 1; #if true
@@ -9,7 +9,7 @@ Generated Location: (986:28,2 [52] )
 var x = 1; #if true
 |
 
-Source Location: (59:4,2 [21] x:\dir\subdir\Test\TestComponent.razor)
+Source Location: (59:4,2 [21] x:\dir\subdir\Test\TestComponent.tazor)
 |
 var y = 2; #endif
 |

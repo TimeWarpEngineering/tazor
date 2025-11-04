@@ -19,7 +19,7 @@ public class ComponentDocumentClassifierPassTest : RazorProjectEngineTestBase
     public void Execute_SetsDocumentKind()
     {
         // Arrange
-        var source = TestRazorSourceDocument.Create("some-content", filePath: "Test.razor");
+        var source = TestRazorSourceDocument.Create("some-content", filePath: "Test.tazor");
         var codeDocument = ProjectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(codeDocument);
 
@@ -41,7 +41,7 @@ public class ComponentDocumentClassifierPassTest : RazorProjectEngineTestBase
             builder.SetRootNamespace("MyApp");
         });
 
-        var source = TestRazorSourceDocument.Create("some-content", filePath: "/MyApp/Test.razor", relativePath: "Test.razor");
+        var source = TestRazorSourceDocument.Create("some-content", filePath: "/MyApp/Test.tazor", relativePath: "Test.tazor");
         var codeDocument = projectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(projectEngine, codeDocument);
 
@@ -64,7 +64,7 @@ public class ComponentDocumentClassifierPassTest : RazorProjectEngineTestBase
             builder.SetRootNamespace("MyApp");
         });
 
-        var source = TestRazorSourceDocument.Create("some-content", filePath: "/MyApp/Test.razor", relativePath: "Test.razor");
+        var source = TestRazorSourceDocument.Create("some-content", filePath: "/MyApp/Test.tazor", relativePath: "Test.tazor");
         var codeDocument = projectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(projectEngine, codeDocument);
 
@@ -89,7 +89,7 @@ public class ComponentDocumentClassifierPassTest : RazorProjectEngineTestBase
             builder.SetRootNamespace("MyApp");
         });
 
-        var relativePath = "/Pages/Announcements/Banner.razor";
+        var relativePath = "/Pages/Announcements/Banner.tazor";
         var source = TestRazorSourceDocument.Create("some-content", filePath: $"/MyApp{relativePath}", relativePath: relativePath);
         var codeDocument = projectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(projectEngine, codeDocument);
@@ -115,7 +115,7 @@ public class ComponentDocumentClassifierPassTest : RazorProjectEngineTestBase
             builder.SetRootNamespace("My.+App");
         });
 
-        var source = TestRazorSourceDocument.Create("some-content", filePath: @"x:\My.+App\path.with+invalid-chars.razor", relativePath: "path.with+invalid-chars.razor");
+        var source = TestRazorSourceDocument.Create("some-content", filePath: @"x:\My.+App\path.with+invalid-chars.tazor", relativePath: "path.with+invalid-chars.tazor");
         var codeDocument = projectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(projectEngine, codeDocument);
 
@@ -135,7 +135,7 @@ public class ComponentDocumentClassifierPassTest : RazorProjectEngineTestBase
     public void ComponentDocumentClassifierPass_SetsUpMainMethod()
     {
         // Arrange
-        var source = TestRazorSourceDocument.Create("some-content", filePath: "Test.razor");
+        var source = TestRazorSourceDocument.Create("some-content", filePath: "Test.tazor");
         var codeDocument = ProjectEngine.CreateCodeDocument(source, RazorFileKind.Component);
         var processor = CreateCodeDocumentProcessor(codeDocument);
 

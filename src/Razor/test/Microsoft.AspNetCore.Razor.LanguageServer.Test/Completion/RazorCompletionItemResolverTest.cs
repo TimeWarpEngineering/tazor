@@ -315,5 +315,5 @@ public class RazorCompletionItemResolverTest : LanguageServerTestBase
         => RazorCompletionListProvider.CreateLSPCompletionList(razorCompletionItems, _defaultClientCapability);
 
     private static RazorCompletionResolveContext CreateCompletionResolveContext(RazorCompletionItem razorCompletionItem)
-        => new("file.razor", [razorCompletionItem]);
+        => new("file.tazor", [razorCompletionItem]);
 }

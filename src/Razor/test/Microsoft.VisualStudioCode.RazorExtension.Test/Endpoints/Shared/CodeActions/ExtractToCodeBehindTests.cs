@@ -29,7 +29,7 @@ public class ExtractToCodeBehindTests(ITestOutputHelper testOutputHelper) : Coho
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCodeBehind,
             additionalExpectedFiles: [
-                (FileUri("File1.razor.cs"), $$"""
+                (FileUri("File1.tazor.cs"), $$"""
                     namespace SomeProject
                     {
                         public partial class File1
@@ -65,7 +65,7 @@ public class ExtractToCodeBehindTests(ITestOutputHelper testOutputHelper) : Coho
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToCodeBehind,
             additionalExpectedFiles: [
-                (FileUri("File1.razor.cs"), $$"""
+                (FileUri("File1.tazor.cs"), $$"""
                     namespace SomeProject
                     {
                         public partial class File1

@@ -11,7 +11,7 @@ namespace Microsoft.AspNetCore.Razor.Microbenchmarks.LanguageServer;
 
 public class TagHelperCompletionBenchmark
 {
-    // These were gleaned by creating a Blazor Server app, opening Counter.razor, typing a '<' in the editor,
+    // These were gleaned by creating a Blazor Server app, opening Counter.tazor, typing a '<' in the editor,
     // and breaking into LspTagHelperCompletionService.GetElementCompletions(...) in the debugger.
     private static readonly string[] s_existingElementCompletions =
     [

@@ -137,15 +137,15 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public void GetCurrentDocuments_IgnoresDotRazorFiles()
     {
         // Arrange
-        _contentItems.Item("Index.razor", new Dictionary<string, string>()
+        _contentItems.Item("Index.tazor", new Dictionary<string, string>()
         {
-            [ItemReference.LinkPropertyName] = "NewIndex.razor",
-            [ItemReference.FullPathPropertyName] = "C:\\From\\Index.razor",
+            [ItemReference.LinkPropertyName] = "NewIndex.tazor",
+            [ItemReference.FullPathPropertyName] = "C:\\From\\Index.tazor",
         });
-        _noneItems.Item("About.razor", new Dictionary<string, string>()
+        _noneItems.Item("About.tazor", new Dictionary<string, string>()
         {
-            [ItemReference.LinkPropertyName] = "NewAbout.razor",
-            [ItemReference.FullPathPropertyName] = "C:\\From\\About.razor",
+            [ItemReference.LinkPropertyName] = "NewAbout.tazor",
+            [ItemReference.FullPathPropertyName] = "C:\\From\\About.tazor",
         });
         var services = new TestProjectSystemServices("C:\\To\\Test.csproj");
 
@@ -357,7 +357,7 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public async Task OnProjectChanged_ReadsProperties_InitializesProject()
     {
         // Arrange
-        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.razor.dll");
+        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.tazor.dll");
         _contentItems.Item("Index.cshtml", new Dictionary<string, string>()
         {
             [ItemReference.FullPathPropertyName] = "C:\\Path\\Index.cshtml",
@@ -434,7 +434,7 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public async Task OnProjectChanged_AssemblyFoundButCannotReadVersion_DoesNotInitializeProject()
     {
         // Arrange
-        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.razor.dll");
+        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.tazor.dll");
 
         var changes = new TestProjectChangeDescription[]
         {
@@ -464,7 +464,7 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public async Task OnProjectChanged_UpdateProject_Succeeds()
     {
         // Arrange
-        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.razor.dll");
+        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.tazor.dll");
         var afterChangeContentItems = new ItemCollection(ManagedProjectSystemSchema.ContentItem.SchemaName);
         _contentItems.Item("Index.cshtml", new Dictionary<string, string>()
         {
@@ -522,7 +522,7 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public async Task OnProjectChanged_VersionRemoved_DeinitializesProject()
     {
         // Arrange
-        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.razor.dll");
+        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.tazor.dll");
 
         var changes = new TestProjectChangeDescription[]
         {
@@ -564,7 +564,7 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public async Task OnProjectChanged_AfterDispose_IgnoresUpdate()
     {
         // Arrange
-        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.razor.dll");
+        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.tazor.dll");
         _contentItems.Item("Index.cshtml", new Dictionary<string, string>()
         {
             [ItemReference.FullPathPropertyName] = "C:\\Path\\Index.cshtml",
@@ -616,7 +616,7 @@ public class FallbackWindowsRazorProjectHostTest : VisualStudioWorkspaceTestBase
     public async Task OnProjectRenamed_RemovesHostProject_CopiesConfiguration()
     {
         // Arrange
-        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.razor.dll");
+        _referenceItems.Item("c:\\nuget\\Microsoft.AspNetCore.Mvc.tazor.dll");
 
         var changes = new TestProjectChangeDescription[]
         {

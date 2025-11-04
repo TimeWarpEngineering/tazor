@@ -429,8 +429,8 @@ public class HtmlFormattingTest(FormattingTestContext context, HtmlFormattingFix
                     }
                     """;
 
-            var selectComponent = CompileToCSharp("Select.razor", select, throwOnFailure: true, fileKind: RazorFileKind.Component);
-            var selectItemComponent = CompileToCSharp("SelectItem.razor", selectItem, throwOnFailure: true, fileKind: RazorFileKind.Component);
+            var selectComponent = CompileToCSharp("Select.tazor", select, throwOnFailure: true, fileKind: RazorFileKind.Component);
+            var selectItemComponent = CompileToCSharp("SelectItem.tazor", selectItem, throwOnFailure: true, fileKind: RazorFileKind.Component);
 
             using var _ = ArrayBuilderPool<TagHelperDescriptor>.GetPooledObject(out var tagHelpers);
             tagHelpers.AddRange(selectComponent.CodeDocument.GetRequiredTagHelperContext().TagHelpers);
@@ -518,7 +518,7 @@ public class HtmlFormattingTest(FormattingTestContext context, HtmlFormattingFix
                 }
                 """));
 
-        var generated = CompileToCSharp("Test.razor", string.Empty, throwOnFailure: false, fileKind: RazorFileKind.Component);
+        var generated = CompileToCSharp("Test.tazor", string.Empty, throwOnFailure: false, fileKind: RazorFileKind.Component);
 
         return generated.CodeDocument.GetRequiredTagHelperContext().TagHelpers;
     }

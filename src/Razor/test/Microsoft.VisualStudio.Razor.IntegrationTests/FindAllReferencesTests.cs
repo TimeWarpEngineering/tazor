@@ -41,12 +41,12 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
                 reference =>
                 {
                     Assert.Equal(expected: "<button class=\"btn btn-primary\" @onclick=\"IncrementCount\">Click me</button>", actual: reference.Code);
-                    Assert.Equal(expected: "Counter.razor", Path.GetFileName(reference.DocumentName));
+                    Assert.Equal(expected: "Counter.tazor", Path.GetFileName(reference.DocumentName));
                 },
                 reference =>
                 {
                     Assert.Equal(expected: "private void IncrementCount()", actual: reference.Code);
-                    Assert.Equal(expected: "Counter.razor", Path.GetFileName(reference.DocumentName));
+                    Assert.Equal(expected: "Counter.tazor", Path.GetFileName(reference.DocumentName));
                 },
             });
     }
@@ -74,17 +74,17 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
             orderedResults,
             reference =>
             {
-                Assert.Equal("Index.razor", reference.DocumentName);
+                Assert.Equal("Index.tazor", reference.DocumentName);
                 Assert.Equal("<SurveyPrompt Title=\"How is Blazor working for you?\" />", reference.Code);
             },
             reference =>
             {
-                Assert.Equal("SurveyPrompt.razor", reference.DocumentName);
+                Assert.Equal("SurveyPrompt.tazor", reference.DocumentName);
                 Assert.Equal("<strong>@Title</strong>", reference.Code);
             },
             reference =>
             {
-                Assert.Equal("SurveyPrompt.razor", reference.DocumentName);
+                Assert.Equal("SurveyPrompt.tazor", reference.DocumentName);
                 Assert.Equal("public string? Title { get; set; }", reference.Code);
             }
         );
@@ -113,17 +113,17 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
             orderedResults,
             reference =>
             {
-                Assert.Equal(expected: "Index.razor", reference.DocumentName);
+                Assert.Equal(expected: "Index.tazor", reference.DocumentName);
                 Assert.Equal(expected: "Title", reference.Code);
             },
             reference =>
             {
-                Assert.Equal(expected: "SurveyPrompt.razor", reference.DocumentName);
+                Assert.Equal(expected: "SurveyPrompt.tazor", reference.DocumentName);
                 Assert.Equal(expected: "public string? Title { get; set; }", reference.Code);
             },
             reference =>
             {
-                Assert.Equal(expected: "SurveyPrompt.razor", reference.DocumentName);
+                Assert.Equal(expected: "SurveyPrompt.tazor", reference.DocumentName);
                 Assert.Equal(expected: "Title", reference.Code);
             }
         );
@@ -134,7 +134,7 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
     {
         // Create the file
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor",
+            "MyComponent.tazor",
             """
                 @MyProperty
                 """,
@@ -142,7 +142,7 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor.cs",
+            "MyComponent.tazor.cs",
             """
                 namespace BlazorProject;
 
@@ -157,7 +157,7 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
                 <MyComponent MyProperty="123" />
                 """,
@@ -166,7 +166,7 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
 
         await TestServices.Editor.WaitForComponentClassificationAsync(ControlledHangMitigatingCancellationToken);
 
-        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyComponent.razor.cs", ControlledHangMitigatingCancellationToken);
+        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyComponent.tazor.cs", ControlledHangMitigatingCancellationToken);
 
         await TestServices.Editor.PlaceCaretAsync("MyProperty", charsOffset: -1, ControlledHangMitigatingCancellationToken);
 
@@ -188,17 +188,17 @@ public class FindAllReferencesTests(ITestOutputHelper testOutputHelper) : Abstra
                 reference =>
                 {
                     Assert.Equal(expected: "@MyProperty", actual: reference.Code);
-                    Assert.Equal(expected: "MyComponent.razor", Path.GetFileName(reference.DocumentName));
+                    Assert.Equal(expected: "MyComponent.tazor", Path.GetFileName(reference.DocumentName));
                 },
                 reference =>
                 {
                     Assert.Equal(expected: "public string? MyProperty { get; set; }", actual: reference.Code);
-                    Assert.Equal(expected: "MyComponent.razor.cs", Path.GetFileName(reference.DocumentName));
+                    Assert.Equal(expected: "MyComponent.tazor.cs", Path.GetFileName(reference.DocumentName));
                 },
                 reference =>
                 {
                     Assert.Equal(expected: "<MyComponent MyProperty=\"123\" />", actual: reference.Code);
-                    Assert.Equal(expected: "MyPage.razor", Path.GetFileName(reference.DocumentName));
+                    Assert.Equal(expected: "MyPage.tazor", Path.GetFileName(reference.DocumentName));
                 },
             });
     }

@@ -48,8 +48,8 @@ public abstract class CodeActionEndToEndTestBase(ITestOutputHelper testOutput) :
             ? spans.Single()
             : null;
 
-        var razorFilePath = FilePathNormalizer.Normalize($"{Path.GetTempPath()}test.razor");
-        var codeBehindFilePath = FilePathNormalizer.Normalize($"{Path.GetTempPath()}test.razor.cs");
+        var razorFilePath = FilePathNormalizer.Normalize($"{Path.GetTempPath()}test.tazor");
+        var codeBehindFilePath = FilePathNormalizer.Normalize($"{Path.GetTempPath()}test.tazor.cs");
         var diagnostics = new[] { new Diagnostic() { Code = "CS0103", Message = "The name 'DoesNotExist' does not exist in the current context" } };
 
         var codeDocument = CreateCodeDocument(input.Text, filePath: razorFilePath, rootNamespace: "Test", tagHelpers: CreateTagHelperDescriptors());
@@ -141,7 +141,7 @@ public abstract class CodeActionEndToEndTestBase(ITestOutputHelper testOutput) :
             ? spans.Single()
             : null;
 
-        var razorFilePath = "C:/path/test.razor";
+        var razorFilePath = "C:/path/test.tazor";
         var codeDocument = CreateCodeDocument(input.Text, filePath: razorFilePath, tagHelpers: CreateTagHelperDescriptors());
         var sourceText = codeDocument.Source.Text;
         var uri = new Uri(razorFilePath);

@@ -1,4 +1,4 @@
-﻿Source Location: (2:0,2 [39] x:\dir\subdir\Test\TestComponent.razor)
+﻿Source Location: (2:0,2 [39] x:\dir\subdir\Test\TestComponent.tazor)
 | #if true
     var x = 1;
     #endif

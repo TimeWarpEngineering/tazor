@@ -93,7 +93,7 @@ public class InlayHintEndpointTest(ITestOutputHelper testOutput) : SingleServerD
         var input = """
             <div></div>
             """;
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
         var codeDocument = CreateCodeDocument(input, filePath: razorFilePath);
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath);
@@ -123,7 +123,7 @@ public class InlayHintEndpointTest(ITestOutputHelper testOutput) : SingleServerD
     private async Task VerifyInlayHintsAsync(string input, Dictionary<string, string> toolTipMap, string output)
     {
         TestFileMarkupParser.GetSpans(input, out input, out ImmutableDictionary<string, ImmutableArray<TextSpan>> spansDict);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
         var codeDocument = CreateCodeDocument(input, filePath: razorFilePath);
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath);

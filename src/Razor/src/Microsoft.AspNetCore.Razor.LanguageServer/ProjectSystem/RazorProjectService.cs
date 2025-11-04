@@ -292,7 +292,7 @@ internal partial class RazorProjectService : IRazorProjectService, IRazorProject
 
                         // If the document is open, we can't remove it, because we could still get a request for it, and that
                         // request would fail. Instead we move it to the miscellaneous project, just like if we got notified of
-                        // a remove via the project.razor.bin
+                        // a remove via the project.tazor.bin
                         if (_projectManager.IsDocumentOpen(textDocumentPath))
                         {
                             _logger.LogInformation($"Moving document '{textDocumentPath}' from project '{project.Key}' to misc files because it is open.");

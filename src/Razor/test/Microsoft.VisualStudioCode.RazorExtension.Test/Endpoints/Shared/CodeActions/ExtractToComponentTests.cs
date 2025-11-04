@@ -32,7 +32,7 @@ public class ExtractToComponentTests(ITestOutputHelper testOutputHelper) : Cohos
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToNewComponent,
             additionalExpectedFiles: [
-                (FileUri("Component.razor"), """
+                (FileUri("Component.tazor"), """
                     <div>
                         Hello World
                     </div>
@@ -84,7 +84,7 @@ public class ExtractToComponentTests(ITestOutputHelper testOutputHelper) : Cohos
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToNewComponent,
             additionalExpectedFiles: [
-                (FileUri("Component.razor"), """
+                (FileUri("Component.tazor"), """
                     @namespace ILoveYou
 
                     <div>
@@ -123,7 +123,7 @@ public class ExtractToComponentTests(ITestOutputHelper testOutputHelper) : Cohos
                 """,
             codeActionName: LanguageServerConstants.CodeActions.ExtractToNewComponent,
             additionalExpectedFiles: [
-                (FileUri("Component.razor"), """
+                (FileUri("Component.tazor"), """
                     @namespace MyHero
 
                     <div>

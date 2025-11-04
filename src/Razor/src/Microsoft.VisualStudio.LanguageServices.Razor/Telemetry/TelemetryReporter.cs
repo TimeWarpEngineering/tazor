@@ -48,7 +48,7 @@ internal abstract partial class TelemetryReporter : ITelemetryReporter, IDisposa
     }
 
     internal static string GetEventName(string name) => "dotnet/razor/" + name;
-    internal static string GetPropertyName(string name) => "dotnet.razor." + name;
+    internal static string GetPropertyName(string name) => "dotnet.tazor." + name;
 
 #if DEBUG
     public virtual bool IsEnabled => true;

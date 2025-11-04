@@ -20,7 +20,7 @@ public class VirtualDocumentBaseTest : ToolingTestBase
     public VirtualDocumentBaseTest(ITestOutputHelper testOutput)
         : base(testOutput)
     {
-        _uri = new Uri("C:/path/to/file.razor__virtual.test");
+        _uri = new Uri("C:/path/to/file.tazor__virtual.test");
     }
 
     [Fact]

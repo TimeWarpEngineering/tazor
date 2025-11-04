@@ -62,7 +62,7 @@ public class RazorCompletionBenchmark : RazorLanguageServerBenchmarkBase
         CompletionEndpoint.ApplyCapabilities(new(), clientCapabilities);
         var projectRoot = Path.Combine(Helpers.GetTestAppsPath(), "ComponentApp");
         var projectFilePath = Path.Combine(projectRoot, "ComponentApp.csproj");
-        _filePath = Path.Combine(projectRoot, "Components", "Pages", "Generated.razor");
+        _filePath = Path.Combine(projectRoot, "Components", "Pages", "Generated.tazor");
 
         var content = GetFileContents();
 
@@ -71,7 +71,7 @@ public class RazorCompletionBenchmark : RazorLanguageServerBenchmarkBase
 
         File.WriteAllText(_filePath, content);
 
-        var targetPath = "/Components/Pages/Generated.razor";
+        var targetPath = "/Components/Pages/Generated.tazor";
 
         DocumentUri = new Uri(_filePath);
         DocumentSnapshot = await GetDocumentSnapshotAsync(projectFilePath, _filePath, targetPath);

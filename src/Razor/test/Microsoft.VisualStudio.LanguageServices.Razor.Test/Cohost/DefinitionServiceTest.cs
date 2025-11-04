@@ -56,7 +56,7 @@ public class DefinitionServiceTest(ITestOutputHelper testOutputHelper) : CohostE
             """;
 
         await VerifyDefinitionAsync(input, surveyPrompt,
-            (FileName("SurveyPrompt.razor"), surveyPrompt.Text));
+            (FileName("SurveyPrompt.tazor"), surveyPrompt.Text));
     }
 
     private async Task VerifyDefinitionAsync(TestCode input, TestCode expectedDocument, params (string fileName, string contents)[]? additionalFiles)

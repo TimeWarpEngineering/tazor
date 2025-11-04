@@ -87,7 +87,7 @@
       ]
     },
     "escaped-transition": {
-      "name": "constant.character.escape.razor.transition",
+      "name": "constant.character.escape.tazor.transition",
       "match": "@@"
     },
     "transition": {
@@ -95,7 +95,7 @@
       "name": "keyword.control.cshtml.transition"
     },
     "razor-codeblock": {
-      "name": "meta.structure.razor.codeblock",
+      "name": "meta.structure.tazor.codeblock",
       "begin": "(@)(\\{)",
       "beginCaptures": {
         "1": {
@@ -106,7 +106,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.codeblock.open"
+          "name": "keyword.control.tazor.directive.codeblock.open"
         }
       },
       "contentName": "source.cs",
@@ -118,7 +118,7 @@
       "end": "(\\})",
       "endCaptures": {
         "1": {
-          "name": "keyword.control.razor.directive.codeblock.close"
+          "name": "keyword.control.tazor.directive.codeblock.close"
         }
       }
     },
@@ -145,7 +145,7 @@
       "match": "(\\@\\:)([^$]*)$",
       "captures": {
         "1": {
-          "name": "keyword.control.razor.singleLineMarkup"
+          "name": "keyword.control.tazor.singleLineMarkup"
         },
         "2": {
           "patterns": [
@@ -182,7 +182,7 @@
       }
     },
     "razor-comment": {
-      "name": "meta.comment.razor",
+      "name": "meta.comment.tazor",
       "begin": "(@)(\\*)",
       "beginCaptures": {
         "1": {
@@ -193,14 +193,14 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.comment.star"
+          "name": "keyword.control.tazor.comment.star"
         }
       },
-      "contentName": "comment.block.razor",
+      "contentName": "comment.block.tazor",
       "end": "(\\*)(@)",
       "endCaptures": {
         "1": {
-          "name": "keyword.control.razor.comment.star"
+          "name": "keyword.control.tazor.comment.star"
         },
         "2": {
           "patterns": [
@@ -229,7 +229,7 @@
           "name": "punctuation.definition.tag.begin.html"
         },
         "2": {
-          "name": "constant.character.escape.razor.tagHelperOptOut"
+          "name": "constant.character.escape.tazor.tagHelperOptOut"
         },
         "3": {
           "name": "entity.name.tag.html"
@@ -272,7 +272,7 @@
               "name": "punctuation.definition.tag.begin.html"
             },
             "2": {
-              "name": "constant.character.escape.razor.tagHelperOptOut"
+              "name": "constant.character.escape.tazor.tagHelperOptOut"
             },
             "3": {
               "name": "entity.name.tag.html"
@@ -570,7 +570,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.code"
+          "name": "keyword.control.tazor.directive.code"
         }
       },
       "patterns": [
@@ -591,7 +591,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.functions"
+          "name": "keyword.control.tazor.directive.functions"
         }
       },
       "patterns": [
@@ -605,10 +605,10 @@
       "begin": "(\\{)",
       "beginCaptures": {
         "1": {
-          "name": "keyword.control.razor.directive.codeblock.open"
+          "name": "keyword.control.tazor.directive.codeblock.open"
         }
       },
-      "name": "meta.structure.razor.directive.codeblock",
+      "name": "meta.structure.tazor.directive.codeblock",
       "contentName": "source.cs",
       "patterns": [
         {
@@ -618,7 +618,7 @@
       "end": "(\\})",
       "endCaptures": {
         "1": {
-          "name": "keyword.control.razor.directive.codeblock.close"
+          "name": "keyword.control.tazor.directive.codeblock.close"
         }
       }
     },
@@ -634,7 +634,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.page"
+          "name": "keyword.control.tazor.directive.page"
         },
         "3": {
           "patterns": [
@@ -657,7 +657,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.addTagHelper"
+          "name": "keyword.control.tazor.directive.addTagHelper"
         },
         "3": {
           "patterns": [
@@ -680,7 +680,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.removeTagHelper"
+          "name": "keyword.control.tazor.directive.removeTagHelper"
         },
         "3": {
           "patterns": [
@@ -703,7 +703,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.tagHelperPrefix"
+          "name": "keyword.control.tazor.directive.tagHelperPrefix"
         },
         "3": {
           "patterns": [
@@ -740,7 +740,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.model"
+          "name": "keyword.control.tazor.directive.model"
         },
         "3": {
           "patterns": [
@@ -763,7 +763,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.inherits"
+          "name": "keyword.control.tazor.directive.inherits"
         },
         "3": {
           "patterns": [
@@ -786,7 +786,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.implements"
+          "name": "keyword.control.tazor.directive.implements"
         },
         "3": {
           "patterns": [
@@ -809,7 +809,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.layout"
+          "name": "keyword.control.tazor.directive.layout"
         },
         "3": {
           "patterns": [
@@ -832,7 +832,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.namespace"
+          "name": "keyword.control.tazor.directive.namespace"
         },
         "3": {
           "patterns": [
@@ -866,7 +866,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.inject"
+          "name": "keyword.control.tazor.directive.inject"
         },
         "3": {
           "patterns": [
@@ -892,7 +892,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.rendermode"
+          "name": "keyword.control.tazor.directive.rendermode"
         },
         "3": {
           "patterns": [
@@ -915,7 +915,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.preservewhitespace"
+          "name": "keyword.control.tazor.directive.preservewhitespace"
         },
         "3": {
           "patterns": [
@@ -938,7 +938,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.typeparam"
+          "name": "keyword.control.tazor.directive.typeparam"
         },
         "3": {
           "patterns": [
@@ -961,7 +961,7 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.attribute"
+          "name": "keyword.control.tazor.directive.attribute"
         }
       },
       "patterns": [
@@ -983,10 +983,10 @@
           ]
         },
         "2": {
-          "name": "keyword.control.razor.directive.section"
+          "name": "keyword.control.tazor.directive.section"
         },
         "3": {
-          "name": "variable.other.razor.directive.sectionName"
+          "name": "variable.other.tazor.directive.sectionName"
         }
       },
       "patterns": [
@@ -997,11 +997,11 @@
       "end": "(?<=})"
     },
     "directive-markupblock": {
-      "name": "meta.structure.razor.directive.markblock",
+      "name": "meta.structure.tazor.directive.markblock",
       "begin": "(\\{)",
       "beginCaptures": {
         "1": {
-          "name": "keyword.control.razor.directive.codeblock.open"
+          "name": "keyword.control.tazor.directive.codeblock.open"
         }
       },
       "patterns": [
@@ -1012,7 +1012,7 @@
       "end": "(\\})",
       "endCaptures": {
         "1": {
-          "name": "keyword.control.razor.directive.codeblock.close"
+          "name": "keyword.control.tazor.directive.codeblock.close"
         }
       }
     },
@@ -1044,7 +1044,7 @@
           ]
         },
         "4": {
-          "name": "keyword.control.razor.optionalSemicolon"
+          "name": "keyword.control.tazor.optionalSemicolon"
         }
       }
     },
@@ -1158,7 +1158,7 @@
       ]
     },
     "using-statement": {
-      "name": "meta.statement.using.razor",
+      "name": "meta.statement.using.tazor",
       "begin": "(?:(@))(using)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1186,7 +1186,7 @@
       "end": "(?<=})"
     },
     "using-statement-with-optional-transition": {
-      "name": "meta.statement.using.razor",
+      "name": "meta.statement.using.tazor",
       "begin": "(?:^\\s*|(@))(using)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1214,7 +1214,7 @@
       "end": "(?<=})"
     },
     "if-statement": {
-      "name": "meta.statement.if.razor",
+      "name": "meta.statement.if.tazor",
       "begin": "(?:(@))(if)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1242,7 +1242,7 @@
       "end": "(?<=})"
     },
     "if-statement-with-optional-transition": {
-      "name": "meta.statement.if.razor",
+      "name": "meta.statement.if.tazor",
       "begin": "(?:^\\s*|(@))(if)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1270,7 +1270,7 @@
       "end": "(?<=})"
     },
     "else-part": {
-      "name": "meta.statement.else.razor",
+      "name": "meta.statement.else.tazor",
       "begin": "(?:^|(?<=}))\\s*(else)\\b\\s*?(?: (if))?\\s*?(?=[\\n\\(\\{])",
       "beginCaptures": {
         "1": {
@@ -1294,7 +1294,7 @@
       "end": "(?<=})"
     },
     "for-statement": {
-      "name": "meta.statement.for.razor",
+      "name": "meta.statement.for.tazor",
       "begin": "(?:(@))(for)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1322,7 +1322,7 @@
       "end": "(?<=})"
     },
     "for-statement-with-optional-transition": {
-      "name": "meta.statement.for.razor",
+      "name": "meta.statement.for.tazor",
       "begin": "(?:^\\s*|(@))(for)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1350,7 +1350,7 @@
       "end": "(?<=})"
     },
     "foreach-statement": {
-      "name": "meta.statement.foreach.razor",
+      "name": "meta.statement.foreach.tazor",
       "begin": "(?:(@)(await\\s+)?)(foreach)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1385,7 +1385,7 @@
       "end": "(?<=})"
     },
     "foreach-statement-with-optional-transition": {
-      "name": "meta.statement.foreach.razor",
+      "name": "meta.statement.foreach.tazor",
       "begin": "(?:^\\s*|(@)(await\\s+)?)(foreach)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1478,7 +1478,7 @@
       ]
     },
     "do-statement": {
-      "name": "meta.statement.do.razor",
+      "name": "meta.statement.do.tazor",
       "begin": "(?:(@))(do)\\b\\s",
       "beginCaptures": {
         "1": {
@@ -1506,7 +1506,7 @@
       "end": "(?<=})"
     },
     "do-statement-with-optional-transition": {
-      "name": "meta.statement.do.razor",
+      "name": "meta.statement.do.tazor",
       "begin": "(?:^\\s*|(@))(do)\\b\\s",
       "beginCaptures": {
         "1": {
@@ -1534,7 +1534,7 @@
       "end": "(?<=})"
     },
     "while-statement": {
-      "name": "meta.statement.while.razor",
+      "name": "meta.statement.while.tazor",
       "begin": "(?:(@)|^\\s*|(?<=})\\s*)(while)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1567,7 +1567,7 @@
       }
     },
     "switch-statement": {
-      "name": "meta.statement.switch.razor",
+      "name": "meta.statement.switch.tazor",
       "begin": "(?:(@))(switch)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1595,7 +1595,7 @@
       "end": "(?<=})"
     },
     "switch-statement-with-optional-transition": {
-      "name": "meta.statement.switch.razor",
+      "name": "meta.statement.switch.tazor",
       "begin": "(?:^\\s*|(@))(switch)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1623,7 +1623,7 @@
       "end": "(?<=})"
     },
     "switch-code-block": {
-      "name": "meta.structure.razor.csharp.codeblock.switch",
+      "name": "meta.structure.tazor.csharp.codeblock.switch",
       "begin": "(\\{)",
       "beginCaptures": {
         "1": {
@@ -1649,7 +1649,7 @@
       }
     },
     "lock-statement": {
-      "name": "meta.statement.lock.razor",
+      "name": "meta.statement.lock.tazor",
       "begin": "(?:(@))(lock)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1677,7 +1677,7 @@
       "end": "(?<=})"
     },
     "lock-statement-with-optional-transition": {
-      "name": "meta.statement.lock.razor",
+      "name": "meta.statement.lock.tazor",
       "begin": "(?:^\\s*|(@))(lock)\\b\\s*(?=\\()",
       "beginCaptures": {
         "1": {
@@ -1731,7 +1731,7 @@
       ]
     },
     "try-block": {
-      "name": "meta.statement.try.razor",
+      "name": "meta.statement.try.tazor",
       "begin": "(?:(@))(try)\\b\\s*",
       "beginCaptures": {
         "1": {
@@ -1759,7 +1759,7 @@
       "end": "(?<=})"
     },
     "try-block-with-optional-transition": {
-      "name": "meta.statement.try.razor",
+      "name": "meta.statement.try.tazor",
       "begin": "(?:^\\s*|(@))(try)\\b\\s*",
       "beginCaptures": {
         "1": {
@@ -1787,7 +1787,7 @@
       "end": "(?<=})"
     },
     "catch-clause": {
-      "name": "meta.statement.catch.razor",
+      "name": "meta.statement.catch.tazor",
       "begin": "(?:^|(?<=}))\\s*(catch)\\b\\s*?(?=[\\n\\(\\{])",
       "beginCaptures": {
         "1": {
@@ -1842,7 +1842,7 @@
       ]
     },
     "finally-clause": {
-      "name": "meta.statement.finally.razor",
+      "name": "meta.statement.finally.tazor",
       "begin": "(?:^|(?<=}))\\s*(finally)\\b\\s*?(?=[\\n\\{])",
       "beginCaptures": {
         "1": {
@@ -1864,7 +1864,7 @@
       "match": "(await)\\s+"
     },
     "csharp-code-block": {
-      "name": "meta.structure.razor.csharp.codeblock",
+      "name": "meta.structure.tazor.csharp.codeblock",
       "begin": "(\\{)",
       "beginCaptures": {
         "1": {

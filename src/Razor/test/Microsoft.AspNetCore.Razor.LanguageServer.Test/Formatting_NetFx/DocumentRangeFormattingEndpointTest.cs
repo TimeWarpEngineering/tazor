@@ -16,7 +16,7 @@ public class DocumentRangeFormattingEndpointTest(ITestOutputHelper testOutput) :
     {
         // Arrange
         var codeDocument = TestRazorCodeDocument.CreateEmpty();
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
 
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var formattingService = new DummyRazorFormattingService();
@@ -49,7 +49,7 @@ public class DocumentRangeFormattingEndpointTest(ITestOutputHelper testOutput) :
         var optionsMonitor = GetOptionsMonitor(enableFormatting: true);
         var htmlFormatter = new TestHtmlFormatter();
         var endpoint = new DocumentRangeFormattingEndpoint(formattingService, htmlFormatter, optionsMonitor);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var @params = new DocumentRangeFormattingParams()
         {
             TextDocument = new TextDocumentIdentifier { DocumentUri = new(uri), }

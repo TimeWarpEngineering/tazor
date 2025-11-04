@@ -30,7 +30,7 @@ public abstract class RazorOnAutoInsertProviderTestBase(ITestOutputHelper testOu
         var source = SourceText.From(input);
         var position = source.GetPosition(location);
 
-        var path = "file:///path/to/document.razor";
+        var path = "file:///path/to/document.tazor";
         var uri = new Uri(path);
         var codeDocument = CreateCodeDocument(source, uri.AbsolutePath, tagHelpers, fileKind);
 

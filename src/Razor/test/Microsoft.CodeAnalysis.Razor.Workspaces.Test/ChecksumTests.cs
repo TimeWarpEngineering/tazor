@@ -147,7 +147,7 @@ public class ChecksumTests(ITestOutputHelper testOutput) : ToolingTestBase(testO
     [Fact, WorkItem("https://devdiv.visualstudio.com/DevDiv/_workitems/edit/1909377")]
     public void TestLargeString()
     {
-        object? largeString = RazorTestResources.GetResourceText("FormattingTest.razor");
+        object? largeString = RazorTestResources.GetResourceText("FormattingTest.tazor");
 
         var builder = new Checksum.Builder();
         builder.AppendData(largeString);

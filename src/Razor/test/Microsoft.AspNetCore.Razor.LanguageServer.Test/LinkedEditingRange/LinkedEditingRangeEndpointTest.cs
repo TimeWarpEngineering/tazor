@@ -19,7 +19,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
     public async Task Handle_DocumentNotFound_ReturnsNull()
     {
         // Arrange
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
         {
@@ -44,7 +44,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <test1></test1>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -77,7 +77,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <test1></test1>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -110,7 +110,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <test1></test1>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -143,7 +143,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <test1></test1>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -169,7 +169,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <test1 />
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -195,7 +195,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <test1><test1></test1></test1>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -228,7 +228,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <body></body>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -261,7 +261,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <body></body>
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams
@@ -294,7 +294,7 @@ public class LinkedEditingRangeEndpointTest(ITestOutputHelper testOutput) : TagH
             <body />
             """;
         var codeDocument = CreateCodeDocument(txt, isRazorFile: false, DefaultTagHelpers);
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var endpoint = new LinkedEditingRangeEndpoint(LoggerFactory);
         var request = new LinkedEditingRangeParams

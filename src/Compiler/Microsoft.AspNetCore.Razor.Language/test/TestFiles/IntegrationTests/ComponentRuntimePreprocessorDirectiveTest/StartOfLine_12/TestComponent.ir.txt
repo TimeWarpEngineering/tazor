@@ -7,5 +7,5 @@
         UsingDirective - (136:5,1 [45] ) - global::Microsoft.AspNetCore.Components
         ClassDeclaration -  - public partial - TestComponent - global::Microsoft.AspNetCore.Components.ComponentBase - 
             MethodDeclaration -  - protected override - void - BuildRenderTree
-                CSharpCode - (2:0,2 [39] x:\dir\subdir\Test\TestComponent.razor)
-                    LazyIntermediateToken - (2:0,2 [39] x:\dir\subdir\Test\TestComponent.razor) - CSharp -  #if true\n    var x = 1;\n    #endif\n
+                CSharpCode - (2:0,2 [39] x:\dir\subdir\Test\TestComponent.tazor)
+                    LazyIntermediateToken - (2:0,2 [39] x:\dir\subdir\Test\TestComponent.tazor) - CSharp -  #if true\n    var x = 1;\n    #endif\n

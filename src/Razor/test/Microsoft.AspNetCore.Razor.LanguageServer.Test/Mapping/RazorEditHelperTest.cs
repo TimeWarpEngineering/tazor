@@ -698,8 +698,8 @@ public class RazorEditHelperTest : LanguageServerTestBase
 
         AssertEx.SetEqual(csharpSpans.Keys.OrderAsArray(), razorSpans.Keys.OrderAsArray());
 
-        var csharpPath = @"C:\path\to\document.razor.g.cs";
-        var razorPath = @"C:\path\to\document.razor";
+        var csharpPath = @"C:\path\to\document.tazor.g.cs";
+        var razorPath = @"C:\path\to\document.tazor";
         var csharpSourceText = SourceText.From(csharpSource.Text);
         var razorSourceText = SourceText.From(razorSource.Text);
 

@@ -18,7 +18,7 @@ Sometimes it may be necessary to make changes in [`dotnet/aspnetcore`](https://g
 1. Do a find in `Versions.props` for the version in step 7 and replace with `x.0.0-dev`.
 1. Get the assembly version of the `aspnetcore` packages.
    1. Assembly version can be found by openning the `.dll` in `ILSpy`
-       1. Ex. `~/.nuget\packages\microsoft.aspnetcore.razor.language\6.0.0-dev\lib\netstandard2.0.nuget\packages\microsoft.aspnetcore.razor.language\{VERSION}.0.0-dev\lib\netstandard2.0\Microsoft.AspNetCore.Razor.Language.dll`
+       1. Ex. `~/.nuget\packages\microsoft.aspnetcore.tazor.language\6.0.0-dev\lib\netstandard2.0.nuget\packages\microsoft.aspnetcore.tazor.language\{VERSION}.0.0-dev\lib\netstandard2.0\Microsoft.AspNetCore.Razor.Language.dll`
        2. This is likely going to be the dev version `42.42.42.42`
 1. Update the `OldVersionUpperBound` and `NewVersion`, of the Razor assemblies in `src\Razor\src\Microsoft.VisualStudio.RazorExtension\AssemblyBindingRedirects.cs` with the assembly version from the step above.
 

@@ -5,7 +5,7 @@ namespace Microsoft.VisualStudio.Razor.LanguageClient.Options;
 
 internal static class SettingsNames
 {
-    public const string UnifiedCollection = "languages.razor.advanced";
+    public const string UnifiedCollection = "languages.tazor.advanced";
 
     public static readonly string FormatOnType = UnifiedCollection + ".formatOnType";
     public static readonly string AutoClosingTags = UnifiedCollection + ".autoClosingTags";

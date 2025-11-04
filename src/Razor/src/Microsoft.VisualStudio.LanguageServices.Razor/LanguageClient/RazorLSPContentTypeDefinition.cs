@@ -18,6 +18,6 @@ internal sealed class RazorLSPContentTypeDefinition
     public ContentTypeDefinition? RazorLSPContentType { get; set; }
 
     // We can't associate the Razor LSP content type with the above file extensions because there's already a content type
-    // associated with them. Instead, we utilize our RazorEditorFactory to assign the RazorLSPContentType to .razor/.cshtml
+    // associated with them. Instead, we utilize our RazorEditorFactory to assign the RazorLSPContentType to .tazor/.cshtml
     // files.
 }

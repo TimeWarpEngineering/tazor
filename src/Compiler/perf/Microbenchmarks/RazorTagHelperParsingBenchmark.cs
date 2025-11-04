@@ -29,7 +29,7 @@ public class RazorTagHelperParsingBenchmark
         var tagHelpers = ReadTagHelpers(Path.Combine(root.FullName, "taghelpers.json"));
         var tagHelperFeature = new StaticTagHelperFeature(tagHelpers);
 
-        var blazorServerTagHelpersFilePath = Path.Combine(root.FullName, "BlazorServerTagHelpers.razor");
+        var blazorServerTagHelpersFilePath = Path.Combine(root.FullName, "BlazorServerTagHelpers.tazor");
 
         var fileSystem = RazorProjectFileSystem.Create(root.FullName);
         ProjectEngine = RazorProjectEngine.Create(RazorConfiguration.Default, fileSystem,

@@ -90,13 +90,13 @@
         <note />
       </trans-unit>
       <trans-unit id="IncompatibleProject_NoAdditionalFiles">
-        <source>The Razor editor utilizes the Razor Source Generator, which requires *.razor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has no Razor documents that are AdditionalFiles, so the editing experience will be limited. Is it using the Razor SDK? No more messages will be logged for this project.</source>
-        <target state="translated">Razor エディターは Razor ソース ジェネレーターを利用します。これには、*.razor および *.cshtml ファイルがプロジェクトの AddedFiles である必要があります。{0} は、'{1}' から取得されたようですが、これには AddedFiles である Razor ドキュメントがないため、編集エクスペリエンスが制限されます。Razor SDK を使用していますか?このプロジェクトのメッセージはこれ以上ログに記録されません。</target>
+        <source>The Razor editor utilizes the Razor Source Generator, which requires *.tazor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has no Razor documents that are AdditionalFiles, so the editing experience will be limited. Is it using the Razor SDK? No more messages will be logged for this project.</source>
+        <target state="translated">Razor エディターは Razor ソース ジェネレーターを利用します。これには、*.tazor および *.cshtml ファイルがプロジェクトの AddedFiles である必要があります。{0} は、'{1}' から取得されたようですが、これには AddedFiles である Razor ドキュメントがないため、編集エクスペリエンスが制限されます。Razor SDK を使用していますか?このプロジェクトのメッセージはこれ以上ログに記録されません。</target>
         <note />
       </trans-unit>
       <trans-unit id="IncompatibleProject_NotAnAdditionalFile">
-        <source>The Razor editor utilizes the Razor Source Generator, which requires *.razor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has Razor documents but this file is not an AdditionalFile, so the editing experience will be limited. No more messages will be logged for this project.</source>
-        <target state="translated">Razor エディターは Razor ソース ジェネレーターを利用します。これには、*.razor および *.cshtml ファイルがプロジェクトの AddedFiles である必要があります。{0} は、'{1}' から取得されたようですが、このファイルには Razor ドキュメントが含まれていますが、このファイルは AddedFile ではないため、編集エクスペリエンスが制限されます。このプロジェクトのメッセージはこれ以上ログに記録されません。</target>
+        <source>The Razor editor utilizes the Razor Source Generator, which requires *.tazor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has Razor documents but this file is not an AdditionalFile, so the editing experience will be limited. No more messages will be logged for this project.</source>
+        <target state="translated">Razor エディターは Razor ソース ジェネレーターを利用します。これには、*.tazor および *.cshtml ファイルがプロジェクトの AddedFiles である必要があります。{0} は、'{1}' から取得されたようですが、このファイルには Razor ドキュメントが含まれていますが、このファイルは AddedFile ではないため、編集エクスペリエンスが制限されます。このプロジェクトのメッセージはこれ以上ログに記録されません。</target>
         <note />
       </trans-unit>
       <trans-unit id="Invalid_Offset">

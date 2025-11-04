@@ -18,7 +18,7 @@ internal sealed record class HostProject
     public string FilePath { get; }
 
     /// <summary>
-    /// Gets the full path to the folder under 'obj' where the project.razor.bin file will live
+    /// Gets the full path to the folder under 'obj' where the project.tazor.bin file will live
     /// </summary>
     public string IntermediateOutputPath { get; }
 

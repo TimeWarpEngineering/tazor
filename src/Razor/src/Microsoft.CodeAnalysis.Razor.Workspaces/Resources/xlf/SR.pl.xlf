@@ -90,13 +90,13 @@
         <note />
       </trans-unit>
       <trans-unit id="IncompatibleProject_NoAdditionalFiles">
-        <source>The Razor editor utilizes the Razor Source Generator, which requires *.razor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has no Razor documents that are AdditionalFiles, so the editing experience will be limited. Is it using the Razor SDK? No more messages will be logged for this project.</source>
-        <target state="translated">Edytor Razor korzysta z generatora źródła Razor, który wymaga, aby pliki *.razor i *.cshtml były plikami AdditionalFiles w projekcie. Wygląda na to, że {0} pochodzi z folderu „{1}”, który nie zawiera dokumentów usługi Razor będących plikami AdditionalFiles, więc środowisko edycji będzie ograniczone. Czy używa zestawu Razor SDK? Dla tego projektu nie będą rejestrowane żadne inne wiadomości.</target>
+        <source>The Razor editor utilizes the Razor Source Generator, which requires *.tazor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has no Razor documents that are AdditionalFiles, so the editing experience will be limited. Is it using the Razor SDK? No more messages will be logged for this project.</source>
+        <target state="translated">Edytor Razor korzysta z generatora źródła Razor, który wymaga, aby pliki *.tazor i *.cshtml były plikami AdditionalFiles w projekcie. Wygląda na to, że {0} pochodzi z folderu „{1}”, który nie zawiera dokumentów usługi Razor będących plikami AdditionalFiles, więc środowisko edycji będzie ograniczone. Czy używa zestawu Razor SDK? Dla tego projektu nie będą rejestrowane żadne inne wiadomości.</target>
         <note />
       </trans-unit>
       <trans-unit id="IncompatibleProject_NotAnAdditionalFile">
-        <source>The Razor editor utilizes the Razor Source Generator, which requires *.razor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has Razor documents but this file is not an AdditionalFile, so the editing experience will be limited. No more messages will be logged for this project.</source>
-        <target state="translated">Edytor Razor korzysta z generatora źródła Razor, który wymaga, aby pliki *.razor i *.cshtml były plikami AdditionalFiles w projekcie. Wygląda na to, że {0} pochodzi z folderu „{1}”, który zawiera dokumenty usługi Razor, ale ten plik nie jest plikiem AdditionalFile, więc środowisko edycji będzie ograniczone. Dla tego projektu nie będą rejestrowane żadne inne wiadomości.</target>
+        <source>The Razor editor utilizes the Razor Source Generator, which requires *.tazor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has Razor documents but this file is not an AdditionalFile, so the editing experience will be limited. No more messages will be logged for this project.</source>
+        <target state="translated">Edytor Razor korzysta z generatora źródła Razor, który wymaga, aby pliki *.tazor i *.cshtml były plikami AdditionalFiles w projekcie. Wygląda na to, że {0} pochodzi z folderu „{1}”, który zawiera dokumenty usługi Razor, ale ten plik nie jest plikiem AdditionalFile, więc środowisko edycji będzie ograniczone. Dla tego projektu nie będą rejestrowane żadne inne wiadomości.</target>
         <note />
       </trans-unit>
       <trans-unit id="Invalid_Offset">

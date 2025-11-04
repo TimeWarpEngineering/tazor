@@ -31,7 +31,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InvalidFileKind()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             @$$code {}
@@ -60,7 +60,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_OutsideCodeDirective()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/$$test"
             @code {}
@@ -89,7 +89,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InCodeDirectiveBlock_ReturnsNull()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             @code {$$}
@@ -118,7 +118,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InCodeDirectiveMalformed_ReturnsNull()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             @$$code
@@ -147,7 +147,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InCodeDirectiveWithMarkup_ReturnsNull()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             @$$code {
@@ -186,7 +186,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InCodeDirective_SupportsFileCreationTrue_ReturnsResult(string codeDirective)
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = $$"""
             @page "/test"
             {|remove:{{codeDirective}}{|extract: { private var x = 1; }|}|}
@@ -228,7 +228,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_AtEndOfCodeDirectiveWithNoSpace_ReturnsResult()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             {|remove:@code$${|extract:{ private var x = 1; }|}|}
@@ -270,7 +270,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InCodeDirective_SupportsFileCreationFalse_ReturnsNull()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             @$$code { private var x = 1; }
@@ -299,7 +299,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_InFunctionsDirective_SupportsFileCreationTrue_ReturnsResult()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             {|remove:@$$functions{|extract: { private var x = 1; }|}|}
@@ -341,7 +341,7 @@ public class ExtractToCodeBehindCodeActionProviderTest(ITestOutputHelper testOut
     public async Task Handle_NullRelativePath_ReturnsNull()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/test"
             @$$code { private var x = 1; }

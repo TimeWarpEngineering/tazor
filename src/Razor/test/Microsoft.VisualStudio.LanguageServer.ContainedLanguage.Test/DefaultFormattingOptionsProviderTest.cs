@@ -24,7 +24,7 @@ public class DefaultFormattingOptionsProviderTest : ToolingTestBase
     public void GetOptions_UsesIndentationManagerInformation()
     {
         // Arrange
-        var documentUri = new Uri("C:/path/to/razorfile.razor");
+        var documentUri = new Uri("C:/path/to/razorfile.tazor");
         var documentSnapshot = new TestLSPDocumentSnapshot(documentUri, version: 0);
         var documentManager = new TestLSPDocumentManager(documentSnapshot);
         var expectedInsertSpaces = true;

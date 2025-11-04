@@ -1,4 +1,4 @@
-﻿Source Location: (2:0,2 [23] x:\dir\subdir\Test\TestComponent.razor)
+﻿Source Location: (2:0,2 [23] x:\dir\subdir\Test\TestComponent.tazor)
 |
 /* test */ #if true
 |
@@ -7,7 +7,7 @@ Generated Location: (733:21,0 [23] )
 /* test */ #if true
 |
 
-Source Location: (30:3,2 [21] x:\dir\subdir\Test\TestComponent.razor)
+Source Location: (30:3,2 [21] x:\dir\subdir\Test\TestComponent.tazor)
 |
 /* test */ #endif
 |

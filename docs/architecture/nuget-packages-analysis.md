@@ -43,7 +43,7 @@ This repository builds **21 packages** in two categories:
 
 **Location**: `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/`
 
-**Purpose**: The foundational Razor compilation engine - parses, analyzes, and generates C# code from .razor/.cshtml files
+**Purpose**: The foundational Razor compilation engine - parses, analyzes, and generates C# code from .tazor/.cshtml files
 
 **Target Frameworks**: net8.0, net9.0, netstandard2.0
 
@@ -71,7 +71,7 @@ This repository builds **21 packages** in two categories:
 
 **Distribution**: NuGet.org
 
-**Use Case**: Foundation for all Razor compilation - every .razor file processed goes through this compiler
+**Use Case**: Foundation for all Razor compilation - every .tazor file processed goes through this compiler
 
 **Critical Note**: This is the package that will be forked into Tazor compiler with `.tazor` extension support
 
@@ -561,9 +561,9 @@ Microsoft.AspNetCore.Razor.Test.Common
 
 ### Key Changes Needed:
 
-1. **File Extension**: `.razor` → `.tazor` throughout all packages
-2. **Generated File Naming**: `*_razor.g.cs` → `*_tazor.g.cs`
-3. **Import Files**: `_Imports.razor` → `_Imports.tazor`
+1. **File Extension**: `.tazor` → `.tazor` throughout all packages
+2. **Generated File Naming**: `*_tazor.g.cs` → `*_tazor.g.cs`
+3. **Import Files**: `_Imports.tazor` → `_Imports.tazor`
 4. **Target Frameworks**: Remove net472, netstandard2.0, net8.0, net9.0; keep only net10.0+
 5. **Base Classes**: ComponentBase → TUI base class
 6. **Rendering**: BuildRenderTree(RenderTreeBuilder) → TUI rendering model
@@ -581,6 +581,6 @@ This repository builds a complete Razor tooling ecosystem:
 **Universal Support**: Platform-specific language server executables (rzls)
 **Testing**: Shared test utilities
 
-**Critical Package**: `Microsoft.CodeAnalysis.Razor.Compiler` is the foundation - all other packages depend on it. This is where the `.razor` → `.tazor` transition begins.
+**Critical Package**: `Microsoft.CodeAnalysis.Razor.Compiler` is the foundation - all other packages depend on it. This is where the `.tazor` → `.tazor` transition begins.
 
 **Sample App Usage**: Our `sample/TestBlazorApp` uses `Microsoft.Net.Compilers.Razor.Toolset@10.0.0-dev` to consume locally-built packages, which is why `build-sample.ps1` works.

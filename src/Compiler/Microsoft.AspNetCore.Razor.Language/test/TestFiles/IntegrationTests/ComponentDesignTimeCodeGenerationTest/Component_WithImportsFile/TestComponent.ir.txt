@@ -5,13 +5,13 @@
         UsingDirective - (69:3,1 [25] ) - global::System.Linq
         UsingDirective - (97:4,1 [36] ) - global::System.Threading.Tasks
         UsingDirective - (136:5,1 [45] ) - global::Microsoft.AspNetCore.Components
-        UsingDirective - (1:0,1 [17] x:\dir\subdir\Test\_Imports.razor) - System.Text
-        UsingDirective - (21:1,1 [23] x:\dir\subdir\Test\_Imports.razor) - System.Reflection
-        CSharpCode - (57:2,11 [14] x:\dir\subdir\Test\_Imports.razor)
-            IntermediateToken - (57:2,11 [14] x:\dir\subdir\Test\_Imports.razor) - CSharp - [Serializable]
+        UsingDirective - (1:0,1 [17] x:\dir\subdir\Test\_Imports.tazor) - System.Text
+        UsingDirective - (21:1,1 [23] x:\dir\subdir\Test\_Imports.tazor) - System.Reflection
+        CSharpCode - (57:2,11 [14] x:\dir\subdir\Test\_Imports.tazor)
+            IntermediateToken - (57:2,11 [14] x:\dir\subdir\Test\_Imports.tazor) - CSharp - [Serializable]
         ClassDeclaration -  - public partial - TestComponent - global::Microsoft.AspNetCore.Components.ComponentBase - 
             DesignTimeDirective - 
-                DirectiveToken - (57:2,11 [14] x:\dir\subdir\Test\_Imports.razor) - [Serializable]
+                DirectiveToken - (57:2,11 [14] x:\dir\subdir\Test\_Imports.tazor) - [Serializable]
             CSharpCode - 
                 IntermediateToken -  - CSharp - #pragma warning disable 0414
             CSharpCode - 

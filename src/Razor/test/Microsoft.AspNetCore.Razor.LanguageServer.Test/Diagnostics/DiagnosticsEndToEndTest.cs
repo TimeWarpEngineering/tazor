@@ -49,7 +49,7 @@ public sealed class DiagnosticsEndToEndTest(ITestOutputHelper testOutput) : Sing
 
             """;
 
-        await ValidateDiagnosticsAsync(input, "File.razor");
+        await ValidateDiagnosticsAsync(input, "File.tazor");
     }
 
     [Fact]
@@ -78,7 +78,7 @@ public sealed class DiagnosticsEndToEndTest(ITestOutputHelper testOutput) : Sing
 
         var codeDocument = CreateCodeDocument(input, filePath: filePath);
         var sourceText = codeDocument.Source.Text;
-        var razorFilePath = "file://C:/path/test.razor";
+        var razorFilePath = "file://C:/path/test.tazor";
         var uri = new Uri(razorFilePath);
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath);
         var documentContext = CreateDocumentContext(uri, codeDocument);

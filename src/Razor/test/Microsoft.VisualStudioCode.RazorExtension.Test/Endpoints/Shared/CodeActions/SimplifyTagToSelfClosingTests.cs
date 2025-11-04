@@ -32,7 +32,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         Hello World
                     </div>
@@ -61,7 +61,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         Hello World
                     </div>
@@ -95,7 +95,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         Hello World
                     </div>
@@ -159,7 +159,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
             expected: null,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         Hello world
                     </div>
@@ -180,7 +180,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
             expected: null,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         Hello world
                     </div>
@@ -203,7 +203,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
             expected: null,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         @ChildContent
                     </div>
@@ -231,7 +231,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
             expected: null,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         @ItemContent("Test")
                     </div>
@@ -265,7 +265,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         @if (ChildContent is { } cc)
                         {
@@ -310,7 +310,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         @if (ChildContent is { } cc)
                         {
@@ -355,7 +355,7 @@ public class SimplifyTagToSelfClosingTests(ITestOutputHelper testOutputHelper) :
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyTagToSelfClosing,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         @if (ChildContent is { } cc)
                         {

@@ -184,7 +184,7 @@ public class FoldingEndpointTest(ITestOutputHelper testOutput) : SingleServerDel
 
     private async Task VerifyRazorFoldsAsync(string input, string? filePath = null)
     {
-        filePath ??= "C:/path/to/file.razor";
+        filePath ??= "C:/path/to/file.tazor";
 
         TestFileMarkupParser.GetSpans(input, out input, out ImmutableArray<TextSpan> expected);
 

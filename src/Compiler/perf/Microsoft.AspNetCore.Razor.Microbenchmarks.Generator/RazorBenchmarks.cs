@@ -10,22 +10,22 @@ namespace Microsoft.AspNetCore.Razor.Microbenchmarks.Generator;
 public class RazorBenchmarks : AbstractBenchmark
 {
     [Benchmark]
-    public GeneratorDriver Razor_Add_Independent() => RunRazorBenchmark(Independent, "Independent.razor", replaceExisting: false);
+    public GeneratorDriver Razor_Add_Independent() => RunRazorBenchmark(Independent, "Independent.tazor", replaceExisting: false);
 
     [Benchmark]
-    public GeneratorDriver Razor_Edit_Independent() => RunRazorBenchmark(Independent, "\\0.razor");
+    public GeneratorDriver Razor_Edit_Independent() => RunRazorBenchmark(Independent, "\\0.tazor");
 
     [Benchmark]
-    public GeneratorDriver Razor_Remove_Independent() => RunRazorBenchmark(null, "\\0.razor");
+    public GeneratorDriver Razor_Remove_Independent() => RunRazorBenchmark(null, "\\0.tazor");
 
     [Benchmark]
-    public GeneratorDriver Razor_Edit_DependentIgnorable() => RunRazorBenchmark(DependentIgnorable, "Counter.razor");
+    public GeneratorDriver Razor_Edit_DependentIgnorable() => RunRazorBenchmark(DependentIgnorable, "Counter.tazor");
 
     [Benchmark]
-    public GeneratorDriver Razor_Edit_Dependent() => RunRazorBenchmark(Dependent, "Counter.razor");
+    public GeneratorDriver Razor_Edit_Dependent() => RunRazorBenchmark(Dependent, "Counter.tazor");
 
     [Benchmark]
-    public GeneratorDriver Razor_Remove_Dependent() => RunRazorBenchmark(null, "\\Counter.razor");
+    public GeneratorDriver Razor_Remove_Dependent() => RunRazorBenchmark(null, "\\Counter.tazor");
 
 
     private GeneratorDriver RunRazorBenchmark(string? AddedFileContent, string FilePath, bool replaceExisting = true) => RunBenchmark((ProjectSetup.RazorProject project) =>

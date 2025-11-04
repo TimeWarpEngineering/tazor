@@ -44,8 +44,8 @@ public class RazorDynamicFileInfoProviderTest(ITestOutputHelper testOutput) : Vi
         _projectManager = CreateProjectSnapshotManager();
 
         var hostProject = new HostProject(@"C:\project.csproj", @"C:\obj", RazorConfiguration.Default, rootNamespace: "TestNamespace");
-        var hostDocument1 = new HostDocument(@"C:\document1.razor", "document1.razor", RazorFileKind.Component);
-        var hostDocument2 = new HostDocument(@"C:\document2.razor", "document2.razor", RazorFileKind.Component);
+        var hostDocument1 = new HostDocument(@"C:\document1.tazor", "document1.tazor", RazorFileKind.Component);
+        var hostDocument2 = new HostDocument(@"C:\document2.tazor", "document2.tazor", RazorFileKind.Component);
 
         await _projectManager.UpdateAsync(updater =>
         {
@@ -103,7 +103,7 @@ public class RazorDynamicFileInfoProviderTest(ITestOutputHelper testOutput) : Vi
         // Act & Assert
         var documentContainer = new Mock<IDynamicDocumentContainer>(MockBehavior.Strict);
         documentContainer.Setup(c => c.SetSupportsDiagnostics(true)).Verifiable();
-        _provider.UpdateLSPFileInfo(new Uri("C:/this/does/not/exist.razor"), documentContainer.Object);
+        _provider.UpdateLSPFileInfo(new Uri("C:/this/does/not/exist.tazor"), documentContainer.Object);
     }
 
     [Fact]
@@ -113,7 +113,7 @@ public class RazorDynamicFileInfoProviderTest(ITestOutputHelper testOutput) : Vi
         var info = await _testAccessor.GetDynamicFileInfoAsync(_projectId, _document1.FilePath, DisposalToken);
         Assert.NotNull(info);
 
-        Assert.Equal(@"C:\document1.razor.fJcYlbdqjCXiWYY1.ide.g.cs", info.FilePath);
+        Assert.Equal(@"C:\document1.tazor.fJcYlbdqjCXiWYY1.ide.g.cs", info.FilePath);
     }
 
     [Fact]

@@ -47,7 +47,7 @@ public class CSharpCodeActionProviderTest : LanguageServerTestBase
     public async Task ProvideAsync_ValidCodeActions_ReturnsProvidedCodeAction()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { $$Path; }";
         TestFileMarkupParser.GetPosition(contents, out contents, out var cursorPosition);
 
@@ -76,7 +76,7 @@ public class CSharpCodeActionProviderTest : LanguageServerTestBase
     public async Task ProvideAsync_SupportsCodeActionResolveFalse_ValidCodeActions_ReturnsEmpty()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { $$Path; }";
         TestFileMarkupParser.GetPosition(contents, out contents, out var cursorPosition);
 
@@ -102,7 +102,7 @@ public class CSharpCodeActionProviderTest : LanguageServerTestBase
     public async Task ProvideAsync_FunctionsBlock_SingleLine_ValidCodeActions_ReturnsProvidedCodeAction()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@functions { $$Path; }";
         TestFileMarkupParser.GetPosition(contents, out contents, out var cursorPosition);
 
@@ -131,7 +131,7 @@ public class CSharpCodeActionProviderTest : LanguageServerTestBase
     public async Task ProvideAsync_FunctionsBlock_OpenBraceSameLine_ValidCodeActions_ReturnsProvidedCodeAction()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = @"@functions {
 $$Path;
 }";
@@ -162,7 +162,7 @@ $$Path;
     public async Task ProvideAsync_FunctionsBlock_OpenBraceNextLine_ValidCodeActions_ReturnsProvidedCodeAction()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = @"@functions
 {
 $$Path;
@@ -194,7 +194,7 @@ $$Path;
     public async Task ProvideAsync_InvalidCodeActions_ReturnsNoCodeActions()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { $$Path; }";
         TestFileMarkupParser.GetPosition(contents, out contents, out var cursorPosition);
 
@@ -229,7 +229,7 @@ $$Path;
     public async Task ProvideAsync_InvalidCodeActions_ShowAllFeatureFlagOn_ReturnsCodeActions()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { $$Path; }";
         TestFileMarkupParser.GetPosition(contents, out contents, out var cursorPosition);
 
@@ -265,7 +265,7 @@ $$Path;
     public async Task ProvideAsync_ImplicitExpression_ReturnsProvidedCodeAction()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
                 @page "/dates"
 

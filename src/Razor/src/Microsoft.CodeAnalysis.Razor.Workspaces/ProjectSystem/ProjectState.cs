@@ -434,8 +434,8 @@ internal sealed class ProjectState
             if (FilePathNormalizer.AreFilePathsEquivalent(filePath, targetPath))
             {
                 // We've normalized the original importItem.FilePath into the HostDocument.TargetPath. For instance, if the HostDocument.TargetPath
-                // was '/_Imports.razor' it'd be normalized down into '_Imports.razor'. The purpose of this method is to get the associated document
-                // paths for a given import file (_Imports.razor / _ViewImports.cshtml); therefore, an import importing itself doesn't make sense.
+                // was '/_Imports.tazor' it'd be normalized down into '_Imports.tazor'. The purpose of this method is to get the associated document
+                // paths for a given import file (_Imports.tazor / _ViewImports.cshtml); therefore, an import importing itself doesn't make sense.
                 continue;
             }
 

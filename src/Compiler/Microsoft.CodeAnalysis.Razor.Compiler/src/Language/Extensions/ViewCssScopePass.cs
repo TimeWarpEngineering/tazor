@@ -24,7 +24,7 @@ internal sealed class ViewCssScopePass : IntermediateNodePassBase, IRazorOptimiz
         }
 
         if (!string.Equals(documentNode.DocumentKind, "mvc.1.0.view", StringComparison.Ordinal) &&
-            !string.Equals(documentNode.DocumentKind, "mvc.1.0.razor-page", StringComparison.Ordinal))
+            !string.Equals(documentNode.DocumentKind, "mvc.1.0.tazor-page", StringComparison.Ordinal))
         {
             return;
         }

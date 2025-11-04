@@ -53,7 +53,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("SurveyPrompt.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("SurveyPrompt.tazor", ControlledHangMitigatingCancellationToken);
     }
 
     [IdeFact]
@@ -68,7 +68,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("SurveyPrompt.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("SurveyPrompt.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.WaitForCurrentLineTextAsync("public string? Title { get; set; }", ControlledHangMitigatingCancellationToken);
     }
 
@@ -77,7 +77,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
     {
         // Create the file
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor",
+            "MyComponent.tazor",
             """
             <MyComponent MyProperty="123" />
 
@@ -98,7 +98,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.WaitForCurrentLineTextAsync("public string? MyProperty { get; set; }", ControlledHangMitigatingCancellationToken);
     }
 
@@ -107,7 +107,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
     {
         // Create the file
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor",
+            "MyComponent.tazor",
             """
             <MyComponent MyProperty />
 
@@ -128,7 +128,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.WaitForCurrentLineTextAsync("public bool MyProperty { get; set; }", ControlledHangMitigatingCancellationToken);
     }
 
@@ -137,7 +137,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
     {
         // Create the files
         const string MyComponentPath = "MyComponent.cs";
-        const string MyPagePath = "MyPage.razor";
+        const string MyPagePath = "MyPage.tazor";
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentPath,
@@ -211,7 +211,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
             <MyComponent TItem=string Item="@("hi")"/>
             """,
@@ -269,7 +269,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
             <Grid TItem="WeatherForecast" Items="@(Array.Empty<WeatherForecast>())">
                 <ColumnsTemplate>
@@ -297,7 +297,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
     {
         // Create the files
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor",
+            "MyComponent.tazor",
             """
             <div></div>
 
@@ -313,7 +313,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
             cancellationToken: ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
             <MyComponent @bind-Value="value"></MyComponent>
 
@@ -332,7 +332,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.WaitForCurrentLineTextAsync("public string? Value { get; set; }", ControlledHangMitigatingCancellationToken);
     }
 
@@ -341,7 +341,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
     {
         // Create the file
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor",
+            "MyComponent.tazor",
             """
             <MyComponent MyProperty="123" />
 
@@ -361,7 +361,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.WaitForCurrentLineTextAsync("public string? MyProperty { set { } }", ControlledHangMitigatingCancellationToken);
     }
 
@@ -373,7 +373,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
     {
         // Create the file
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyComponent.razor",
+            "MyComponent.tazor",
             """
             <MyComponent @bind-MyProperty:get="value" @bind-MyProperty:set="(value) => { text = value; }" @bind-MyProperty:after="After" />
             @code {
@@ -396,7 +396,7 @@ public class GoToDefinitionTests(ITestOutputHelper testOutputHelper) : AbstractR
         await TestServices.Editor.InvokeGoToDefinitionAsync(ControlledHangMitigatingCancellationToken);
 
         // Assert
-        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.Editor.WaitForActiveWindowAsync("MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.WaitForCurrentLineTextAsync("public string? MyProperty { get; set; }", ControlledHangMitigatingCancellationToken);
     }
 }

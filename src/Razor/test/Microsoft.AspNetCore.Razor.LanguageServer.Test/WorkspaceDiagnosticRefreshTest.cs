@@ -90,7 +90,7 @@ public class WorkspaceDiagnosticRefreshTest(ITestOutputHelper testOutputHelper) 
         var directory = Path.GetDirectoryName(hostProject.FilePath);
         Assert.NotNull(directory);
 
-        var hostDocument = TestHostDocument.Create(hostProject, Path.Combine(directory, "directory.razor"));
+        var hostDocument = TestHostDocument.Create(hostProject, Path.Combine(directory, "directory.tazor"));
 
         await projectSnapshotManager.UpdateAsync(
             updater =>

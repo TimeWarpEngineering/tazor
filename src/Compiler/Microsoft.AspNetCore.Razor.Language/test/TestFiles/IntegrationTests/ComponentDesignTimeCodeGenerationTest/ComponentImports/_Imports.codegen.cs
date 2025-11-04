@@ -9,12 +9,12 @@ namespace Test
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "x:\dir\subdir\Test\_Imports.razor"
+#line 1 "x:\dir\subdir\Test\_Imports.tazor"
 using System.Text;
 
 #nullable disable
 #nullable restore
-#line 2 "x:\dir\subdir\Test\_Imports.razor"
+#line 2 "x:\dir\subdir\Test\_Imports.tazor"
 using System.Reflection;
 
 #line default
@@ -29,7 +29,7 @@ using System.Reflection;
         private void __RazorDirectiveTokenHelpers__() {
         ((global::System.Action)(() => {
 #nullable restore
-#line 4 "x:\dir\subdir\Test\_Imports.razor"
+#line 4 "x:\dir\subdir\Test\_Imports.tazor"
 MainLayout __typeHelper = default!;
 
 #line default
@@ -46,7 +46,7 @@ MainLayout __typeHelper = default!;
         protected void Execute()
         {
 #nullable restore
-#line 5 "x:\dir\subdir\Test\_Imports.razor"
+#line 5 "x:\dir\subdir\Test\_Imports.tazor"
 __o = Foo;
 
 #line default

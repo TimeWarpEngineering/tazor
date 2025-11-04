@@ -135,7 +135,7 @@ internal partial class RazorCustomMessageTarget
 
             _logger.LogDebug($"UpdateCSharpBuffer couldn't find any virtual docs for {request.HostDocumentVersion} of {hostDocumentUri}");
 
-            // Don't know about document, no-op. This can happen if the language server found a project.razor.bin from an old build
+            // Don't know about document, no-op. This can happen if the language server found a project.tazor.bin from an old build
             // and is sending us updates.
             return false;
         }

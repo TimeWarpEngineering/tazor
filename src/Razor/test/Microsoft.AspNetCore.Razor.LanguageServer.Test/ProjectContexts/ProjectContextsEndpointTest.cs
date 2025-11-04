@@ -22,7 +22,7 @@ public class ProjectContextsEndpointTest(ITestOutputHelper testOutput) : SingleS
             """;
 
         var codeDocument = CreateCodeDocument(input);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath);
 

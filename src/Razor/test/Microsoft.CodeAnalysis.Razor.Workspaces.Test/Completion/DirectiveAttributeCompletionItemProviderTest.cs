@@ -30,7 +30,7 @@ public class DirectiveAttributeCompletionItemProviderTest : RazorToolingIntegrat
 
         // Most of these completions rely on stuff in the web namespace.
         ImportItems.Add(CreateProjectItem(
-            "_Imports.razor",
+            "_Imports.tazor",
             "@using Microsoft.AspNetCore.Components.Web"));
 
         var codeDocument = GetCodeDocument(string.Empty);

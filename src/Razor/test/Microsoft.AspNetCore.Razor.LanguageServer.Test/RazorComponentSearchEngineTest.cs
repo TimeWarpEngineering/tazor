@@ -33,9 +33,9 @@ public class RazorComponentSearchEngineTest(ITestOutputHelper testOutput) : Lang
     private const string RootNamespace1 = "First.Components";
     private const string RootNamespace2 = "Second.Components";
 
-    private static readonly string s_componentFilePath1 = Path.Combine(s_project1BasePath, "Component1.razor");
-    private static readonly string s_componentFilePath2 = Path.Combine(s_project1BasePath, "Component2.razor");
-    private static readonly string s_componentFilePath3 = Path.Combine(s_project2BasePath, "Component3.razor");
+    private static readonly string s_componentFilePath1 = Path.Combine(s_project1BasePath, "Component1.tazor");
+    private static readonly string s_componentFilePath2 = Path.Combine(s_project1BasePath, "Component2.tazor");
+    private static readonly string s_componentFilePath3 = Path.Combine(s_project2BasePath, "Component3.tazor");
 
 #nullable disable
     private ProjectSnapshotManager _projectManager;

@@ -9,12 +9,12 @@ namespace New.Test
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "x:\dir\subdir\Test\_Imports.razor"
+#line 1 "x:\dir\subdir\Test\_Imports.tazor"
 using System.Text;
 
 #nullable disable
 #nullable restore
-#line 2 "x:\dir\subdir\Test\_Imports.razor"
+#line 2 "x:\dir\subdir\Test\_Imports.tazor"
 using System.Reflection;
 
 #line default
@@ -28,7 +28,7 @@ using System.Reflection;
         private void __RazorDirectiveTokenHelpers__() {
         ((global::System.Action)(() => {
 #nullable restore
-#line 1 "x:\dir\subdir\Test\Pages/Counter.razor"
+#line 1 "x:\dir\subdir\Test\Pages/Counter.tazor"
 global::System.Object __typeHelper = nameof(New.Test);
 
 #line default
@@ -48,7 +48,7 @@ global::System.Object __typeHelper = nameof(New.Test);
             }
             ));
 #nullable restore
-#line 2 "x:\dir\subdir\Test\Pages/Counter.razor"
+#line 2 "x:\dir\subdir\Test\Pages/Counter.tazor"
 __o = typeof(global::New.Test.Counter2);
 
 #line default

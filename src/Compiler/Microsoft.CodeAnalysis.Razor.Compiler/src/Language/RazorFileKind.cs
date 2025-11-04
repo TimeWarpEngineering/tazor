@@ -11,12 +11,12 @@ public enum RazorFileKind : byte
     None = 0,
 
     /// <summary>
-    ///  A file containing a Razor component, i.e. has a '.razor' file extension.
+    ///  A file containing a Razor component, i.e. has a '.tazor' file extension.
     /// </summary>
     Component = 1,
 
     /// <summary>
-    ///  A file containing a Razor component import, i.e. file name is '_Imports.razor'.
+    ///  A file containing a Razor component import, i.e. file name is '_Imports.tazor'.
     /// </summary>
     ComponentImport = 2,
 

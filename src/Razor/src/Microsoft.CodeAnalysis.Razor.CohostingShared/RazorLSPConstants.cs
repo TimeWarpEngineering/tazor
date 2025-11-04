@@ -19,7 +19,7 @@ internal static class RazorLSPConstants
 
     public const string CSHTMLFileExtension = ".cshtml";
 
-    public const string RazorFileExtension = ".razor";
+    public const string RazorFileExtension = ".tazor";
 
     public const string CSharpFileExtension = ".cs";
 

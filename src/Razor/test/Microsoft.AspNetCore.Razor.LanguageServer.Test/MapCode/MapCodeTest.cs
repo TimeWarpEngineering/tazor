@@ -23,7 +23,7 @@ namespace Microsoft.AspNetCore.Razor.LanguageServer.Test.MapCode;
 
 public class MapCodeTest(ITestOutputHelper testOutput) : LanguageServerTestBase(testOutput)
 {
-    private const string RazorFilePath = "C:/path/to/file.razor";
+    private const string RazorFilePath = "C:/path/to/file.tazor";
 
     [Fact]
     public async Task HandleRazorSingleLineInsertionAsync()

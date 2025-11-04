@@ -9,12 +9,12 @@ namespace New.Test
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "x:\dir\subdir\Test\_Imports.razor"
+#line 1 "x:\dir\subdir\Test\_Imports.tazor"
 using System.Text;
 
 #nullable disable
 #nullable restore
-#line 2 "x:\dir\subdir\Test\_Imports.razor"
+#line 2 "x:\dir\subdir\Test\_Imports.tazor"
 using System.Reflection;
 
 #line default

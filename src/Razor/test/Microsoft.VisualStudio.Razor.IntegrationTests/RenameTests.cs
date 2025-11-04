@@ -26,8 +26,8 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
         TestServices.Input.Send("ZooperDooper{ENTER}");
 
         // Assert
-        // The rename operation causes SurveyPrompt.razor to be opened
-        await TestServices.Editor.WaitForActiveWindowByFileAsync("SurveyPrompt.razor", ControlledHangMitigatingCancellationToken);
+        // The rename operation causes SurveyPrompt.tazor to be opened
+        await TestServices.Editor.WaitForActiveWindowByFileAsync("SurveyPrompt.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("public string? ZooperDooper { get; set; }", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("@ZooperDooper", ControlledHangMitigatingCancellationToken);
 
@@ -50,8 +50,8 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
         TestServices.Input.Send("ZooperDooper{ENTER}");
 
         // Assert
-        // The rename operation causes Index.razor to be opened
-        await TestServices.Editor.WaitForActiveWindowByFileAsync("Index.razor", ControlledHangMitigatingCancellationToken);
+        // The rename operation causes Index.tazor to be opened
+        await TestServices.Editor.WaitForActiveWindowByFileAsync("Index.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, RazorProjectConstants.IndexRazorFile, ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("<SurveyPrompt ZooperDooper=", ControlledHangMitigatingCancellationToken);
 
@@ -64,7 +64,7 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
     public async Task Rename_ComponentAttribute_FromCSharpInCSharp()
     {
         // Create the file
-        const string MyComponentRazorPath = "MyComponent.razor";
+        const string MyComponentRazorPath = "MyComponent.tazor";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentRazorPath,
             """
@@ -74,7 +74,7 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
             cancellationToken: ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.CloseCodeFileAsync(RazorProjectConstants.BlazorProjectName, MyComponentRazorPath, saveFile: true, ControlledHangMitigatingCancellationToken);
 
-        const string MyComponentCSharpPath = "MyComponent.razor.cs";
+        const string MyComponentCSharpPath = "MyComponent.tazor.cs";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentCSharpPath,
             """
@@ -93,7 +93,7 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
         await TestServices.Editor.CloseCodeFileAsync(RazorProjectConstants.BlazorProjectName, MyComponentCSharpPath, saveFile: true, ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
                 <MyComponent MyProperty="123" />
                 """,
@@ -102,7 +102,7 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
 
         await TestServices.Editor.WaitForComponentClassificationAsync(ControlledHangMitigatingCancellationToken);
 
-        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyComponent.razor.cs", ControlledHangMitigatingCancellationToken);
+        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyComponent.tazor.cs", ControlledHangMitigatingCancellationToken);
 
         await TestServices.Editor.PlaceCaretAsync("MyProperty", charsOffset: 0, occurrence: 2, extendSelection: false, selectBlock: false, ControlledHangMitigatingCancellationToken);
 
@@ -115,14 +115,14 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
         TestServices.Input.Send("ZooperDooper{ENTER}");
 
         // Assert
-        // The rename operation causes MyPage.razor to be opened
-        await TestServices.Editor.WaitForActiveWindowByFileAsync("MyComponent.razor.cs", ControlledHangMitigatingCancellationToken);
+        // The rename operation causes MyPage.tazor to be opened
+        await TestServices.Editor.WaitForActiveWindowByFileAsync("MyComponent.tazor.cs", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("public string? ZooperDooper { get; set; }", ControlledHangMitigatingCancellationToken);
 
-        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("@ZooperDooper", ControlledHangMitigatingCancellationToken);
 
-        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyPage.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyPage.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("<MyComponent ZooperDooper=", ControlledHangMitigatingCancellationToken);
     }
 
@@ -130,7 +130,7 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
     public async Task Rename_ComponentAttribute_BoundAttribute()
     {
         // Create the files
-        const string MyComponentPath = "MyComponent.razor";
+        const string MyComponentPath = "MyComponent.tazor";
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
             MyComponentPath,
             """
@@ -152,7 +152,7 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
         await TestServices.Editor.CloseCodeFileAsync(RazorProjectConstants.BlazorProjectName, MyComponentPath, saveFile: true, ControlledHangMitigatingCancellationToken);
 
         await TestServices.SolutionExplorer.AddFileAsync(RazorProjectConstants.BlazorProjectName,
-            "MyPage.razor",
+            "MyPage.tazor",
             """
             <MyComponent @bind-Value="value"></MyComponent>
 
@@ -175,11 +175,11 @@ public class RenameTests(ITestOutputHelper testOutputHelper) : AbstractRazorEdit
         TestServices.Input.Send("ZooperDooper{ENTER}");
 
         // Assert
-        // The rename operation causes MyPage.razor to be opened
-        await TestServices.Editor.WaitForActiveWindowByFileAsync("MyComponent.razor", ControlledHangMitigatingCancellationToken);
+        // The rename operation causes MyPage.tazor to be opened
+        await TestServices.Editor.WaitForActiveWindowByFileAsync("MyComponent.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("public string? ZooperDooper { get; set; }", ControlledHangMitigatingCancellationToken);
 
-        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyPage.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, "MyPage.tazor", ControlledHangMitigatingCancellationToken);
         await TestServices.Editor.VerifyTextContainsAsync("<MyComponent @bind-ZooperDooper=\"value\"></MyComponent>", ControlledHangMitigatingCancellationToken);
     }
 }

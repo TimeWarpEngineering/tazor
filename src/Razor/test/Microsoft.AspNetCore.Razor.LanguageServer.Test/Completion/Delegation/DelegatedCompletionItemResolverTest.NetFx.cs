@@ -257,12 +257,12 @@ public class DelegatedCompletionItemResolverTest : CompletionTestBase
                 }
                 """;
 
-        var codeDocument = CreateCodeDocument(input.Text, filePath: "C:/path/to/file.razor");
+        var codeDocument = CreateCodeDocument(input.Text, filePath: "C:/path/to/file.tazor");
         // Roslyn won't send unimported types if SupportsVisualStudioExtensions is true
         await using var csharpServer = await CreateCSharpServerAsync(codeDocument, supportsVisualStudioExtensions: false);
 
         var clientConnection = CreateClientConnectionForResolve(csharpServer);
-        var documentContextFactory = new TestDocumentContextFactory("C:/path/to/file.razor", codeDocument);
+        var documentContextFactory = new TestDocumentContextFactory("C:/path/to/file.tazor", codeDocument);
         var optionsMonitor = TestRazorLSPOptionsMonitor.Create();
         var formattingService = await _lazyFormattingService.GetValueAsync(DisposalToken);
         var resolver = new DelegatedCompletionItemResolver(documentContextFactory, formattingService, DocumentMappingService, optionsMonitor, clientConnection, LoggerFactory);
@@ -353,11 +353,11 @@ public class DelegatedCompletionItemResolverTest : CompletionTestBase
     private async Task<VSInternalCompletionItem> ResolveCompletionItemAsync(string content, string itemToResolve, bool supportsVisualStudioExtensions, CancellationToken cancellationToken)
     {
         TestFileMarkupParser.GetPosition(content, out var documentContent, out var cursorPosition);
-        var codeDocument = CreateCodeDocument(documentContent, filePath: "C:/path/to/file.razor");
+        var codeDocument = CreateCodeDocument(documentContent, filePath: "C:/path/to/file.tazor");
         await using var csharpServer = await CreateCSharpServerAsync(codeDocument, supportsVisualStudioExtensions);
 
         var clientConnection = CreateClientConnectionForResolve(csharpServer);
-        var documentContextFactory = new TestDocumentContextFactory("C:/path/to/file.razor", codeDocument);
+        var documentContextFactory = new TestDocumentContextFactory("C:/path/to/file.tazor", codeDocument);
         var optionsMonitor = TestRazorLSPOptionsMonitor.Create();
         var formattingService = await _lazyFormattingService.GetValueAsync(DisposalToken);
         var resolver = new DelegatedCompletionItemResolver(documentContextFactory, formattingService, DocumentMappingService, optionsMonitor, clientConnection, LoggerFactory);
@@ -380,7 +380,7 @@ public class DelegatedCompletionItemResolverTest : CompletionTestBase
     private async Task<CSharpTestLspServer> CreateCSharpServerAsync(RazorCodeDocument codeDocument, bool supportsVisualStudioExtensions)
     {
         var csharpSourceText = codeDocument.GetCSharpSourceText();
-        var csharpDocumentUri = new Uri("C:/path/to/file.razor__virtual.g.cs");
+        var csharpDocumentUri = new Uri("C:/path/to/file.tazor__virtual.g.cs");
         var serverCapabilities = new VSInternalServerCapabilities()
         {
             CompletionProvider = new CompletionOptions
@@ -410,7 +410,7 @@ public class DelegatedCompletionItemResolverTest : CompletionTestBase
         CSharpTestLspServer csharpServer)
     {
         var completionContext = new VSInternalCompletionContext() { TriggerKind = CompletionTriggerKind.Invoked };
-        var documentContext = TestDocumentContext.Create("C:/path/to/file.razor", codeDocument);
+        var documentContext = TestDocumentContext.Create("C:/path/to/file.tazor", codeDocument);
 
         var clientConnection = CreateClientConnectionForCompletion(csharpServer);
 

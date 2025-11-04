@@ -21,7 +21,7 @@ public class DefaultFileUriProviderTest(ITestOutputHelper testOutput) : ToolingT
     public void AddOrUpdate_Adds()
     {
         // Arrange
-        var expectedUri = new Uri("C:/path/to/file.razor");
+        var expectedUri = new Uri("C:/path/to/file.tazor");
         var uriProvider = new DefaultFileUriProvider(Mock.Of<ITextDocumentFactoryService>(MockBehavior.Strict));
 
         // Act
@@ -36,9 +36,9 @@ public class DefaultFileUriProviderTest(ITestOutputHelper testOutput) : ToolingT
     public void AddOrUpdate_Updates()
     {
         // Arrange
-        var expectedUri = new Uri("C:/path/to/file.razor");
+        var expectedUri = new Uri("C:/path/to/file.tazor");
         var uriProvider = new DefaultFileUriProvider(Mock.Of<ITextDocumentFactoryService>(MockBehavior.Strict));
-        uriProvider.AddOrUpdate(_textBuffer, new Uri("C:/original/uri.razor"));
+        uriProvider.AddOrUpdate(_textBuffer, new Uri("C:/original/uri.tazor"));
 
         // Act
         uriProvider.AddOrUpdate(_textBuffer, expectedUri);
@@ -52,7 +52,7 @@ public class DefaultFileUriProviderTest(ITestOutputHelper testOutput) : ToolingT
     public void TryGet_Exists_ReturnsTrue()
     {
         // Arrange
-        var expectedUri = new Uri("C:/path/to/file.razor");
+        var expectedUri = new Uri("C:/path/to/file.tazor");
         var uriProvider = new DefaultFileUriProvider(Mock.Of<ITextDocumentFactoryService>(MockBehavior.Strict));
         uriProvider.AddOrUpdate(_textBuffer, expectedUri);
 
@@ -115,7 +115,7 @@ public class DefaultFileUriProviderTest(ITestOutputHelper testOutput) : ToolingT
     {
         // Arrange
         var factory = new Mock<ITextDocumentFactoryService>(MockBehavior.Strict);
-        var expectedFilePath = "C:/path/to/file.razor";
+        var expectedFilePath = "C:/path/to/file.tazor";
         var textDocument = Mock.Of<ITextDocument>(document => document.FilePath == expectedFilePath, MockBehavior.Strict);
         factory.Setup(f => f.TryGetTextDocument(_textBuffer, out textDocument))
             .Returns(true);

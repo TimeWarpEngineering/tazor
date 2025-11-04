@@ -17,7 +17,7 @@ namespace Microsoft.AspNetCore.Razor.LanguageServer;
 public class GeneratedDocumentSynchronizerTest : LanguageServerTestBase
 {
     private static readonly HostProject s_hostProject = new("/path/to/project.csproj", "/path/to/obj", RazorConfiguration.Default, "TestRootNamespace");
-    private static readonly HostDocument s_hostDocument = new("/path/to/file.razor", "file.razor");
+    private static readonly HostDocument s_hostDocument = new("/path/to/file.tazor", "file.tazor");
 
     private readonly GeneratedDocumentSynchronizer _synchronizer;
     private readonly TestGeneratedDocumentPublisher _publisher;

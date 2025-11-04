@@ -77,7 +77,7 @@ internal class DefaultRazorConfigurationService : IConfigurationSyncService
                 },
                 new ConfigurationItem()
                 {
-                    Section = "vs.editor.razor"
+                    Section = "vs.editor.tazor"
                 }
             }
         };

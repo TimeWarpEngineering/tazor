@@ -115,7 +115,7 @@ public class ValidateBreakpointRangeEndpointTest(ITestOutputHelper testOutput) :
         Assert.True(breakpointSpans.Length == 1, "Test authoring failure: Expected only one 'breakpoint' span.");
 
         var codeDocument = CreateCodeDocument(output);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         // Act
         var result = await GetBreakpointRangeAsync(codeDocument, razorFilePath, breakpointSpans[0]);

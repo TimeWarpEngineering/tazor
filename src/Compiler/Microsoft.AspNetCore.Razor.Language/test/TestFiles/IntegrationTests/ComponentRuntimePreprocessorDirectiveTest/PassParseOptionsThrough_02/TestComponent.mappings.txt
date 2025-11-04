@@ -1,4 +1,4 @@
-﻿Source Location: (2:0,2 [49] x:\dir\subdir\Test\TestComponent.razor)
+﻿Source Location: (2:0,2 [49] x:\dir\subdir\Test\TestComponent.tazor)
 |
 #if !SomeSymbol
     <p>Some text</p>

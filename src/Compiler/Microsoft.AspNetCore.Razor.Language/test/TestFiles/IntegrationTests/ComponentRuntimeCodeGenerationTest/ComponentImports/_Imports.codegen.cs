@@ -9,13 +9,13 @@ namespace Test
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line (1,2)-(1,19) "x:\dir\subdir\Test\_Imports.razor"
+#line (1,2)-(1,19) "x:\dir\subdir\Test\_Imports.tazor"
 using System.Text
 
 #nullable disable
     ;
 #nullable restore
-#line (2,2)-(2,25) "x:\dir\subdir\Test\_Imports.razor"
+#line (2,2)-(2,25) "x:\dir\subdir\Test\_Imports.tazor"
 using System.Reflection
 
 #nullable disable
@@ -24,7 +24,7 @@ using System.Reflection
     #line hidden
     [global::Microsoft.AspNetCore.Components.LayoutAttribute(typeof(
 #nullable restore
-#line (4,9)-(4,19) "x:\dir\subdir\Test\_Imports.razor"
+#line (4,9)-(4,19) "x:\dir\subdir\Test\_Imports.tazor"
 MainLayout
 
 #line default
@@ -39,7 +39,7 @@ MainLayout
         protected void Execute()
         {
 #nullable restore
-#line (5,2)-(5,5) 24 "x:\dir\subdir\Test\_Imports.razor"
+#line (5,2)-(5,5) 24 "x:\dir\subdir\Test\_Imports.tazor"
 __builder.AddContent(0, Foo
 
 #line default

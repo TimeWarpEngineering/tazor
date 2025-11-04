@@ -10,11 +10,11 @@ namespace Microsoft.AspNetCore.Razor.LanguageServer;
 internal class RazorFileSystemWatcher : FileSystemWatcher
 {
     // Without trimming trailing `/`, `\\` from the workspace directory, the FileSystemWatcher
-    // returns with paths of the form   "workspaceDirectory/\\Pages\\Counter.razor"
-    // which are normalized to          "workspaceDirectory//Pages/Counter.razor" (Invalid `//`)
+    // returns with paths of the form   "workspaceDirectory/\\Pages\\Counter.tazor"
+    // which are normalized to          "workspaceDirectory//Pages/Counter.tazor" (Invalid `//`)
     //
     // This format doesn't match the directoryFilePaths we store as part of the Project Snapshot ->
-    //                                  "workspaceDirectory/Pages/Counter.razor"
+    //                                  "workspaceDirectory/Pages/Counter.tazor"
     // https://github.com/dotnet/aspnetcore-tooling/blob/488cf6e/src/Razor/src/Microsoft.AspNetCore.Razor.LanguageServer/ProjectSystem/DefaultRazorProjectService.cs#L328
     // Consequently, files are being discarded into the MISC project and subsequently re-generated
     public RazorFileSystemWatcher(string path)

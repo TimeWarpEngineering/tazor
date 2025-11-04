@@ -220,7 +220,7 @@ internal class CSharpVirtualDocumentFactory : VirtualDocumentFactoryBase
 
         if (!inAny)
         {
-            // We got called before we know about any projects. Probably just a .razor document being restored in VS from a previous session.
+            // We got called before we know about any projects. Probably just a .tazor document being restored in VS from a previous session.
             // All we can do is return a default key and hope for the best.
             // TODO: Do we need to create some sort of Misc Files project on this (VS) side so the nav bar looks nicer?
             _logger.LogDebug($"Could not find any documents in projects for {hostDocumentUri}");

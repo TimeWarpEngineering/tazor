@@ -38,7 +38,7 @@ When ready to insert you will follow the steps listed in each below section in o
     - If you already have the repo cloned, ensure that you `git clean -xdf` prior to doing any changes.
 2. Create a new branch off of `main` unless told otherwise.
 3. Open the `package.json` file.
-4. Find the "defaults.razor" property.
+4. Find the "defaults.tazor" property.
 5. Update the value of that property to the version you found in the CI build
 6. Run `npm i' to install tools needed locally
 7. Run `npx gulp updateRazorVersion` to download the nuget packages for all platforms and make sure they are available in the downstream nuget feed.

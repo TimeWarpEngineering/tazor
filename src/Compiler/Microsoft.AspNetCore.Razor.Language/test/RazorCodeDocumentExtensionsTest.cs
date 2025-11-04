@@ -232,8 +232,8 @@ public class RazorCodeDocumentExtensionsTest
 
         var importSource = TestRazorSourceDocument.Create(
             content: "@namespace My.Custom.NS",
-            filePath: "C:\\Hello\\_Imports.razor",
-            relativePath: "\\_Imports.razor");
+            filePath: "C:\\Hello\\_Imports.tazor",
+            relativePath: "\\_Imports.tazor");
 
         var importSyntaxTree = RazorSyntaxTree.Parse(importSource, codeDocument.ParserOptions);
         codeDocument.SetImportSyntaxTrees([importSyntaxTree]);
@@ -264,8 +264,8 @@ public class RazorCodeDocumentExtensionsTest
 
         var importSource = TestRazorSourceDocument.Create(
             content: "@namespace My.Custom.NS",
-            filePath: "C:\\Hello\\_Imports.razor",
-            relativePath: "\\_Imports.razor");
+            filePath: "C:\\Hello\\_Imports.tazor",
+            relativePath: "\\_Imports.tazor");
 
         var importSyntaxTree = RazorSyntaxTree.Parse(importSource, codeDocument.ParserOptions);
         codeDocument.SetImportSyntaxTrees([importSyntaxTree]);
@@ -297,8 +297,8 @@ public class RazorCodeDocumentExtensionsTest
 
         var importSource = TestRazorSourceDocument.Create(
             content: "@namespace My.Custom.NS",
-            filePath: "C:\\Hello\\Components\\_Imports.razor",
-            relativePath: "\\Components\\_Imports.razor");
+            filePath: "C:\\Hello\\Components\\_Imports.tazor",
+            relativePath: "\\Components\\_Imports.tazor");
 
         var importSyntaxTree = RazorSyntaxTree.Parse(importSource, codeDocument.ParserOptions);
         codeDocument.SetImportSyntaxTrees([importSyntaxTree]);
@@ -330,8 +330,8 @@ public class RazorCodeDocumentExtensionsTest
 
         var importSource = TestRazorSourceDocument.Create(
             content: "@namespace My.Custom.NS",
-            filePath: "C:\\Hello\\_Imports.razor",
-            relativePath: "\\_Imports.razor");
+            filePath: "C:\\Hello\\_Imports.tazor",
+            relativePath: "\\_Imports.tazor");
 
         var importSyntaxTree = RazorSyntaxTree.Parse(importSource, codeDocument.ParserOptions);
         codeDocument.SetImportSyntaxTrees([importSyntaxTree]);

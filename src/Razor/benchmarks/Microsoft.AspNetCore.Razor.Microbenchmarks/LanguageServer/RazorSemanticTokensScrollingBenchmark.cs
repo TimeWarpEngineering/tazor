@@ -42,8 +42,8 @@ public class RazorSemanticTokensScrollingBenchmark : RazorLanguageServerBenchmar
         var projectRoot = Path.Combine(Helpers.GetTestAppsPath(), "ComponentApp");
         ProjectFilePath = Path.Combine(projectRoot, "ComponentApp.csproj");
         PagesDirectory = Path.Combine(projectRoot, "Components", "Pages");
-        var filePath = Path.Combine(PagesDirectory, "FormattingTest.razor");
-        TargetPath = "/Components/Pages/FormattingTest.razor";
+        var filePath = Path.Combine(PagesDirectory, "FormattingTest.tazor");
+        TargetPath = "/Components/Pages/FormattingTest.tazor";
 
         var documentUri = new Uri(filePath);
         var documentSnapshot = await GetDocumentSnapshotAsync(ProjectFilePath, filePath, TargetPath);

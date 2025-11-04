@@ -17,7 +17,7 @@ This repository implements:
 When working with this codebase, understand these core Razor concepts:
 
 ### File Types and Extensions
-- `.razor` - Blazor components (client-side and server-side)
+- `.tazor` - Blazor components (client-side and server-side)
 - `.cshtml` - Razor views and pages (ASP.NET Core MVC/Pages) also referred to as "Legacy" in the codebase
 
 ### Language Kinds

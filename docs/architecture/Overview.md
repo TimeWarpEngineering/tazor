@@ -42,10 +42,10 @@ These documents serve as:
 
 ## Tazor Vision
 
-**Current State**: Razor compiler for `.razor` files generating Blazor components
+**Current State**: Razor compiler for `.tazor` files generating Blazor components
 
 **Target State**:
-- File extension: `.razor` → `.tazor`
+- File extension: `.tazor` → `.tazor`
 - Output: Blazor components → TUI (Terminal UI) components
 - SDK: Integrated with Microsoft.NET.Sdk.Razor → Independent Tazor SDK
 - Target frameworks: net472, netstandard2.0, net8.0, net9.0 → net10.0+ only

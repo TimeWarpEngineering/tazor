@@ -80,7 +80,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
             newName: "DifferentName",
             expected: """
@@ -101,7 +101,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
 
                 The end.
                 """,
-            renames: [("Component.razor", "DifferentName.razor")]);
+            renames: [("Component.tazor", "DifferentName.tazor")]);
 
     [Theory]
     [InlineData("$$Component")]
@@ -128,7 +128,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
             newName: "DifferentName",
             expected: """
@@ -149,7 +149,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
 
                 The end.
                 """,
-            renames: [("Component.razor", "DifferentName.razor")]);
+            renames: [("Component.tazor", "DifferentName.tazor")]);
 
     [Fact]
     public Task Component_Attribute()
@@ -173,7 +173,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div></div>
 
                     @code {
@@ -203,7 +203,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
                 The end.
                 """,
              additionalExpectedFiles: [
-                (FileUri("Component.razor"), """
+                (FileUri("Component.tazor"), """
                     <div></div>
 
                     @code {
@@ -225,7 +225,7 @@ public class CohostRenameEndpointTest(ITestOutputHelper testOutputHelper) : Coho
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
             newName: "DifferentName",
             expected: "",

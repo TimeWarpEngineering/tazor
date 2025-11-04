@@ -27,7 +27,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_MissingDiagnostics_ReturnsEmpty()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "";
         var request = new VSCodeActionParams()
         {
@@ -62,7 +62,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_InvalidDiagnostics_VSCode_ReturnsEmpty()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "";
         var request = new VSCodeActionParams()
         {
@@ -115,7 +115,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_EmptyCodeActions_ReturnsEmpty()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "";
         var request = new VSCodeActionParams()
         {
@@ -153,7 +153,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_ValidDiagnostic_ValidCodeAction_VSCode_ReturnsCodeActions(string errorCode)
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { Path; }";
         var request = new VSCodeActionParams()
         {
@@ -227,7 +227,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_CodeActionInSingleLineDirective_VS_ReturnsOnlyUsingCodeAction()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@inject Path";
         var request = new VSCodeActionParams()
         {
@@ -277,7 +277,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_ValidCodeAction_VS_ReturnsCodeActions()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { Path; }";
         var request = new VSCodeActionParams()
         {
@@ -333,7 +333,7 @@ public class TypeAccessibilityCodeActionProviderTest(ITestOutputHelper testOutpu
     public async Task Handle_ValidDiagnostic_MultipleValidCodeActions_VSCode_ReturnsMultipleCodeActions()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = "@code { Path; }";
         var request = new VSCodeActionParams()
         {

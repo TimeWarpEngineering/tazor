@@ -31,7 +31,7 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                 """,
             codeActionName: LanguageServerConstants.CodeActions.PromoteUsingDirective,
             additionalExpectedFiles: [
-                (FileUri(Path.Combine("..", "_Imports.razor")), """
+                (FileUri(Path.Combine("..", "_Imports.tazor")), """
                     @using System
                     """)]);
     }
@@ -59,7 +59,7 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                 """,
             codeActionName: LanguageServerConstants.CodeActions.PromoteUsingDirective,
             additionalExpectedFiles: [
-                (FileUri(Path.Combine("..", "_Imports.razor")), """
+                (FileUri(Path.Combine("..", "_Imports.tazor")), """
                     @using System
                     """)]);
     }
@@ -100,9 +100,9 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                     Hello World
                 </div>
                 """,
-            documentFilePath: FilePath(Path.Combine("My", "Deeply", "Nested", "File.razor")),
+            documentFilePath: FilePath(Path.Combine("My", "Deeply", "Nested", "File.tazor")),
             additionalFiles: [
-                (FilePath(Path.Combine("My", "Deeply", "_Imports.razor")), """
+                (FilePath(Path.Combine("My", "Deeply", "_Imports.tazor")), """
                     @using System.Text
                     @using Foo.Bar
                     """)],
@@ -114,7 +114,7 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                 """,
             codeActionName: LanguageServerConstants.CodeActions.PromoteUsingDirective,
             additionalExpectedFiles: [
-                (FileUri(Path.Combine("My", "Deeply", "_Imports.razor")), """
+                (FileUri(Path.Combine("My", "Deeply", "_Imports.tazor")), """
                     @using System.Text
                     @using Foo.Bar
                     @using System
@@ -132,9 +132,9 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                     Hello World
                 </div>
                 """,
-            documentFilePath: FilePath(Path.Combine("My", "Deeply", "Nested", "File.razor")),
+            documentFilePath: FilePath(Path.Combine("My", "Deeply", "Nested", "File.tazor")),
             additionalFiles: [
-                (FilePath(Path.Combine("My", "Deeply", "_Imports.razor")), """
+                (FilePath(Path.Combine("My", "Deeply", "_Imports.tazor")), """
                     @using System.Text
                     @using Foo.Bar
                     
@@ -147,7 +147,7 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                 """,
             codeActionName: LanguageServerConstants.CodeActions.PromoteUsingDirective,
             additionalExpectedFiles: [
-                (FileUri(Path.Combine("My", "Deeply", "_Imports.razor")), """
+                (FileUri(Path.Combine("My", "Deeply", "_Imports.tazor")), """
                     @using System.Text
                     @using Foo.Bar
                     @using System
@@ -165,9 +165,9 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                     Hello World
                 </div>
                 """,
-            documentFilePath: FilePath(Path.Combine("My", "Deeply", "Nested", "File.razor")),
+            documentFilePath: FilePath(Path.Combine("My", "Deeply", "Nested", "File.tazor")),
             additionalFiles: [
-                (FilePath(Path.Combine("My", "Deeply", "_Imports.razor")), """
+                (FilePath(Path.Combine("My", "Deeply", "_Imports.tazor")), """
                     @using System.Text
                     @using Foo.Bar
                         
@@ -180,7 +180,7 @@ public class PromoteUsingDirectiveTests(ITestOutputHelper testOutputHelper) : Co
                 """,
             codeActionName: LanguageServerConstants.CodeActions.PromoteUsingDirective,
             additionalExpectedFiles: [
-                (FileUri(Path.Combine("My", "Deeply", "_Imports.razor")), """
+                (FileUri(Path.Combine("My", "Deeply", "_Imports.tazor")), """
                     @using System.Text
                     @using Foo.Bar
                     @using System    

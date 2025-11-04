@@ -25,7 +25,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_RazorCodeAction_WithResolver()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [new MockRazorCodeActionResolver("Test")],
             csharpCodeActionResolvers: [],
@@ -64,7 +64,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_CSharpCodeAction_WithResolver()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             [new MockCSharpCodeActionResolver("Test")],
@@ -99,7 +99,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_CSharpCodeAction_WithMultipleLanguageResolvers()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [new MockRazorCodeActionResolver("TestRazor")],
             csharpCodeActionResolvers: [new MockCSharpCodeActionResolver("TestCSharp")],
@@ -134,7 +134,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_RazorCodeAction_WithoutResolver()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             csharpCodeActionResolvers: [],
@@ -178,7 +178,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_CSharpCodeAction_WithoutResolver()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             csharpCodeActionResolvers: [],
@@ -218,7 +218,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_RazorCodeAction_WithCSharpResolver_ResolvesNull()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             csharpCodeActionResolvers: [new MockCSharpCodeActionResolver("Test")],
@@ -262,7 +262,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_Valid_CSharpCodeAction_WithRazorResolver_ResolvesNull()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [new MockRazorCodeActionResolver("Test")],
             csharpCodeActionResolvers: [],
@@ -302,7 +302,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task ResolveRazorCodeAction_ResolveMultipleRazorProviders_FirstMatches()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var service = new CodeActionResolveService(
             razorCodeActionResolvers: [
                 new MockRazorCodeActionResolver("A"),
@@ -335,7 +335,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task ResolveRazorCodeAction_ResolveMultipleRazorProviders_SecondMatches()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var service = new CodeActionResolveService(
             razorCodeActionResolvers: [
                 new MockRazorNullCodeActionResolver("A"),
@@ -368,7 +368,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task ResolveCSharpCodeAction_ResolveMultipleCSharpProviders_FirstMatches()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var service = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             csharpCodeActionResolvers: [
@@ -397,7 +397,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task ResolveCSharpCodeAction_ResolveMultipleCSharpProviders_SecondMatches()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var service = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             csharpCodeActionResolvers: [
@@ -426,7 +426,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task ResolveCSharpCodeAction_ResolveMultipleLanguageProviders()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var service = new CodeActionResolveService(
             razorCodeActionResolvers: [
                 new MockRazorNullCodeActionResolver("A"),
@@ -458,7 +458,7 @@ public class CodeActionResolutionEndpointTest(ITestOutputHelper testOutput) : La
     public async Task Handle_ResolveEditBasedCodeActionCommand()
     {
         // Arrange
-        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.razor"));
+        var documentContext = TestDocumentContext.Create(new Uri("C:/path/to/Page.tazor"));
         var codeActionResolveService = new CodeActionResolveService(
             razorCodeActionResolvers: [],
             csharpCodeActionResolvers: [new MockCSharpCodeActionResolver("Test")],

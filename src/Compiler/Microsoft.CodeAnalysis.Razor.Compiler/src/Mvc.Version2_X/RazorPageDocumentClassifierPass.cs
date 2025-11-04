@@ -11,7 +11,7 @@ namespace Microsoft.AspNetCore.Mvc.Razor.Extensions.Version2_X;
 
 public sealed class RazorPageDocumentClassifierPass : DocumentClassifierPassBase
 {
-    public static readonly string RazorPageDocumentKind = "mvc.1.0.razor-page";
+    public static readonly string RazorPageDocumentKind = "mvc.1.0.tazor-page";
     public static readonly string RouteTemplateKey = "RouteTemplate";
 
     private static readonly RazorProjectEngine LeadingDirectiveParsingEngine = RazorProjectEngine.Create(

@@ -25,7 +25,7 @@ public class HtmlDocumentSynchronizerTest(ITestOutputHelper testOutput) : Visual
     protected override void ConfigureWorkspace(AdhocWorkspace workspace)
     {
         var project = workspace.CurrentSolution.AddProject("Project", "Project.dll", LanguageNames.CSharp);
-        var document = project.AddAdditionalDocument("File.razor", SourceText.From("<div></div>"), filePath: "file://File.razor");
+        var document = project.AddAdditionalDocument("File.tazor", SourceText.From("<div></div>"), filePath: "file://File.tazor");
         _documentId = document.Id;
 
         Assert.True(workspace.TryApplyChanges(document.Project.Solution));
@@ -155,7 +155,7 @@ public class HtmlDocumentSynchronizerTest(ITestOutputHelper testOutput) : Visual
         Assert.True(syncResult.Synchronized);
 
         // Add a new document, moving the workspace forward but leaving our document unaffected
-        Assert.True(Workspace.TryApplyChanges(document.Project.AddAdditionalDocument("Foo2.razor", SourceText.From(""), filePath: "file://Foo2.razor").Project.Solution));
+        Assert.True(Workspace.TryApplyChanges(document.Project.AddAdditionalDocument("Foo2.tazor", SourceText.From(""), filePath: "file://Foo2.tazor").Project.Solution));
 
         document = Workspace.CurrentSolution.GetAdditionalDocument(_documentId).AssumeNotNull();
         var version2 = await RazorDocumentVersion.CreateAsync(document, DisposalToken);

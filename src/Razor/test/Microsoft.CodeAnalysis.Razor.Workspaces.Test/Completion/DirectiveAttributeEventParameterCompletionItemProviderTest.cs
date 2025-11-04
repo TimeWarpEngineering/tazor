@@ -23,7 +23,7 @@ public class DirectiveAttributeEventParameterCompletionItemProviderTest : RazorT
     {
         // Most of these completions rely on stuff in the web namespace.
         ImportItems.Add(CreateProjectItem(
-            "_Imports.razor",
+            "_Imports.tazor",
             "@using Microsoft.AspNetCore.Components.Web"));
 
         _provider = new DirectiveAttributeEventParameterCompletionItemProvider();

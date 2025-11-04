@@ -1400,7 +1400,7 @@ public sealed class RazorSourceGeneratorTagHelperTests : RazorSourceGeneratorTes
 
                 <email mail="example">custom tag helper</email>
                 """,
-            ["Shared/EmailTagHelper.razor"] = """
+            ["Shared/EmailTagHelper.tazor"] = """
                 @inherits ComponentAndTagHelper
                 @code {
                     public string? Mail { get; set; }
@@ -1451,7 +1451,7 @@ public sealed class RazorSourceGeneratorTagHelperTests : RazorSourceGeneratorTes
                 <email mail="example1">inside email</email>
                 <mail mail="example2">inside mail</mail>
                 """,
-            ["Shared/EmailTagHelper.razor"] = """
+            ["Shared/EmailTagHelper.tazor"] = """
                 @using Microsoft.AspNetCore.Razor.TagHelpers;
                 @attribute [HtmlTargetElement("mail")]
                 @inherits ComponentAndTagHelper
@@ -1613,7 +1613,7 @@ public sealed class RazorSourceGeneratorTagHelperTests : RazorSourceGeneratorTes
                 <@("email") />
                 @(await Html.RenderComponentAsync<MyApp.Shared.Component1>(RenderMode.Static))
                 """,
-            ["Shared/Component1.razor"] = """
+            ["Shared/Component1.tazor"] = """
                 Component1:
                 <Component2 />
                 <!Component2 />
@@ -1621,7 +1621,7 @@ public sealed class RazorSourceGeneratorTagHelperTests : RazorSourceGeneratorTes
                 < Component2 />
                 <@("Component2") />
                 """,
-            ["Shared/Component2.razor"] = """
+            ["Shared/Component2.tazor"] = """
                 Component2
                 """,
         }, new()
@@ -1642,7 +1642,7 @@ public sealed class RazorSourceGeneratorTagHelperTests : RazorSourceGeneratorTes
         var driver = await GetDriverAsync(project, options =>
         {
             options.AdditionalTextOptions["Pages/Index.cshtml"]["build_metadata.AdditionalFiles.CssScope"] = "cshtml-scope";
-            options.AdditionalTextOptions["Shared/Component1.razor"]["build_metadata.AdditionalFiles.CssScope"] = "razor-scope";
+            options.AdditionalTextOptions["Shared/Component1.tazor"]["build_metadata.AdditionalFiles.CssScope"] = "razor-scope";
         });
 
         // Act

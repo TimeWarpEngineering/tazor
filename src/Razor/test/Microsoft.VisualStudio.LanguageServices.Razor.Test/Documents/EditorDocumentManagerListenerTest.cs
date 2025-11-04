@@ -27,8 +27,8 @@ public class EditorDocumentManagerListenerTest(ITestOutputHelper testOutput) : V
         rootNamespace: null);
 
     private static readonly HostDocument s_hostDocument = new(
-        filePath: "/path/to/file1.razor",
-        targetPath: "/path/to/file1.razor");
+        filePath: "/path/to/file1.tazor",
+        targetPath: "/path/to/file1.tazor");
 
     private static IFallbackProjectManager s_fallbackProjectManager = StrictMock.Of<IFallbackProjectManager>(x =>
         x.IsFallbackProject(It.IsAny<ProjectKey>()) == false);

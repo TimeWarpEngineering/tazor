@@ -35,7 +35,7 @@ public class ExtractToComponentCodeActionProviderTest(ITestOutputHelper testOutp
     public async Task Handle_InvalidFileKind()
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         var contents = """
             @page "/"
 
@@ -657,7 +657,7 @@ public class ExtractToComponentCodeActionProviderTest(ITestOutputHelper testOutp
     private async Task TestAsync(string contents)
     {
         // Arrange
-        var documentPath = "c:/Test.razor";
+        var documentPath = "c:/Test.tazor";
         TestFileMarkupParser.GetSpans(contents, out contents, out ImmutableDictionary<string, ImmutableArray<TextSpan>> spans);
 
         var selectionSpan = spans["selection"].Single();

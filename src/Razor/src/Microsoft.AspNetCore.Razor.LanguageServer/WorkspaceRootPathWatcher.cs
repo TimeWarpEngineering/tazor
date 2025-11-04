@@ -20,7 +20,7 @@ namespace Microsoft.AspNetCore.Razor.LanguageServer;
 internal partial class WorkspaceRootPathWatcher : IOnInitialized, IDisposable
 {
     private static readonly TimeSpan s_delay = TimeSpan.FromSeconds(1);
-    private static readonly ImmutableArray<string> s_filters = ["*.razor", "*.cshtml"];
+    private static readonly ImmutableArray<string> s_filters = ["*.tazor", "*.cshtml"];
     private static readonly string[] s_ignoredDirectories = ["node_modules"];
 
     private readonly IWorkspaceRootPathProvider _workspaceRootPathProvider;

@@ -70,7 +70,7 @@ World", cleanedSummary);
         var elementDescription = AggregateBoundElementDescription.Empty;
 
         // Act
-        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.razor", elementDescription, componentAvailabilityService, MarkupKind.Markdown, DisposalToken);
+        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.tazor", elementDescription, componentAvailabilityService, MarkupKind.Markdown, DisposalToken);
 
         // Assert
         Assert.Null(markdown);
@@ -90,7 +90,7 @@ World", cleanedSummary);
 
         var elementDescription = new AggregateBoundElementDescription(associatedTagHelperInfos.ToImmutableArray());
         // Act
-        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.razor", elementDescription, componentAvailabilityService, MarkupKind.Markdown, DisposalToken);
+        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.tazor", elementDescription, componentAvailabilityService, MarkupKind.Markdown, DisposalToken);
 
         // Assert
         Assert.NotNull(markdown);
@@ -115,7 +115,7 @@ Uses `List<System.String>`s", markdown.Value);
         var elementDescription = new AggregateBoundElementDescription(associatedTagHelperInfos.ToImmutableArray());
 
         // Act
-        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.razor", elementDescription, componentAvailabilityService, MarkupKind.PlainText, DisposalToken);
+        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.tazor", elementDescription, componentAvailabilityService, MarkupKind.PlainText, DisposalToken);
 
         // Assert
         Assert.NotNull(markdown);
@@ -167,7 +167,7 @@ Uses `List<System.String>`s", markdown.Value);
         var elementDescription = new AggregateBoundElementDescription(associatedTagHelperInfos.ToImmutableArray());
 
         // Act
-        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.razor", elementDescription, componentAvailabilityService, MarkupKind.Markdown, DisposalToken);
+        var markdown = await MarkupTagHelperTooltipFactory.TryCreateTooltipAsync("file.tazor", elementDescription, componentAvailabilityService, MarkupKind.Markdown, DisposalToken);
 
         // Assert
         Assert.NotNull(markdown);

@@ -10793,7 +10793,7 @@ namespace Test
 @using System.Reflection
 @attribute [Serializable]
 ";
-        var importItem = CreateProjectItem("_Imports.razor", importContent, RazorFileKind.ComponentImport);
+        var importItem = CreateProjectItem("_Imports.tazor", importContent, RazorFileKind.ComponentImport);
         ImportItems.Add(importItem);
         AdditionalSyntaxTrees.Add(Parse(@"
 using Microsoft.AspNetCore.Components;
@@ -10833,7 +10833,7 @@ namespace Test
 "));
 
         // Act
-        var generated = CompileToCSharp("_Imports.razor", @"
+        var generated = CompileToCSharp("_Imports.tazor", @"
 @using System.Text
 @using System.Reflection
 
@@ -10864,7 +10864,7 @@ namespace Test
                // (6,16): error CS0246: The type or namespace name 'RenderFragment' could not be found (are you missing a using directive or an assembly reference?)
                //         public RenderFragment Body { get; set; }
                Diagnostic(ErrorCode.ERR_SingleTypeNameNotFound, "RenderFragment").WithArguments("RenderFragment").WithLocation(6, 16),
-               // x:\dir\subdir\Test\_Imports.razor(5,2): error CS0103: The name 'Foo' does not exist in the current context
+               // x:\dir\subdir\Test\_Imports.tazor(5,2): error CS0103: The name 'Foo' does not exist in the current context
                // Foo
                Diagnostic(ErrorCode.ERR_NameNotInContext, "Foo").WithArguments("Foo").WithLocation(5, 7)]
             : [// (4,31): error CS0246: The type or namespace name 'ComponentBase' could not be found (are you missing a using directive or an assembly reference?)
@@ -10876,10 +10876,10 @@ namespace Test
                // (6,16): error CS0246: The type or namespace name 'RenderFragment' could not be found (are you missing a using directive or an assembly reference?)
                //         public RenderFragment Body { get; set; }
                Diagnostic(ErrorCode.ERR_SingleTypeNameNotFound, "RenderFragment").WithArguments("RenderFragment").WithLocation(6, 16),
-               // x:\dir\subdir\Test\_Imports.razor(5,2): error CS0103: The name 'Foo' does not exist in the current context
+               // x:\dir\subdir\Test\_Imports.tazor(5,2): error CS0103: The name 'Foo' does not exist in the current context
                // Foo
                Diagnostic(ErrorCode.ERR_NameNotInContext, "Foo").WithArguments("Foo").WithLocation(5, 2),
-               // x:\dir\subdir\Test\_Imports.razor(5,2): error CS0103: The name '__builder' does not exist in the current context
+               // x:\dir\subdir\Test\_Imports.tazor(5,2): error CS0103: The name '__builder' does not exist in the current context
                // __builder.AddContent(0, Foo
                Diagnostic(ErrorCode.ERR_NameNotInContext, "__builder").WithArguments("__builder").WithLocation(5, 2)]);
     }
@@ -10900,7 +10900,7 @@ namespace Test
             """));
 
         // Act
-        var generated = CompileToCSharp("Index.razor", cshtmlContent: """
+        var generated = CompileToCSharp("Index.tazor", cshtmlContent: """
             @using global::MyComponents
 
             <Counter />
@@ -10921,7 +10921,7 @@ namespace Test
 @using System.Reflection
 @namespace New.Test
 ";
-        var importItem = CreateProjectItem("_Imports.razor", importContent, RazorFileKind.ComponentImport);
+        var importItem = CreateProjectItem("_Imports.tazor", importContent, RazorFileKind.ComponentImport);
         ImportItems.Add(importItem);
         AdditionalSyntaxTrees.Add(Parse(@"
 using Microsoft.AspNetCore.Components;
@@ -10955,7 +10955,7 @@ namespace New.Test
 @using System.Reflection
 @namespace Import.Test
 ";
-        var importItem = CreateProjectItem("_Imports.razor", importContent, RazorFileKind.ComponentImport);
+        var importItem = CreateProjectItem("_Imports.tazor", importContent, RazorFileKind.ComponentImport);
         ImportItems.Add(importItem);
         AdditionalSyntaxTrees.Add(Parse(@"
 using Microsoft.AspNetCore.Components;
@@ -10970,7 +10970,7 @@ namespace New.Test
 "));
 
         // Act
-        var generated = CompileToCSharp("Pages/Counter.razor", cshtmlContent: @"
+        var generated = CompileToCSharp("Pages/Counter.tazor", cshtmlContent: @"
 @namespace New.Test
 <Counter2 />
 ");
@@ -11000,7 +11000,7 @@ namespace New.Test
         var importContent = @"
 @preservewhitespace true
 ";
-        var importItem = CreateProjectItem("_Imports.razor", importContent, RazorFileKind.ComponentImport);
+        var importItem = CreateProjectItem("_Imports.tazor", importContent, RazorFileKind.ComponentImport);
         ImportItems.Add(importItem);
 
         // Act
@@ -11025,7 +11025,7 @@ namespace New.Test
         var importContent = @"
 @preservewhitespace true
 ";
-        var importItem = CreateProjectItem("_Imports.razor", importContent, RazorFileKind.ComponentImport);
+        var importItem = CreateProjectItem("_Imports.tazor", importContent, RazorFileKind.ComponentImport);
         ImportItems.Add(importItem);
 
         // Act

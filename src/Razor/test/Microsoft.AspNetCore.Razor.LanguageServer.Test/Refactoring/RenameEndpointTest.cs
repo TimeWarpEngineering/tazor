@@ -42,45 +42,45 @@ public class RenameEndpointTest(ITestOutputHelper testOutput) : LanguageServerTe
     private const string RootNamespace1 = "First.Components";
     private const string RootNamespace2 = "Second.Components";
 
-    private static readonly string s_componentFilePath1 = Path.Combine(s_project1BasePath, "Component1.razor");
+    private static readonly string s_componentFilePath1 = Path.Combine(s_project1BasePath, "Component1.tazor");
     private const string ComponentText1 = $"""
         @namespace {RootNamespace1}
         @using Test
         <Component2></Component2>
         """;
 
-    private static readonly string s_componentFilePath2 = Path.Combine(s_project1BasePath, "Component2.razor");
+    private static readonly string s_componentFilePath2 = Path.Combine(s_project1BasePath, "Component2.tazor");
     private const string ComponentText2 = """
         @namespace Test
         """;
 
-    private static readonly string s_componentFilePath1337 = Path.Combine(s_project1BasePath, "Component1337.razor");
+    private static readonly string s_componentFilePath1337 = Path.Combine(s_project1BasePath, "Component1337.tazor");
     private const string ComponentText1337 = """
         @namespace Test
         """;
 
-    private static readonly string s_componentFilePath3 = Path.Combine(s_project2BasePath, "Component3.razor");
+    private static readonly string s_componentFilePath3 = Path.Combine(s_project2BasePath, "Component3.tazor");
     private const string ComponentText3 = $"""
         @namespace {RootNamespace2}
         <Component3></Component3>
         """;
 
-    private static readonly string s_componentFilePath4 = Path.Combine(s_project2BasePath, "Component4.razor");
+    private static readonly string s_componentFilePath4 = Path.Combine(s_project2BasePath, "Component4.tazor");
     private const string ComponentText4 = $"""
         @namespace {RootNamespace2}
         <Component3></Component3>
         <Component3></Component3>
         """;
 
-    private static readonly string s_componentFilePath5 = Path.Combine(s_project2BasePath, "Component5.razor");
+    private static readonly string s_componentFilePath5 = Path.Combine(s_project2BasePath, "Component5.tazor");
 
-    private static readonly string s_componentWithParamFilePath = Path.Combine(s_project2BasePath, "ComponentWithParam.razor");
+    private static readonly string s_componentWithParamFilePath = Path.Combine(s_project2BasePath, "ComponentWithParam.tazor");
     private const string ComponentWithParamText = $"""
         @namespace {RootNamespace2}
         <Component3 Title="Something"></Component3>
         """;
 
-    private static readonly string s_indexFilePath1 = Path.Combine(s_project1BasePath, "Index.razor");
+    private static readonly string s_indexFilePath1 = Path.Combine(s_project1BasePath, "Index.tazor");
     private const string IndexText1 = $"""
         @namespace {RootNamespace1}
         @using Test
@@ -88,13 +88,13 @@ public class RenameEndpointTest(ITestOutputHelper testOutput) : LanguageServerTe
         <Test.Component1337></Test.Component1337>
         """;
 
-    private static readonly string s_directoryFilePath1 = Path.Combine(s_project1BasePath, "Directory1.razor");
+    private static readonly string s_directoryFilePath1 = Path.Combine(s_project1BasePath, "Directory1.tazor");
     private const string DirectoryText1 = """
         @namespace Test.Components
         <Directory2></Directory2>
         """;
 
-    private static readonly string s_directoryFilePath2 = Path.Combine(s_project1BasePath, "Directory2.razor");
+    private static readonly string s_directoryFilePath2 = Path.Combine(s_project1BasePath, "Directory2.tazor");
     private const string DirectoryText2 = """
         @namespace Test.Components
         <Directory1></Directory1>
@@ -154,7 +154,7 @@ public class RenameEndpointTest(ITestOutputHelper testOutput) : LanguageServerTe
         var renameChange = documentChanges.ElementAt(0);
         Assert.True(renameChange.TryGetThird(out var renameFile));
         Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath2), renameFile.OldDocumentUri.GetRequiredParsedUri());
-        Assert.Equal(TestPathUtilities.GetUri(s_project1BasePath, "Component5.razor"), renameFile.NewDocumentUri.GetRequiredParsedUri());
+        Assert.Equal(TestPathUtilities.GetUri(s_project1BasePath, "Component5.tazor"), renameFile.NewDocumentUri.GetRequiredParsedUri());
 
         // Next, we should get a series of text edits to Component1 that rename
         // "Component2" to "Component5".
@@ -418,7 +418,7 @@ public class RenameEndpointTest(ITestOutputHelper testOutput) : LanguageServerTe
         var renameChange = documentChanges.ElementAt(0);
         Assert.True(renameChange.TryGetThird(out var renameFile));
         Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath1337), renameFile.OldDocumentUri.GetRequiredParsedUri());
-        Assert.Equal(TestPathUtilities.GetUri(s_project1BasePath, "Component5.razor"), renameFile.NewDocumentUri.GetRequiredParsedUri());
+        Assert.Equal(TestPathUtilities.GetUri(s_project1BasePath, "Component5.tazor"), renameFile.NewDocumentUri.GetRequiredParsedUri());
 
         var editChange1 = documentChanges.ElementAt(1);
         Assert.True(editChange1.TryGetFirst(out var textDocumentEdit));
@@ -459,35 +459,43 @@ public class RenameEndpointTest(ITestOutputHelper testOutput) : LanguageServerTe
         // Assert
         Assert.NotNull(result);
         var documentChanges = result.DocumentChanges.AssumeNotNull();
-        Assert.Equal(5, documentChanges.Count());
+        Assert.True(documentChanges.TryGetSecond(out var changeArray));
+        Assert.Equal(5, changeArray.Length);
 
-        var renameChange = documentChanges.ElementAt(0);
+        var renameChange = changeArray[0];
         Assert.True(renameChange.TryGetThird(out var renameFile));
         Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath3), renameFile.OldDocumentUri.GetRequiredParsedUri());
         Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath5), renameFile.NewDocumentUri.GetRequiredParsedUri());
 
-        var editChange1 = documentChanges.ElementAt(1);
-        Assert.True(editChange1.TryGetFirst(out var textDocumentEdit));
-        Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath5), textDocumentEdit.TextDocument.DocumentUri.GetRequiredParsedUri());
+        using var textDocumentEditsBuilder = new PooledArrayBuilder<TextDocumentEdit>();
+        for (var i = 1; i < changeArray.Length; i++)
+        {
+            if (changeArray[i].TryGetFirst(out var edit))
+            {
+                textDocumentEditsBuilder.Add(edit);
+            }
+        }
+
+        var textDocumentEdits = textDocumentEditsBuilder.ToArray();
+
+        var renamedComponentEdit = Assert.Single(textDocumentEdits.Where(static edit =>
+            edit.TextDocument.DocumentUri.GetRequiredParsedUri() == TestPathUtilities.GetUri(s_componentFilePath5)));
         Assert.Collection(
-            textDocumentEdit.Edits,
+            renamedComponentEdit.Edits,
             AssertTextEdit("Component5", 1, 1, 1, 11),
             AssertTextEdit("Component5", 1, 14, 1, 24));
 
-        var editChange2 = documentChanges.ElementAt(2);
-        Assert.True(editChange2.TryGetFirst(out var textDocumentEdit2));
-        Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath4), textDocumentEdit2.TextDocument.DocumentUri.GetRequiredParsedUri());
-        Assert.Equal(2, textDocumentEdit2.Edits.Length);
+        var component4Edits = textDocumentEdits.Where(static edit =>
+            edit.TextDocument.DocumentUri.GetRequiredParsedUri() == TestPathUtilities.GetUri(s_componentFilePath4)).ToArray();
+        Assert.Equal(2, component4Edits.Length);
+        foreach (var component4Edit in component4Edits)
+        {
+            Assert.Equal(2, component4Edit.Edits.Length);
+        }
 
-        var editChange3 = documentChanges.ElementAt(3);
-        Assert.True(editChange3.TryGetFirst(out var textDocumentEdit3));
-        Assert.Equal(TestPathUtilities.GetUri(s_componentFilePath4), textDocumentEdit3.TextDocument.DocumentUri.GetRequiredParsedUri());
-        Assert.Equal(2, textDocumentEdit3.Edits.Length);
-
-        var editChange4 = documentChanges.ElementAt(4);
-        Assert.True(editChange4.TryGetFirst(out var textDocumentEdit4));
-        Assert.Equal(TestPathUtilities.GetUri(s_componentWithParamFilePath), textDocumentEdit4.TextDocument.DocumentUri.GetRequiredParsedUri());
-        Assert.Equal(2, textDocumentEdit4.Edits.Length);
+        var componentWithParamEdit = Assert.Single(textDocumentEdits.Where(static edit =>
+            edit.TextDocument.DocumentUri.GetRequiredParsedUri() == TestPathUtilities.GetUri(s_componentWithParamFilePath)));
+        Assert.Equal(2, componentWithParamEdit.Edits.Length);
     }
 
     [Fact]
@@ -517,7 +525,7 @@ public class RenameEndpointTest(ITestOutputHelper testOutput) : LanguageServerTe
         var renameChange = documentChanges.ElementAt(0);
         Assert.True(renameChange.TryGetThird(out var renameFile));
         Assert.Equal(TestPathUtilities.GetUri(s_directoryFilePath2), renameFile.OldDocumentUri.GetRequiredParsedUri());
-        Assert.Equal(TestPathUtilities.GetUri(s_project1BasePath, "TestComponent.razor"), renameFile.NewDocumentUri.GetRequiredParsedUri());
+        Assert.Equal(TestPathUtilities.GetUri(s_project1BasePath, "TestComponent.tazor"), renameFile.NewDocumentUri.GetRequiredParsedUri());
 
         var editChange = documentChanges.ElementAt(1);
         Assert.True(editChange.TryGetFirst(out var textDocumentEdit));

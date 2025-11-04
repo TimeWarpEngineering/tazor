@@ -11,9 +11,9 @@ namespace Microsoft.CodeAnalysis.Razor.Workspaces.Test;
 public class FilePathServiceTest
 {
     [Theory]
-    [InlineData(@"C:\path\to\file.razor.t3Gf1FBjln6S9T95.ide.g.cs")]
-    [InlineData(@"C:\path\to\file.razor__virtual.html")]
-    [InlineData(@"C:\path\to\file.razor")]
+    [InlineData(@"C:\path\to\file.tazor.t3Gf1FBjln6S9T95.ide.g.cs")]
+    [InlineData(@"C:\path\to\file.tazor__virtual.html")]
+    [InlineData(@"C:\path\to\file.tazor")]
     public void GetRazorFilePath_ReturnsExpectedPath(string inputFilePath)
     {
         // Arrange
@@ -23,12 +23,12 @@ public class FilePathServiceTest
         var result = filePathService.GetTestAccessor().GetRazorFilePath(inputFilePath);
 
         // Assert
-        Assert.Equal(@"C:\path\to\file.razor", result);
+        Assert.Equal(@"C:\path\to\file.tazor", result);
     }
 
     [Theory]
-    [InlineData(true, @"C:\path\to\file.razor.21z2YGQgr-neX-Hd.ide.g.cs")]
-    [InlineData(false, @"C:\path\to\file.razor.ide.g.cs")]
+    [InlineData(true, @"C:\path\to\file.tazor.21z2YGQgr-neX-Hd.ide.g.cs")]
+    [InlineData(false, @"C:\path\to\file.tazor.ide.g.cs")]
     public void GetRazorCSharpFilePath_ReturnsExpectedPath(bool includeProjectKey, string expected)
     {
         // Arrange
@@ -36,15 +36,15 @@ public class FilePathServiceTest
         var filePathService = new TestFilePathService(new TestLanguageServerFeatureOptions(includeProjectKeyInGeneratedFilePath: includeProjectKey));
 
         // Act
-        var result = filePathService.GetRazorCSharpFilePath(projectKey, @"C:\path\to\file.razor");
+        var result = filePathService.GetRazorCSharpFilePath(projectKey, @"C:\path\to\file.tazor");
 
         // Assert
         Assert.Equal(expected, result);
     }
 
     [Theory]
-    [InlineData(true, @"C:\path\to\file.razor.p.ide.g.cs")]
-    [InlineData(false, @"C:\path\to\file.razor.ide.g.cs")]
+    [InlineData(true, @"C:\path\to\file.tazor.p.ide.g.cs")]
+    [InlineData(false, @"C:\path\to\file.tazor.ide.g.cs")]
     public void GetRazorCSharpFilePath_NoProjectInfo_ReturnsExpectedPath(bool includeProjectKey, string expected)
     {
         // Arrange
@@ -52,16 +52,16 @@ public class FilePathServiceTest
         var filePathService = new TestFilePathService(new TestLanguageServerFeatureOptions(includeProjectKeyInGeneratedFilePath: includeProjectKey));
 
         // Act
-        var result = filePathService.GetRazorCSharpFilePath(projectKey, @"C:\path\to\file.razor");
+        var result = filePathService.GetRazorCSharpFilePath(projectKey, @"C:\path\to\file.tazor");
 
         // Assert
         Assert.Equal(expected, result);
     }
 
     [Theory]
-    [InlineData(true, @"C:\path\to\file.razor.t3Gf1FBjln6S9T95.ide.g.cs")]
-    [InlineData(true, @"C:\path\to\file.razor.p.ide.g.cs")]
-    [InlineData(false, @"C:\path\to\file.razor.ide.g.cs")]
+    [InlineData(true, @"C:\path\to\file.tazor.t3Gf1FBjln6S9T95.ide.g.cs")]
+    [InlineData(true, @"C:\path\to\file.tazor.p.ide.g.cs")]
+    [InlineData(false, @"C:\path\to\file.tazor.ide.g.cs")]
     public void GetRazorDocumentUri_CSharpFile_ReturnsExpectedUri(bool includeProjectKey, string input)
     {
         // Arrange
@@ -71,7 +71,7 @@ public class FilePathServiceTest
         var result = filePathService.GetRazorDocumentUri(new Uri(input));
 
         // Assert
-        Assert.Equal(@"C:/path/to/file.razor", result.GetAbsoluteOrUNCPath());
+        Assert.Equal(@"C:/path/to/file.tazor", result.GetAbsoluteOrUNCPath());
     }
 
     [Fact]
@@ -80,10 +80,10 @@ public class FilePathServiceTest
         // Arrange
         var filePathService = new TestFilePathService(new TestLanguageServerFeatureOptions(includeProjectKeyInGeneratedFilePath: true));
         // Act
-        var result = filePathService.GetRazorDocumentUri(new Uri(@"C:\path\to\file.razor__virtual.html"));
+        var result = filePathService.GetRazorDocumentUri(new Uri(@"C:\path\to\file.tazor__virtual.html"));
 
         // Assert
-        Assert.Equal(@"C:/path/to/file.razor", result.GetAbsoluteOrUNCPath());
+        Assert.Equal(@"C:/path/to/file.tazor", result.GetAbsoluteOrUNCPath());
     }
 
     [Fact]
@@ -92,10 +92,10 @@ public class FilePathServiceTest
         // Arrange
         var filePathService = new TestFilePathService(new TestLanguageServerFeatureOptions(includeProjectKeyInGeneratedFilePath: true));
         // Act
-        var result = filePathService.GetRazorDocumentUri(new Uri(@"C:\path\to\file.razor"));
+        var result = filePathService.GetRazorDocumentUri(new Uri(@"C:\path\to\file.tazor"));
 
         // Assert
-        Assert.Equal(@"C:/path/to/file.razor", result.GetAbsoluteOrUNCPath());
+        Assert.Equal(@"C:/path/to/file.tazor", result.GetAbsoluteOrUNCPath());
     }
 
     private class TestFilePathService(TestLanguageServerFeatureOptions options) : AbstractFilePathService(options)

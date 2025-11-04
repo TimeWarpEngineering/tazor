@@ -40,7 +40,7 @@ public class FormatDocumentTests(ITestOutputHelper testOutputHelper) : AbstractR
         }
 
         // Open the file
-        if (testFileName.EndsWith(".razor", StringComparison.OrdinalIgnoreCase))
+        if (testFileName.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
         {
             await TestServices.SolutionExplorer.OpenFileAsync(RazorProjectConstants.BlazorProjectName, RazorProjectConstants.CounterRazorFile, ControlledHangMitigatingCancellationToken);
         }

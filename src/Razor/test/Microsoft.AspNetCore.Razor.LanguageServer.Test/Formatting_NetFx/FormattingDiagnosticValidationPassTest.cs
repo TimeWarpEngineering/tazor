@@ -75,7 +75,7 @@ public class FormattingDiagnosticValidationPassTest(ITestOutputHelper testOutput
         RazorFileKind? fileKind = null)
     {
         var source = SourceText.From(input.Text);
-        var path = "file:///path/to/document.razor";
+        var path = "file:///path/to/document.tazor";
         var uri = new Uri(path);
         var (codeDocument, documentSnapshot) = CreateCodeDocumentAndSnapshot(source, uri.AbsolutePath, fileKind: fileKind);
         var options = new RazorFormattingOptions()

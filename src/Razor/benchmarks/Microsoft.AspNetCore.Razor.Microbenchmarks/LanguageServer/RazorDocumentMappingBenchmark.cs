@@ -41,13 +41,13 @@ public class RazorDocumentMappingBenchmark : RazorLanguageServerBenchmarkBase
 
         var projectRoot = Path.Combine(Helpers.GetTestAppsPath(), "ComponentApp");
         var projectFilePath = Path.Combine(projectRoot, "ComponentApp.csproj");
-        _filePath = Path.Combine(projectRoot, "Components", "Pages", "Generated.razor");
+        _filePath = Path.Combine(projectRoot, "Components", "Pages", "Generated.tazor");
 
         WriteSampleFile(_filePath, Blocks, out var indexes);
 
         Indexes = indexes;
 
-        var targetPath = "/Components/Pages/Generated.razor";
+        var targetPath = "/Components/Pages/Generated.tazor";
 
         DocumentSnapshot = await GetDocumentSnapshotAsync(projectFilePath, _filePath, targetPath);
 

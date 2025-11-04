@@ -34,7 +34,7 @@ internal static class UriPresentationHelper
         var fileName = Path.GetFileName(razorFileUri.GetAbsoluteOrUNCPath());
         if (uris.Any(uri => !Path.GetFileName(uri.GetAbsoluteOrUNCPath()).StartsWith(fileName, PathUtilities.OSSpecificPathComparison)))
         {
-            logger.LogDebug($"One or more URIs were not a child file of the main .razor file.");
+            logger.LogDebug($"One or more URIs were not a child file of the main .tazor file.");
             return null;
         }
 

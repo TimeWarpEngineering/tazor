@@ -23,7 +23,7 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
     public async Task Handle_InvalidFileKind()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = $"@page \"/test\"";
         var codeDocument = CreateCodeDocument(contents, fileKind: RazorFileKind.Legacy);
 
@@ -31,7 +31,7 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
         var resolver = new CreateComponentCodeActionResolver(TestLanguageServerFeatureOptions.Instance);
         var data = JsonSerializer.SerializeToElement(new CreateComponentCodeActionParams()
         {
-            Path = "c:/Another.razor",
+            Path = "c:/Another.tazor",
         });
 
         // Act
@@ -45,7 +45,7 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
     public async Task Handle_CreateComponent()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = $"@page \"/test\"";
         var codeDocument = CreateCodeDocument(contents);
 
@@ -53,7 +53,7 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
         var resolver = new CreateComponentCodeActionResolver(TestLanguageServerFeatureOptions.Instance);
         var actionParams = new CreateComponentCodeActionParams
         {
-            Path = "c:/Another.razor",
+            Path = "c:/Another.tazor",
         };
         var data = JsonSerializer.SerializeToElement(actionParams);
 
@@ -73,7 +73,7 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
     public async Task Handle_CreateComponentWithNamespace()
     {
         // Arrange
-        var documentPath = new Uri("c:/Test.razor");
+        var documentPath = new Uri("c:/Test.tazor");
         var contents = $"""
             @page "/test"
             @namespace Another.Namespace
@@ -84,7 +84,7 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
         var resolver = new CreateComponentCodeActionResolver(TestLanguageServerFeatureOptions.Instance);
         var actionParams = new CreateComponentCodeActionParams
         {
-            Path = "c:/Another.razor",
+            Path = "c:/Another.tazor",
         };
         var data = JsonSerializer.SerializeToElement(actionParams);
 
@@ -107,9 +107,9 @@ public class CreateComponentCodeActionResolverTest(ITestOutputHelper testOutput)
     private static RazorCodeDocument CreateCodeDocument(string text, RazorFileKind? fileKind = null)
     {
         var projectItem = new TestRazorProjectItem(
-            filePath: "c:/Test.razor",
-            physicalPath: "c:/Test.razor",
-            relativePhysicalPath: "Test.razor",
+            filePath: "c:/Test.tazor",
+            physicalPath: "c:/Test.tazor",
+            relativePhysicalPath: "Test.tazor",
             fileKind: fileKind ?? RazorFileKind.Component)
         {
             Content = text

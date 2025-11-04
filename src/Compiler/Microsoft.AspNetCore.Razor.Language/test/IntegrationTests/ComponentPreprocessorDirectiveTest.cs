@@ -15,7 +15,7 @@ public class ComponentPreprocessorDirectiveTest(bool designTime = false)
 
     internal string ComponentName = "TestComponent";
 
-    internal override string DefaultFileName => ComponentName + ".razor";
+    internal override string DefaultFileName => ComponentName + ".tazor";
 
     internal override bool DesignTime => designTime;
 
@@ -221,16 +221,16 @@ public class ComponentPreprocessorDirectiveTest(bool designTime = false)
         AssertDocumentNodeMatchesBaseline(generated.CodeDocument);
         AssertCSharpDocumentMatchesBaseline(generated.CodeDocument);
         CompileToAssembly(generated,
-            // x:\dir\subdir\Test\TestComponent.razor(2,9): error CS1040: Preprocessor directives must appear as the first non-whitespace character on a line
+            // x:\dir\subdir\Test\TestComponent.tazor(2,9): error CS1040: Preprocessor directives must appear as the first non-whitespace character on a line
             // var x = #if true;
             Diagnostic(ErrorCode.ERR_BadDirectivePlacement, "#").WithLocation(2, 9),
-            // x:\dir\subdir\Test\TestComponent.razor(5,1): error CS0841: Cannot use local variable 'x' before it is declared
+            // x:\dir\subdir\Test\TestComponent.tazor(5,1): error CS0841: Cannot use local variable 'x' before it is declared
             // x #endif;
             Diagnostic(ErrorCode.ERR_VariableUsedBeforeDeclaration, "x").WithArguments("x").WithLocation(5, 1),
-            // x:\dir\subdir\Test\TestComponent.razor(5,2): error CS1002: ; expected
+            // x:\dir\subdir\Test\TestComponent.tazor(5,2): error CS1002: ; expected
             // x #endif;
             Diagnostic(ErrorCode.ERR_SemicolonExpected, "").WithLocation(5, 2),
-            // x:\dir\subdir\Test\TestComponent.razor(5,3): error CS1040: Preprocessor directives must appear as the first non-whitespace character on a line
+            // x:\dir\subdir\Test\TestComponent.tazor(5,3): error CS1040: Preprocessor directives must appear as the first non-whitespace character on a line
             // x #endif;
             Diagnostic(ErrorCode.ERR_BadDirectivePlacement, "#").WithLocation(5, 3));
     }
@@ -372,7 +372,7 @@ public class ComponentPreprocessorDirectiveTest(bool designTime = false)
         AssertDocumentNodeMatchesBaseline(generated.CodeDocument);
         AssertCSharpDocumentMatchesBaseline(generated.CodeDocument);
         CompileToAssembly(generated,
-            // x:\dir\subdir\Test\TestComponent.razor(2,9): warning CS0219: The variable 'x' is assigned but its value is never used
+            // x:\dir\subdir\Test\TestComponent.tazor(2,9): warning CS0219: The variable 'x' is assigned but its value is never used
             //     var x = 1;
             Diagnostic(ErrorCode.WRN_UnreferencedVarAssg, "x").WithArguments("x").WithLocation(2, 9)
         );

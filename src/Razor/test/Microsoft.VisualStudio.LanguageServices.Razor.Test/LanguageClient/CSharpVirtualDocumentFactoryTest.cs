@@ -68,7 +68,7 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
     public void TryCreateMultipleFor_NonRazorLSPBuffer_ReturnsFalse()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = StrictMock.Of<FileUriProvider>(x =>
             x.GetOrCreate(It.IsAny<ITextBuffer>()) == uri);
 
@@ -95,7 +95,7 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
     public void TryCreateMultipleFor_NoProjectSnapshotManager_ReturnsFalse()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = StrictMock.Of<FileUriProvider>(x =>
             x.GetOrCreate(It.IsAny<ITextBuffer>()) == uri);
 
@@ -122,7 +122,7 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
     public async Task TryCreateMultipleFor_RazorLSPBuffer_ReturnsCSharpVirtualDocumentAndTrue()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = StrictMock.Of<FileUriProvider>(x =>
             x.GetOrCreate(_razorLSPBuffer) == uri);
         Mock.Get(uriProvider)
@@ -132,7 +132,7 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
         var projectManager = CreateProjectSnapshotManager();
 
         var hostProject = TestHostProject.Create(@"C:\path\to\project.csproj");
-        var hostDocument = TestHostDocument.Create(hostProject, @"C:\path\to\file.razor");
+        var hostDocument = TestHostDocument.Create(hostProject, @"C:\path\to\file.tazor");
 
         await projectManager.UpdateAsync(updater =>
         {
@@ -163,7 +163,7 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
     public async Task TryCreateMultipleFor_RazorLSPBuffer_ReturnsMultipleCSharpVirtualDocumentsAndTrue()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = StrictMock.Of<FileUriProvider>(x =>
             x.GetOrCreate(_razorLSPBuffer) == uri);
         Mock.Get(uriProvider)
@@ -176,13 +176,13 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
             filePath: @"C:\path\to\project1.csproj",
             intermediateOutputPath: @"C:\path\to\obj1");
 
-        var hostDocument1 = TestHostDocument.Create(hostProject1, @"C:\path\to\file.razor");
+        var hostDocument1 = TestHostDocument.Create(hostProject1, @"C:\path\to\file.tazor");
 
         var hostProject2 = TestHostProject.Create(
             filePath: @"C:\path\to\project2.csproj",
             intermediateOutputPath: @"C:\path\to\obj2");
 
-        var hostDocument2 = TestHostDocument.Create(hostProject2, @"C:\path\to\file.razor");
+        var hostDocument2 = TestHostDocument.Create(hostProject2, @"C:\path\to\file.tazor");
 
         await projectManager.UpdateAsync(updater =>
         {
@@ -212,7 +212,7 @@ public class CSharpVirtualDocumentFactoryTest : VisualStudioTestBase
         // Assert
         Assert.Equal(2, virtualDocuments.Length);
         Assert.Collection(virtualDocuments,
-            item => Assert.Equal("C:/path/to/file.razor.ooJmNcWMKXNlf5MK.ide.g.cs", item.Uri.OriginalString),
-            item => Assert.Equal("C:/path/to/file.razor.jGYrFHvWEciJi85y.ide.g.cs", item.Uri.OriginalString));
+            item => Assert.Equal("C:/path/to/file.tazor.ooJmNcWMKXNlf5MK.ide.g.cs", item.Uri.OriginalString),
+            item => Assert.Equal("C:/path/to/file.tazor.jGYrFHvWEciJi85y.ide.g.cs", item.Uri.OriginalString));
     }
 }

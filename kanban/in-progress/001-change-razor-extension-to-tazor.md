@@ -1,4 +1,4 @@
-# Change File Extension from .razor to .tazor
+# Change File Extension from .tazor to .tazor
 
 **Status**: In Progress
 **Priority**: High
@@ -7,7 +7,7 @@
 
 ## Objective
 
-Replace the `.razor` file extension with `.tazor` throughout the compiler, tooling, and build system. This is the first step toward creating an independent Tazor compiler fork that will eventually:
+Replace the `.tazor` file extension with `.tazor` throughout the compiler, tooling, and build system. This is the first step toward creating an independent Tazor compiler fork that will eventually:
 - Move out of Microsoft.NET.Sdk.Razor dependency
 - Support TUI (Terminal UI) instead of Blazor components
 - Target .NET 10+ only
@@ -18,10 +18,10 @@ This task focuses ONLY on the file extension change. Other transitions (SDK inde
 
 ## Acceptance Criteria
 
-- [x] Compiler recognizes `*.tazor` files instead of `*.razor` files
+- [x] Compiler recognizes `*.tazor` files instead of `*.tazor` files
 - [x] Source generator processes `*.tazor` files
-- [x] Generated files use `_tazor.g.cs` suffix instead of `_razor.g.cs`
-- [x] Import files use `_Imports.tazor` instead of `_Imports.razor`
+- [x] Generated files use `_tazor.g.cs` suffix instead of `_tazor.g.cs`
+- [x] Import files use `_Imports.tazor` instead of `_Imports.tazor`
 - [x] MSBuild targets include `*.tazor` in compilation
 - [x] Sample application uses `.tazor` extension and builds successfully
 - [ ] All diagnostics reference `.tazor` in error messages
@@ -35,13 +35,13 @@ This task focuses ONLY on the file extension change. Other transitions (SDK inde
 **Location**: `src/Compiler/Microsoft.CodeAnalysis.Razor.Compiler/src/SourceGenerators/`
 
 **Files to Modify**:
-- `RazorSourceGenerator.cs` - Change file filter from `*.razor` to `*.tazor`
+- `RazorSourceGenerator.cs` - Change file filter from `*.tazor` to `*.tazor`
 - `SourceGeneratorProjectEngine.cs` - Update file discovery logic
 
 **Changes**:
 ```csharp
 // Before
-if (additionalFile.Path.EndsWith(".razor", StringComparison.OrdinalIgnoreCase))
+if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 
 // After
 if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
@@ -51,8 +51,8 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: Multiple locations in code generation pipeline
 
 **Changes**:
-- Output file pattern: `{ComponentPath}_razor.g.cs` → `{ComponentPath}_tazor.g.cs`
-- Example: `Components_Pages_Counter_razor.g.cs` → `Components_Pages_Counter_tazor.g.cs`
+- Output file pattern: `{ComponentPath}_tazor.g.cs` → `{ComponentPath}_tazor.g.cs`
+- Example: `Components_Pages_Counter_tazor.g.cs` → `Components_Pages_Counter_tazor.g.cs`
 
 **Files to Check**:
 - Code generation utilities
@@ -63,7 +63,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: Import resolution logic
 
 **Changes**:
-- `_Imports.razor` → `_Imports.tazor`
+- `_Imports.tazor` → `_Imports.tazor`
 - `_ViewImports.cshtml` remains unchanged (legacy MVC/Razor Pages)
 
 **Logic**:
@@ -80,17 +80,17 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 
 **Targets to Review**:
 - Source generator configuration
-- Clean targets (to remove old `*_razor.g.cs` files)
+- Clean targets (to remove old `*_tazor.g.cs` files)
 - Content file handling
 
 ### 5. Sample Application
 **Location**: `sample/TestBlazorApp/`
 
 **Changes**:
-- Rename all `.razor` files to `.tazor`:
-  - `Components/App.razor` → `Components/App.tazor`
-  - `Components/Pages/Counter.razor` → `Components/Pages/Counter.tazor`
-  - `Components/_Imports.razor` → `Components/_Imports.tazor`
+- Rename all `.tazor` files to `.tazor`:
+  - `Components/App.tazor` → `Components/App.tazor`
+  - `Components/Pages/Counter.tazor` → `Components/Pages/Counter.tazor`
+  - `Components/_Imports.tazor` → `Components/_Imports.tazor`
   - etc.
 - Update any explicit file references in code or config
 - Verify generated output folder updates accordingly
@@ -107,7 +107,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 **Location**: `docs/`, `CLAUDE.md`
 
 **Changes**:
-- Update all references from `.razor` to `.tazor`
+- Update all references from `.tazor` to `.tazor`
 - Update `BuildingSamples.md` to reflect new extension
 - Update `docs/architecture/razor-compiler-outputs.md`
 
@@ -123,13 +123,13 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 ### Phase 1: Research and Planning (This Task)
 - [x] Document all current outputs and pipeline (see `docs/architecture/razor-compiler-outputs.md`)
 - [x] Create this kanban task
-- [x] Identify all hardcoded `.razor` string references in codebase (see `docs/architecture/razor-to-tazor-migration-inventory.md`)
+- [x] Identify all hardcoded `.tazor` string references in codebase (see `docs/architecture/razor-to-tazor-migration-inventory.md`)
 - [x] Determine if gradual migration or all-at-once is better (Decision: **All-at-once** - confirmed feasible)
 
 ### Phase 2: Core Compiler Changes
 - [x] Update source generator file filter
 - [x] Update generated file naming convention
-- [x] Update import file discovery (`_Imports.razor` → `_Imports.tazor`)
+- [x] Update import file discovery (`_Imports.tazor` → `_Imports.tazor`)
 - [ ] Update all hardcoded file extension checks
 
 ### Phase 3: Build System Changes
@@ -138,7 +138,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 - [ ] Update build scripts
 
 ### Phase 4: Sample Application Migration
-- [x] Rename all `.razor` files to `.tazor` in sample app
+- [x] Rename all `.tazor` files to `.tazor` in sample app
 - [x] Update any explicit file references
 - [x] Test with `build-sample.ps1`
 - [x] Verify generated files have correct naming
@@ -153,7 +153,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 ### Phase 6: Documentation
 - [ ] Update `docs/contributing/BuildingSamples.md`
 - [ ] Update `docs/architecture/razor-compiler-outputs.md`
-- [ ] Update `CLAUDE.md` if it references `.razor`
+- [ ] Update `CLAUDE.md` if it references `.tazor`
 - [ ] Add migration notes explaining the change
 
 ## Implementation Strategy
@@ -164,7 +164,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 
 ### Step 1 – Centralize Extension Constants
 1. Audit canonical extension sources (`FileKinds`, `ComponentFileKindClassifier`, `ProjectEngineFactory`, path helpers).
-2. Introduce shared helpers listing `.tazor` (primary) plus optional `.razor` compatibility until tests green.
+2. Introduce shared helpers listing `.tazor` (primary) plus optional `.tazor` compatibility until tests green.
 3. Update unit tests that assert supported extensions.
 
 ### Step 2 – Restore Component FileKind Inference
@@ -183,18 +183,18 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 3. Re-run `Microsoft.AspNetCore.Razor.LanguageServer.Test` to validate completions, folds, and tokens.
 
 ### Step 5 – Targeted Cleanup
-1. After tests pass, sweep remaining `.razor` literals (commands, docs, tooling messages) and replace with `.tazor` where intended.
-2. Document any deliberate `.razor` compatibility paths maintained for migration.
+1. After tests pass, sweep remaining `.tazor` literals (commands, docs, tooling messages) and replace with `.tazor` where intended.
+2. Document any deliberate `.tazor` compatibility paths maintained for migration.
 
 ### Step 6 – End-to-End Verification
 1. Execute `./build.sh -test` (or equivalent) and archive updated HTML reports.
 2. Record pass/fail status per suite in this kanban card with log links.
-3. Decide when to drop temporary `.razor` fallbacks once confidence is high.
+3. Decide when to drop temporary `.tazor` fallbacks once confidence is high.
 
 ### Search Patterns (cleanup phase)
 ```bash
-# Find .razor string literals (post-classification fixes)
-grep -r '\.razor' --include="*.cs" --include="*.csproj" --include="*.props" --include="*.targets"
+# Find .tazor string literals (post-classification fixes)
+grep -r '\.tazor' --include="*.cs" --include="*.csproj" --include="*.props" --include="*.targets"
 
 # Find _razor naming references
 grep -r '_razor' --include="*.cs" --include="*.csproj"
@@ -249,7 +249,7 @@ grep -r 'razor\.g\.cs' --include="*.cs"
 ## Research Findings Summary
 
 **Total Scope** (from migration inventory):
-- ~1,900+ string references to `.razor` in codebase
+- ~1,900+ string references to `.tazor` in codebase
 - **9 critical files** to change (4 constants + 5 file detection points)
 - **9 sample files** to rename
 - **50+ test files** to update

@@ -79,7 +79,7 @@ public class DefinitionEndpointDelegationTest(ITestOutputHelper testOutput) : Si
         TestFileMarkupParser.GetPosition(input, out var output, out var cursorPosition);
 
         var codeDocument = CreateCodeDocument(output);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         // Act
         var result = await GetDefinitionResultAsync(codeDocument, razorFilePath, cursorPosition);
@@ -115,7 +115,7 @@ public class DefinitionEndpointDelegationTest(ITestOutputHelper testOutput) : Si
             }
             """;
 
-        await VerifyCSharpGoToDefinitionAsync(input, "test.razor");
+        await VerifyCSharpGoToDefinitionAsync(input, "test.tazor");
     }
 
     [Fact]
@@ -134,7 +134,7 @@ public class DefinitionEndpointDelegationTest(ITestOutputHelper testOutput) : Si
             }
             """;
 
-        await VerifyCSharpGoToDefinitionAsync(input, "test.razor");
+        await VerifyCSharpGoToDefinitionAsync(input, "test.tazor");
     }
 
     [Theory]
@@ -175,14 +175,14 @@ public class DefinitionEndpointDelegationTest(ITestOutputHelper testOutput) : Si
         TestFileMarkupParser.GetSpan(surveyPrompt, out surveyPrompt, out var expectedSpan);
         var additionalRazorDocuments = new[]
         {
-            ("SurveyPrompt.razor", surveyPrompt)
+            ("SurveyPrompt.tazor", surveyPrompt)
         };
 
         // Arrange
         TestFileMarkupParser.GetPosition(input, out var output, out var cursorPosition);
 
-        var codeDocument = CreateCodeDocument(output, filePath: "Test.razor");
-        var razorFilePath = "C:/path/to/file.razor";
+        var codeDocument = CreateCodeDocument(output, filePath: "Test.tazor");
+        var razorFilePath = "C:/path/to/file.tazor";
 
         // Act
         var result = await GetDefinitionResultAsync(codeDocument, razorFilePath, cursorPosition, additionalRazorDocuments);
@@ -194,7 +194,7 @@ public class DefinitionEndpointDelegationTest(ITestOutputHelper testOutput) : Si
 
         // Our tests don't currently support mapping multiple documents, so we just need to verify Roslyn sent back the right info.
         // Other tests verify mapping behavior
-        Assert.EndsWith("SurveyPrompt.razor.ide.g.cs", location.DocumentUri.UriString);
+        Assert.EndsWith("SurveyPrompt.tazor.ide.g.cs", location.DocumentUri.UriString);
 
         // We can still expect the character to be correct, even if the line won't match
         var surveyPromptSourceText = SourceText.From(surveyPrompt);
@@ -208,7 +208,7 @@ public class DefinitionEndpointDelegationTest(ITestOutputHelper testOutput) : Si
         TestFileMarkupParser.GetPositionAndSpan(input, out var output, out var cursorPosition, out var expectedSpan);
 
         var codeDocument = CreateCodeDocument(output, filePath: filePath);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         // Act
         var result = await GetDefinitionResultAsync(codeDocument, razorFilePath, cursorPosition);

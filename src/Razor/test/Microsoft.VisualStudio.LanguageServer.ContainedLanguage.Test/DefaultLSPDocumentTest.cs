@@ -23,7 +23,7 @@ public class DefaultLSPDocumentTest : ToolingTestBase
     public DefaultLSPDocumentTest(ITestOutputHelper testOutput)
         : base(testOutput)
     {
-        _uri = new Uri("C:/path/to/file.razor__virtual.cs");
+        _uri = new Uri("C:/path/to/file.tazor__virtual.cs");
         _notInertContentType = Mock.Of<IContentType>(contentType => contentType.IsOfType("inert") == false, MockBehavior.Strict);
     }
 

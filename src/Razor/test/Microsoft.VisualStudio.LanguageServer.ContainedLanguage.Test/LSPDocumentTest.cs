@@ -21,7 +21,7 @@ public class LSPDocumentTest : ToolingTestBase
     public LSPDocumentTest(ITestOutputHelper testOutput)
         : base(testOutput)
     {
-        _uri = new Uri("C:/path/to/file.razor");
+        _uri = new Uri("C:/path/to/file.tazor");
     }
 
     [Fact]
@@ -69,12 +69,12 @@ public class LSPDocumentTest : ToolingTestBase
         textBuffer1.SetupGet(b => b.CurrentSnapshot).Returns((ITextSnapshot)null);
         textBuffer1.Setup(b => b.ChangeContentType(It.IsAny<IContentType>(), null)).Verifiable();
         textBuffer1.SetupGet(b => b.Properties).Returns(new PropertyCollection());
-        var testVirtualDocument1 = new TestVirtualDocument(new Uri("C:/path/to/1/file.razor.g.cs"), textBuffer1.Object);
+        var testVirtualDocument1 = new TestVirtualDocument(new Uri("C:/path/to/1/file.tazor.g.cs"), textBuffer1.Object);
         var textBuffer2 = new Mock<ITextBuffer>(MockBehavior.Strict);
         textBuffer2.SetupGet(b => b.CurrentSnapshot).Returns((ITextSnapshot)null);
         textBuffer2.Setup(b => b.ChangeContentType(It.IsAny<IContentType>(), null)).Verifiable();
         textBuffer2.SetupGet(b => b.Properties).Returns(new PropertyCollection());
-        var testVirtualDocument2 = new TestVirtualDocument(new Uri("C:/path/to/2/file.razor.g.cs"), textBuffer2.Object);
+        var testVirtualDocument2 = new TestVirtualDocument(new Uri("C:/path/to/2/file.tazor.g.cs"), textBuffer2.Object);
         using var lspDocument = new DefaultLSPDocument(_uri, Mock.Of<ITextBuffer>(MockBehavior.Strict), new[] { testVirtualDocument1, testVirtualDocument2 });
 
         // Act

@@ -25,7 +25,7 @@ internal static class SolutionExtensions
     {
         var razorDocumentId = solution.GetDocumentIdsWithUri(razorDocumentUri).FirstOrDefault();
 
-        // If we couldn't locate the .razor file, just return the generated file.
+        // If we couldn't locate the .tazor file, just return the generated file.
         if (razorDocumentId is null ||
             solution.GetAdditionalDocument(razorDocumentId) is not TextDocument document)
         {
@@ -41,7 +41,7 @@ internal static class SolutionExtensions
     {
         var razorDocumentId = solution.GetDocumentIdsWithFilePath(filePath).FirstOrDefault();
 
-        // If we couldn't locate the .razor file, just return the generated file.
+        // If we couldn't locate the .tazor file, just return the generated file.
         if (razorDocumentId is null ||
             solution.GetAdditionalDocument(razorDocumentId) is not TextDocument document)
         {

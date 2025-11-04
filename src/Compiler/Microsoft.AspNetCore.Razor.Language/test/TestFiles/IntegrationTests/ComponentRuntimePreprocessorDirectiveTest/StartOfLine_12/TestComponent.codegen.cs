@@ -18,7 +18,7 @@ namespace Test
         protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
 #nullable restore
-#line (1,3)-(4,1) "x:\dir\subdir\Test\TestComponent.razor"
+#line (1,3)-(4,1) "x:\dir\subdir\Test\TestComponent.tazor"
  #if true
     var x = 1;
     #endif

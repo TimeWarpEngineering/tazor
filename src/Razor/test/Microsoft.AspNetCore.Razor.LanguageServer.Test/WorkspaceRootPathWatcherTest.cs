@@ -72,7 +72,7 @@ public class WorkspaceRootPathWatcherTest(ITestOutputHelper testOutput) : Toolin
             .Setup(x => x.GetRootPathAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync("/some/workspacedirectory");
 
-        ImmutableArray<string> existingRazorFiles = ["c:/path/to/index.razor", "c:/other/path/_Host.cshtml"];
+        ImmutableArray<string> existingRazorFiles = ["c:/path/to/index.tazor", "c:/other/path/_Host.cshtml"];
 
         using var watcher = new TestWorkspaceRootPathWatcher(
             workspaceRootPathProviderMock.Object,
@@ -128,8 +128,8 @@ public class WorkspaceRootPathWatcherTest(ITestOutputHelper testOutput) : Toolin
     {
         get
         {
-            const string File1 = "C:/path/to/file1.razor";
-            const string File2 = "C:/path/to/file2.razor";
+            const string File1 = "C:/path/to/file1.tazor";
+            const string File2 = "C:/path/to/file2.tazor";
 
             const RazorFileChangeKind Add = RazorFileChangeKind.Added;
             const RazorFileChangeKind Remove = RazorFileChangeKind.Removed;

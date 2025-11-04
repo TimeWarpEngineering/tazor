@@ -14,7 +14,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void NoErrorsForUsingStatements()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @using System.Text
 @using System.Reflection
 @* This is allowed in imports *@
@@ -28,7 +28,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void NoErrorsForRazorComments()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @* This is allowed in imports *@
 ");
 
@@ -40,7 +40,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void NoErrorsForSupportedDirectives()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @inject FooService Foo
 @typeparam TItem
 @implements ISomeInterface
@@ -55,7 +55,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void ErrorsForPageDirective()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @page ""/""
 ");
 
@@ -64,7 +64,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
             item =>
             {
                 Assert.Equal("RZ9987", item.Id);
-                Assert.Equal(@"The '@page' directive specified in _Imports.razor file will not be imported. The directive must appear at the top of each Razor file", item.GetMessage(CultureInfo.CurrentCulture));
+                Assert.Equal(@"The '@page' directive specified in _Imports.tazor file will not be imported. The directive must appear at the top of each Razor file", item.GetMessage(CultureInfo.CurrentCulture));
             });
     }
 
@@ -72,7 +72,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void ErrorsForTagHelperDirectives()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @addTagHelper *, TestAssembly
 @removeTagHelper *, TestAssembly
 @tagHelperPrefix th:
@@ -104,7 +104,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void ErrorsForFunctionsDirective()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @functions {
     public class Test
     {
@@ -125,7 +125,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void ErrorsForSectionDirective()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @section Foo {
 }
 ");
@@ -143,7 +143,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void ErrorsForMarkup()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 <div>asdf</div>
 ");
 
@@ -160,7 +160,7 @@ public class ComponentImportsIntegrationTest : RazorIntegrationTestBase
     public void ErrorsForCode()
     {
         // Arrange/Act
-        var result = CompileToCSharp("_Imports.razor", cshtmlContent: @"
+        var result = CompileToCSharp("_Imports.tazor", cshtmlContent: @"
 @Foo
 @(Bar)
 @{

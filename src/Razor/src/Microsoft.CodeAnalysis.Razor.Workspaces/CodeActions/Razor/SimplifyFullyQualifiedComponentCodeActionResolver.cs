@@ -38,7 +38,7 @@ internal class SimplifyFullyQualifiedComponentCodeActionResolver : IRazorCodeAct
         // Check if we need to add a using directive.
         // We check the tag helpers available in the document to see if the simple component name
         // can already be used without qualification. This would be the case if the namespace is
-        // already imported via a @using directive in this file or an _Imports.razor file.
+        // already imported via a @using directive in this file or an _Imports.tazor file.
         var needsUsing = true;
         var tagHelpers = codeDocument.GetRequiredTagHelperContext().TagHelpers;
 

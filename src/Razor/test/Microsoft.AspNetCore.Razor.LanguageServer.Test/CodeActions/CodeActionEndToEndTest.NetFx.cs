@@ -744,7 +744,7 @@ public class CodeActionEndToEndTest(ITestOutputHelper testOutput) : CodeActionEn
             """;
 
         TestFileMarkupParser.GetSpan(input, out input, out var textSpan);
-        var razorFilePath = "file://C:/path/test.razor";
+        var razorFilePath = "file://C:/path/test.tazor";
         var codeDocument = CreateCodeDocument(input, filePath: razorFilePath, tagHelpers: CreateTagHelperDescriptors());
         var razorSourceText = codeDocument.Source.Text;
         var uri = new Uri(razorFilePath);
@@ -783,7 +783,7 @@ public class CodeActionEndToEndTest(ITestOutputHelper testOutput) : CodeActionEn
             """;
 
         TestFileMarkupParser.GetSpan(input, out input, out var textSpan);
-        var razorFilePath = "file://C:/path/test.razor";
+        var razorFilePath = "file://C:/path/test.tazor";
         var codeDocument = CreateCodeDocument(input, filePath: razorFilePath, tagHelpers: CreateTagHelperDescriptors());
         var razorSourceText = codeDocument.Source.Text;
         var uri = new Uri(razorFilePath);

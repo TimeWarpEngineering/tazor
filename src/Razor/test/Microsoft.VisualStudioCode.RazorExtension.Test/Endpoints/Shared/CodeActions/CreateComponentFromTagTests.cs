@@ -26,7 +26,7 @@ public class CreateComponentFromTagTests(ITestOutputHelper testOutputHelper) : C
                 """,
             codeActionName: LanguageServerConstants.CodeActions.CreateComponentFromTag,
             additionalExpectedFiles: [
-                (FileUri("Hello.razor"), "")]);
+                (FileUri("Hello.tazor"), "")]);
     }
 
     [Fact]
@@ -45,6 +45,6 @@ public class CreateComponentFromTagTests(ITestOutputHelper testOutputHelper) : C
                 """,
             codeActionName: LanguageServerConstants.CodeActions.CreateComponentFromTag,
             additionalExpectedFiles: [
-                (FileUri("Hello.razor"), "")]);
+                (FileUri("Hello.tazor"), "")]);
     }
 }

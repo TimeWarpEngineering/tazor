@@ -120,7 +120,7 @@ public class SimplifyFullyQualifiedComponentTests(ITestOutputHelper testOutputHe
             expected: null,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyFullyQualifiedComponent,
             additionalFiles: [
-                (FilePath("Component.razor"), """
+                (FilePath("Component.tazor"), """
                     <div>
                         Hello World
                     </div>
@@ -181,7 +181,7 @@ public class SimplifyFullyQualifiedComponentTests(ITestOutputHelper testOutputHe
                 """,
             codeActionName: LanguageServerConstants.CodeActions.SimplifyFullyQualifiedComponent,
             additionalFiles: [
-                (FilePath("MyCompany/MyApp/CustomComponent.razor"), """
+                (FilePath("MyCompany/MyApp/CustomComponent.tazor"), """
                     @namespace MyCompany.MyApp
                     
                     <div>

@@ -115,11 +115,11 @@ public class DefaultLSPDocumentSynchronizerTest : ToolingTestBase
         var buffer2 = new TestTextBuffer(snapshot2);
         snapshot2.TextBuffer = buffer2;
 
-        var virtualDocumentUri1 = new Uri("C:/path/to/1/file.razor__virtual.cs");
+        var virtualDocumentUri1 = new Uri("C:/path/to/1/file.tazor__virtual.cs");
         var virtualDocument1 = new TestVirtualDocumentSnapshot(virtualDocumentUri1, 1, snapshot1, state: null);
-        var virtualDocumentUri2 = new Uri("C:/path/to/2/file.razor__virtual.cs");
+        var virtualDocumentUri2 = new Uri("C:/path/to/2/file.tazor__virtual.cs");
         var virtualDocument2 = new TestVirtualDocumentSnapshot(virtualDocumentUri2, 1, snapshot2, state: null);
-        var documentUri = new Uri("C:/path/to/file.razor");
+        var documentUri = new Uri("C:/path/to/file.tazor");
         LSPDocumentSnapshot lspDocument = new TestLSPDocumentSnapshot(documentUri, 2, virtualDocument1, virtualDocument2);
 
         var fileUriProvider = Mock.Of<FileUriProvider>(provider => provider.TryGet(buffer1, out virtualDocumentUri1) == true &&
@@ -370,9 +370,9 @@ public class DefaultLSPDocumentSynchronizerTest : ToolingTestBase
 
     private (TestLSPDocumentSnapshot, TestVirtualDocumentSnapshot) CreateDocuments(int lspDocumentVersion, long virtualDocumentSyncVersion)
     {
-        var virtualDocumentUri = new Uri("C:/path/to/file.razor__virtual.cs");
+        var virtualDocumentUri = new Uri("C:/path/to/file.tazor__virtual.cs");
         var virtualDocument = new TestVirtualDocumentSnapshot(virtualDocumentUri, virtualDocumentSyncVersion, _virtualDocumentSnapshot, state: null);
-        var documentUri = new Uri("C:/path/to/file.razor");
+        var documentUri = new Uri("C:/path/to/file.tazor");
         var document = new TestLSPDocumentSnapshot(documentUri, lspDocumentVersion, virtualDocument);
 
         return (document, virtualDocument);

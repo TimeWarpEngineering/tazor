@@ -217,7 +217,7 @@ public class BlazorDataAttributeCompletionItemProviderTest : RazorToolingIntegra
     private RazorCodeDocument GetCodeDocument(string content, RazorFileKind? fileKind = null)
     {
         var actualFileKind = fileKind ?? FileKind ?? RazorFileKind.Component;
-        var result = CompileToCSharp("Test.razor", content, throwOnFailure: false, fileKind: actualFileKind);
+        var result = CompileToCSharp("Test.tazor", content, throwOnFailure: false, fileKind: actualFileKind);
         return result.CodeDocument;
     }
 

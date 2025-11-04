@@ -44,7 +44,7 @@ public class RazorContentTypeChangeListenerTest : ToolingTestBase
             MockBehavior.Strict);
 
         _razorTextDocument = Mock.Of<ITextDocument>(
-            td => td.TextBuffer == _razorBuffer && td.FilePath == "C:/path/to/file.razor",
+            td => td.TextBuffer == _razorBuffer && td.FilePath == "C:/path/to/file.tazor",
             MockBehavior.Strict);
     }
 
@@ -106,7 +106,7 @@ public class RazorContentTypeChangeListenerTest : ToolingTestBase
         lspDocumentManager.Setup(manager => manager.UntrackDocument(It.IsAny<ITextBuffer>()))
             .Throws<Exception>();
         var listener = CreateListener(lspDocumentManager.Object);
-        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.razor", DateTime.UtcNow, fileActionType);
+        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.tazor", DateTime.UtcNow, fileActionType);
 
         // Act & Assert
         listener.TextDocument_FileActionOccurred(_razorTextDocument, args);
@@ -122,7 +122,7 @@ public class RazorContentTypeChangeListenerTest : ToolingTestBase
         lspDocumentManager.Setup(manager => manager.UntrackDocument(It.IsAny<ITextBuffer>()))
             .Throws<Exception>();
         var listener = CreateListener(lspDocumentManager.Object);
-        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.razor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
+        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.tazor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
 
         // Act & Assert
         listener.TextDocument_FileActionOccurred(_razorBuffer, args);
@@ -138,7 +138,7 @@ public class RazorContentTypeChangeListenerTest : ToolingTestBase
         lspDocumentManager.Setup(manager => manager.UntrackDocument(It.IsAny<ITextBuffer>()))
             .Throws<Exception>();
         var listener = CreateListener(lspDocumentManager.Object);
-        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.razor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
+        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.tazor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
         var textDocument = new Mock<ITextDocument>(MockBehavior.Strict).Object;
         Mock.Get(textDocument).SetupGet(d => d.TextBuffer).Returns(value: null);
 
@@ -171,7 +171,7 @@ public class RazorContentTypeChangeListenerTest : ToolingTestBase
             })
             .Verifiable();
         var listener = CreateListener(lspDocumentManager.Object);
-        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.razor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
+        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.tazor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
 
         // Act
         listener.TextDocument_FileActionOccurred(_razorTextDocument, args);
@@ -197,7 +197,7 @@ public class RazorContentTypeChangeListenerTest : ToolingTestBase
             })
             .Verifiable();
         var listener = CreateListener(lspDocumentManager.Object, fileToContentTypeService: fileToContentTypeService);
-        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.razor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
+        var args = new TextDocumentFileActionEventArgs("C:/path/to/file.tazor", DateTime.UtcNow, FileActionTypes.DocumentRenamed);
 
         // Act
         listener.TextDocument_FileActionOccurred(_razorTextDocument, args);

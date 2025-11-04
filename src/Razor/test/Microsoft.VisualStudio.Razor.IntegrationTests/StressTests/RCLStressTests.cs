@@ -19,7 +19,7 @@ public class RCLStressTests(ITestOutputHelper testOutputHelper) : AbstractStress
     [ManualRunOnlyIdeFact]
     public async Task AddAndRemoveComponentInRCL()
     {
-        await TestServices.SolutionExplorer.OpenFileAsync("RazorClassLibrary", @"Components\RCLComponent.razor", ControlledHangMitigatingCancellationToken);
+        await TestServices.SolutionExplorer.OpenFileAsync("RazorClassLibrary", @"Components\RCLComponent.tazor", ControlledHangMitigatingCancellationToken);
 
         await TestServices.Editor.PlaceCaretAsync("<div", charsOffset: -1, ControlledHangMitigatingCancellationToken);
 
@@ -35,13 +35,13 @@ public class RCLStressTests(ITestOutputHelper testOutputHelper) : AbstractStress
 
             await TestServices.Editor.InvokeCodeActionAsync("Extract element to new component", cancellationToken);
 
-            await TestServices.Editor.WaitForActiveWindowByFileAsync("Component.razor", cancellationToken);
+            await TestServices.Editor.WaitForActiveWindowByFileAsync("Component.tazor", cancellationToken);
 
             var componentFileName = (await TestServices.Editor.GetActiveTextViewAsync(cancellationToken)).TextBuffer.GetFileName();
 
             await TestServices.Editor.CloseCurrentlyFocusedWindowAsync(cancellationToken, save: true);
 
-            await TestServices.Editor.WaitForActiveWindowByFileAsync("RCLComponent.razor", cancellationToken);
+            await TestServices.Editor.WaitForActiveWindowByFileAsync("RCLComponent.tazor", cancellationToken);
 
             await TestServices.Editor.WaitForComponentClassificationAsync(cancellationToken, count: 2, exact: true);
 
@@ -65,7 +65,7 @@ public class RCLStressTests(ITestOutputHelper testOutputHelper) : AbstractStress
 
             await TestServices.Editor.InsertTextAsync($"<h1>Iteration {index}</h1>{Environment.NewLine}", cancellationToken);
 
-            await TestServices.SolutionExplorer.OpenFileAsync("RazorClassLibrary", @"Components\RCLComponent.razor", ControlledHangMitigatingCancellationToken);
+            await TestServices.SolutionExplorer.OpenFileAsync("RazorClassLibrary", @"Components\RCLComponent.tazor", ControlledHangMitigatingCancellationToken);
 
             await TestServices.Editor.WaitForComponentClassificationAsync(cancellationToken, count: 1, exact: true);
 

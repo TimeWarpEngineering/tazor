@@ -73,9 +73,9 @@ public class GuestProjectPathProviderTest(ITestOutputHelper testOutput) : Toolin
     public void TryGetProjectPath_NullHostProjectPath_ReturnsFalse()
     {
         // Arrange
-        var documentFilePath = "/path/to/document.razor";
+        var documentFilePath = "/path/to/document.tazor";
         var documentFilePathUri = new Uri("vsls:" + documentFilePath);
-        var projectFilePath = "/path/to/project.razor";
+        var projectFilePath = "/path/to/project.tazor";
         var projectFilePathUri = new Uri("vsls:" + projectFilePath);
 
         var collaborationSessionMock = new StrictMock<CollaborationSession>();
@@ -122,7 +122,7 @@ public class GuestProjectPathProviderTest(ITestOutputHelper testOutput) : Toolin
     public void TryGetProjectPath_ValidHostProjectPath_ReturnsTrueWithGuestNormalizedPath()
     {
         // Arrange
-        var documentFilePath = "/path/to/document.razor";
+        var documentFilePath = "/path/to/document.tazor";
         var documentFilePathUri = new Uri("vsls:" + documentFilePath);
         var projectFilePath = "/path/to/project.csproj";
         var projectFilePathUri = new Uri("vsls:" + projectFilePath);

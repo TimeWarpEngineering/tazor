@@ -18,16 +18,16 @@ public class IFileSystemExtensionsTest(ITestOutputHelper testOutput) : TagHelper
     public void GetFilteredFiles_FindsFiles()
     {
         // Arrange
-        var firstProjectRazorJson = @"HigherDirectory\project.razor.bin";
-        var secondProjectRazorJson = @"HigherDirectory\RealDirectory\project.razor.bin";
+        var firstProjectRazorJson = @"HigherDirectory\project.tazor.bin";
+        var secondProjectRazorJson = @"HigherDirectory\RealDirectory\project.tazor.bin";
 
         var workspaceDirectory = Path.Combine("LowerDirectory");
-        var searchPattern = "project.razor.bin";
+        var searchPattern = "project.tazor.bin";
         var ignoredDirectories = new[] { "node_modules" };
         var fileResults = new Dictionary<string, string[]?>() {
             { "HigherDirectory", [firstProjectRazorJson] },
             { "RealDirectory", [secondProjectRazorJson] },
-            { "LongDirectory", ["LONGPATH", "LONGPATH\\project.razor.bin"] },
+            { "LongDirectory", ["LONGPATH", "LONGPATH\\project.tazor.bin"] },
             { "node_modules", null },
         };
         var directoryResults = new Dictionary<string, string[]?>() {

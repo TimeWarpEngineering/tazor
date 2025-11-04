@@ -18,7 +18,7 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
 {
     private static readonly HostProject s_hostProject = new("/path/to/project.csproj", "/path/to/obj", RazorConfiguration.Default, "TestRootNamespace");
     private static readonly HostProject s_hostProject2 = new("/path/to/project2.csproj", "/path/to/obj2", RazorConfiguration.Default, "TestRootNamespace");
-    private static readonly HostDocument s_hostDocument = new("/path/to/file.razor", "file.razor");
+    private static readonly HostDocument s_hostDocument = new("/path/to/file.tazor", "file.tazor");
 
     private readonly TestClient _serverClient = new();
     private readonly TestProjectSnapshotManager _projectManager;
@@ -47,11 +47,11 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         var sourceText = SourceText.From(content);
 
         // Act
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.razor", sourceText, 123);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.tazor", sourceText, 123);
 
         // Assert
         var updateRequest = Assert.Single(_serverClient.UpdateRequests);
-        Assert.Equal("/path/to/file.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file.tazor", updateRequest.HostDocumentFilePath);
         var textChange = Assert.Single(updateRequest.Changes);
         Assert.Equal(content, textChange.NewText);
         Assert.Equal(123, updateRequest.HostDocumentVersion);
@@ -66,11 +66,11 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         var sourceText = SourceText.From(content);
 
         // Act
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.razor", sourceText, 123);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.tazor", sourceText, 123);
 
         // Assert
         var updateRequest = Assert.Single(_serverClient.UpdateRequests);
-        Assert.Equal("/path/to/file.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file.tazor", updateRequest.HostDocumentFilePath);
         var textChange = Assert.Single(updateRequest.Changes);
         Assert.Equal(content, textChange.NewText);
         Assert.Equal(123, updateRequest.HostDocumentVersion);
@@ -82,19 +82,19 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         // Arrange
         var publisher = new GeneratedDocumentPublisher(_projectManager, _serverClient, TestLanguageServerFeatureOptions.Instance, LoggerFactory);
         var initialSourceText = SourceText.From("// Initial content\n");
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.razor", initialSourceText, 123);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.tazor", initialSourceText, 123);
         var change = new TextChange(
             new TextSpan(initialSourceText.Length, 0),
             "// Another line");
         var changedSourceText = initialSourceText.WithChanges(change);
 
         // Act
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.razor", changedSourceText, 124);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.tazor", changedSourceText, 124);
 
         // Assert
         Assert.Equal(2, _serverClient.UpdateRequests.Count);
         var updateRequest = _serverClient.UpdateRequests.Last();
-        Assert.Equal("/path/to/file.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file.tazor", updateRequest.HostDocumentFilePath);
         var textChange = Assert.Single(updateRequest.Changes);
         Assert.Equal(change.ToRazorTextChange(), textChange);
         Assert.Equal(124, updateRequest.HostDocumentVersion);
@@ -106,19 +106,19 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         // Arrange
         var publisher = new GeneratedDocumentPublisher(_projectManager, _serverClient, TestLanguageServerFeatureOptions.Instance, LoggerFactory);
         var initialSourceText = SourceText.From("HTML content\n");
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.razor", initialSourceText, 123);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.tazor", initialSourceText, 123);
         var change = new TextChange(
             new TextSpan(initialSourceText.Length, 0),
             "More content!!");
         var changedSourceText = initialSourceText.WithChanges(change);
 
         // Act
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.razor", changedSourceText, 124);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.tazor", changedSourceText, 124);
 
         // Assert
         Assert.Equal(2, _serverClient.UpdateRequests.Count);
         var updateRequest = _serverClient.UpdateRequests.Last();
-        Assert.Equal("/path/to/file.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file.tazor", updateRequest.HostDocumentFilePath);
         var textChange = Assert.Single(updateRequest.Changes);
         Assert.Equal(change.ToRazorTextChange(), textChange);
         Assert.Equal(124, updateRequest.HostDocumentVersion);
@@ -131,16 +131,16 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         var publisher = new GeneratedDocumentPublisher(_projectManager, _serverClient, TestLanguageServerFeatureOptions.Instance, LoggerFactory);
         var sourceTextContent = "// The content";
         var initialSourceText = SourceText.From(sourceTextContent);
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.razor", initialSourceText, 123);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.tazor", initialSourceText, 123);
         var identicalSourceText = SourceText.From(sourceTextContent);
 
         // Act
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.razor", identicalSourceText, 124);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file.tazor", identicalSourceText, 124);
 
         // Assert
         Assert.Equal(2, _serverClient.UpdateRequests.Count);
         var updateRequest = _serverClient.UpdateRequests.Last();
-        Assert.Equal("/path/to/file.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file.tazor", updateRequest.HostDocumentFilePath);
         Assert.Empty(updateRequest.Changes);
         Assert.Equal(124, updateRequest.HostDocumentVersion);
     }
@@ -152,16 +152,16 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         var publisher = new GeneratedDocumentPublisher(_projectManager, _serverClient, TestLanguageServerFeatureOptions.Instance, LoggerFactory);
         var sourceTextContent = "HTMl content";
         var initialSourceText = SourceText.From(sourceTextContent);
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.razor", initialSourceText, 123);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.tazor", initialSourceText, 123);
         var identicalSourceText = SourceText.From(sourceTextContent);
 
         // Act
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.razor", identicalSourceText, 124);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file.tazor", identicalSourceText, 124);
 
         // Assert
         Assert.Equal(2, _serverClient.UpdateRequests.Count);
         var updateRequest = _serverClient.UpdateRequests.Last();
-        Assert.Equal("/path/to/file.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file.tazor", updateRequest.HostDocumentFilePath);
         Assert.Empty(updateRequest.Changes);
         Assert.Equal(124, updateRequest.HostDocumentVersion);
     }
@@ -173,16 +173,16 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         var publisher = new GeneratedDocumentPublisher(_projectManager, _serverClient, TestLanguageServerFeatureOptions.Instance, LoggerFactory);
         var sourceTextContent = "// The content";
         var initialSourceText = SourceText.From(sourceTextContent);
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file1.razor", initialSourceText, 123);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file1.tazor", initialSourceText, 123);
         var identicalSourceText = SourceText.From(sourceTextContent);
 
         // Act
-        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file2.razor", identicalSourceText, 123);
+        publisher.PublishCSharp(s_hostProject.Key, "/path/to/file2.tazor", identicalSourceText, 123);
 
         // Assert
         Assert.Equal(2, _serverClient.UpdateRequests.Count);
         var updateRequest = _serverClient.UpdateRequests.Last();
-        Assert.Equal("/path/to/file2.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file2.tazor", updateRequest.HostDocumentFilePath);
         var textChange = Assert.Single(updateRequest.Changes);
         Assert.Equal(sourceTextContent, textChange.NewText);
         Assert.Equal(123, updateRequest.HostDocumentVersion);
@@ -195,16 +195,16 @@ public class GeneratedDocumentPublisherTest : LanguageServerTestBase
         var publisher = new GeneratedDocumentPublisher(_projectManager, _serverClient, TestLanguageServerFeatureOptions.Instance, LoggerFactory);
         var sourceTextContent = "HTML content";
         var initialSourceText = SourceText.From(sourceTextContent);
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file1.razor", initialSourceText, 123);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file1.tazor", initialSourceText, 123);
         var identicalSourceText = SourceText.From(sourceTextContent);
 
         // Act
-        publisher.PublishHtml(s_hostProject.Key, "/path/to/file2.razor", identicalSourceText, 123);
+        publisher.PublishHtml(s_hostProject.Key, "/path/to/file2.tazor", identicalSourceText, 123);
 
         // Assert
         Assert.Equal(2, _serverClient.UpdateRequests.Count);
         var updateRequest = _serverClient.UpdateRequests.Last();
-        Assert.Equal("/path/to/file2.razor", updateRequest.HostDocumentFilePath);
+        Assert.Equal("/path/to/file2.tazor", updateRequest.HostDocumentFilePath);
         var textChange = Assert.Single(updateRequest.Changes);
         Assert.Equal(sourceTextContent, textChange.NewText);
         Assert.Equal(123, updateRequest.HostDocumentVersion);

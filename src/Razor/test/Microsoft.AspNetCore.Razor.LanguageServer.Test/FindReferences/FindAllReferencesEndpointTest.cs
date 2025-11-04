@@ -47,7 +47,7 @@ public class FindAllReferencesEndpointTest(ITestOutputHelper testOutput) : Singl
         TestFileMarkupParser.GetPositionAndSpans(input, out var output, out int cursorPosition, out ImmutableArray<TextSpan> expectedSpans);
 
         var codeDocument = CreateCodeDocument(output);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath, multiTargetProject: false);
         var projectManager = CreateProjectSnapshotManager();

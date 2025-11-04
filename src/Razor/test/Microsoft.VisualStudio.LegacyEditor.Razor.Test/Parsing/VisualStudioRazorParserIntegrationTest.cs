@@ -51,7 +51,7 @@ public class VisualStudioRazorParserIntegrationTest : VisualStudioTestBase
         // Arrange
         var snapshot = new StringTextSnapshot("@code { }");
         var testBuffer = new TestTextBuffer(snapshot);
-        var documentTracker = CreateDocumentTracker(testBuffer, filePath: "C:\\This\\Path\\Is\\Just\\For\\component.razor");
+        var documentTracker = CreateDocumentTracker(testBuffer, filePath: "C:\\This\\Path\\Is\\Just\\For\\component.tazor");
         using (var manager = CreateParserManager(documentTracker))
         {
             // Act

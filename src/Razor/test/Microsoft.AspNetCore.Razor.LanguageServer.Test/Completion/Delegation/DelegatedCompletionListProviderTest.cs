@@ -204,7 +204,7 @@ public class DelegatedCompletionListProviderTest : CompletionTestBase
         // Arrange
         var completionContext = new VSInternalCompletionContext() { TriggerKind = CompletionTriggerKind.Invoked };
         var codeDocument = CreateCodeDocument("@functions ");
-        var documentContext = TestDocumentContext.Create("C:/path/to/file.razor", codeDocument);
+        var documentContext = TestDocumentContext.Create("C:/path/to/file.tazor", codeDocument);
 
         // Act
         var completionList = await _provider.GetCompletionListAsync(
@@ -363,7 +363,7 @@ public class DelegatedCompletionListProviderTest : CompletionTestBase
         TestFileMarkupParser.GetPosition(content, out var output, out var cursorPosition);
         var codeDocument = CreateCodeDocument(output);
         var csharpSourceText = codeDocument.GetCSharpSourceText();
-        var csharpDocumentUri = new Uri("C:/path/to/file.razor__virtual.g.cs");
+        var csharpDocumentUri = new Uri("C:/path/to/file.tazor__virtual.g.cs");
         var serverCapabilities = new VSInternalServerCapabilities()
         {
             CompletionProvider = new CompletionOptions
@@ -388,7 +388,7 @@ public class DelegatedCompletionListProviderTest : CompletionTestBase
             InvokeKind = invocationKind,
         };
 
-        var documentContext = TestDocumentContext.Create("C:/path/to/file.razor", codeDocument);
+        var documentContext = TestDocumentContext.Create("C:/path/to/file.tazor", codeDocument);
         var clientConnection = CreateClientConnectionForCompletion(csharpServer);
         var provider = CreateDelegatedCompletionListProvider(clientConnection);
 

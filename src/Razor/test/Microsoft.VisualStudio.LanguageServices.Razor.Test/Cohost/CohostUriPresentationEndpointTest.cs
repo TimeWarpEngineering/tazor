@@ -57,7 +57,7 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                     {
                         TextDocument = new()
                         {
-                            DocumentUri = new(FileUri("File1.razor.g.html"))
+                            DocumentUri = new(FileUri("File1.tazor.g.html"))
                         },
                         Edits = [LspFactory.CreateTextEdit(position: (0, 0), htmlTag)]
                     }
@@ -80,9 +80,9 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
-            uris: [FileUri("Component.razor")],
+            uris: [FileUri("Component.tazor")],
             expected: "<Component />");
     }
 
@@ -99,7 +99,7 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
 
                 The end.
                 """,
-            uris: [FileUri("_Imports.razor")],
+            uris: [FileUri("_Imports.tazor")],
             expected: null);
     }
 
@@ -129,7 +129,7 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                     {
                         TextDocument = new()
                         {
-                            DocumentUri = new(FileUri("File1.razor.g.html"))
+                            DocumentUri = new(FileUri("File1.tazor.g.html"))
                         },
                         Edits = [LspFactory.CreateTextEdit(position: (0, 0), htmlTag)]
                     }
@@ -153,9 +153,9 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                 }
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
-            uris: [FileUri("Component.razor")],
+            uris: [FileUri("Component.tazor")],
             expected: null);
     }
 
@@ -173,12 +173,12 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
             uris: [
-                FileUri("Component.razor"),
-                FileUri("Component.razor.css"),
-                FileUri("Component.razor.js")
+                FileUri("Component.tazor"),
+                FileUri("Component.tazor.css"),
+                FileUri("Component.tazor.js")
             ],
             expected: "<Component />");
     }
@@ -197,12 +197,12 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"), "")
+                (FilePath("Component.tazor"), "")
             ],
             uris: [
-                FileUri("Component.razor.css"),
-                FileUri("Component.razor"),
-                FileUri("Component.razor.js")
+                FileUri("Component.tazor.css"),
+                FileUri("Component.tazor"),
+                FileUri("Component.tazor.js")
             ],
             expected: "<Component />");
     }
@@ -221,7 +221,7 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                 The end.
                 """,
             additionalFiles: [
-                (FilePath("Component.razor"),
+                (FilePath("Component.tazor"),
                     """
                     @code
                     {
@@ -234,7 +234,7 @@ public class CohostUriPresentationEndpointTest(ITestOutputHelper testOutputHelpe
                     }
                     """)
             ],
-            uris: [FileUri("Component.razor")],
+            uris: [FileUri("Component.tazor")],
             expected: """<Component RequiredParameter="" />""");
     }
 

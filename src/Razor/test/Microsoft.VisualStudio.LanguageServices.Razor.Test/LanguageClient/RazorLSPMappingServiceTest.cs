@@ -17,7 +17,7 @@ namespace Microsoft.VisualStudio.Razor.LanguageClient;
 
 public class RazorLSPMappingServiceTest(ITestOutputHelper testOutput) : ToolingTestBase(testOutput)
 {
-    private readonly Uri _mockDocumentUri = new("C://project/path/document.razor");
+    private readonly Uri _mockDocumentUri = new("C://project/path/document.tazor");
 
     private const string MockGeneratedContent = """
         Hello

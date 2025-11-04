@@ -373,7 +373,7 @@ public class RazorCompletionListProviderTest : LanguageServerTestBase
     public void GetCompletionList_ProvidesInjectOnIncomplete_KeywordIn()
     {
         // Arrange
-        var documentPath = "C:/path/to/document.razor";
+        var documentPath = "C:/path/to/document.tazor";
         var builder = TagHelperDescriptorBuilder.CreateComponent("TestTagHelper", "TestAssembly");
         builder.TypeName = "TestNamespace.TestTagHelper";
         builder.TagMatchingRule(rule => rule.TagName = "Test");
@@ -401,7 +401,7 @@ public class RazorCompletionListProviderTest : LanguageServerTestBase
     public void GetCompletionList_DoesNotProvideInjectOnInvoked()
     {
         // Arrange
-        var documentPath = "C:/path/to/document.razor";
+        var documentPath = "C:/path/to/document.tazor";
         var builder = TagHelperDescriptorBuilder.CreateComponent("TestTagHelper", "TestAssembly");
         builder.TypeName = "TestNamespace.TestTagHelper";
         builder.TagMatchingRule(rule => rule.TagName = "Test");
@@ -426,7 +426,7 @@ public class RazorCompletionListProviderTest : LanguageServerTestBase
     public void GetCompletionList_ProvidesInjectOnIncomplete()
     {
         // Arrange
-        var documentPath = "C:/path/to/document.razor";
+        var documentPath = "C:/path/to/document.tazor";
         var builder = TagHelperDescriptorBuilder.CreateComponent("TestTagHelper", "TestAssembly");
         builder.TypeName = "TestNamespace.TestTagHelper";
         builder.TagMatchingRule(rule => rule.TagName = "Test");

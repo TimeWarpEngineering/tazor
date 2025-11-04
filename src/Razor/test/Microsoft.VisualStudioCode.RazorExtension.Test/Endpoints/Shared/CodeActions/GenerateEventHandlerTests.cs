@@ -205,7 +205,7 @@ public class GenerateEventHandlerTests(ITestOutputHelper testOutputHelper) : Coh
                 }
                 """,
             additionalFiles: [
-                (FilePath("File1.razor.cs"), """
+                (FilePath("File1.tazor.cs"), """
                     namespace Goo
                     {
                         public partial class NotAComponent
@@ -227,7 +227,7 @@ public class GenerateEventHandlerTests(ITestOutputHelper testOutputHelper) : Coh
                 <button @onclick="DoesNotExist"></button>
                 """,
             additionalFiles: [
-                (FilePath("File1.razor.cs"), """
+                (FilePath("File1.tazor.cs"), """
                     namespace SomeProject;
 
                     public partial class File1
@@ -238,7 +238,7 @@ public class GenerateEventHandlerTests(ITestOutputHelper testOutputHelper) : Coh
                     }
                     """)],
             additionalExpectedFiles: [
-                (FileUri("File1.razor.cs"), """
+                (FileUri("File1.tazor.cs"), """
                     namespace SomeProject;
                     
                     public partial class File1
@@ -266,7 +266,7 @@ public class GenerateEventHandlerTests(ITestOutputHelper testOutputHelper) : Coh
                 <button @onclick="DoesNotExist"></button>
                 """,
             additionalFiles: [
-                (FilePath("File1.razor.cs"), """
+                (FilePath("File1.tazor.cs"), """
                     namespace SomeProject;
 
                     public partial class File1
@@ -274,7 +274,7 @@ public class GenerateEventHandlerTests(ITestOutputHelper testOutputHelper) : Coh
                     }
                     """)],
             additionalExpectedFiles: [
-                (FileUri("File1.razor.cs"), """
+                (FileUri("File1.tazor.cs"), """
                     namespace SomeProject;
                     
                     public partial class File1

@@ -111,7 +111,7 @@ namespace Test
     public void Component_StartsWithLowerCase_ReportsError()
     {
         // Arrange & Act
-        var generated = CompileToCSharp("lowerCase.razor", cshtmlContent: @"
+        var generated = CompileToCSharp("lowerCase.tazor", cshtmlContent: @"
 <input type=""text"" @bind=""Text"" />
 @functions {
     public string Text { get; set; } = ""text"";

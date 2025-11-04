@@ -47,7 +47,7 @@ public class RenameEndpointDelegationTest(ITestOutputHelper testOutput) : Single
         // Arrange
         TestFileMarkupParser.GetPosition(input, out var output, out var cursorPosition);
         var codeDocument = CreateCodeDocument(output);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath);
 

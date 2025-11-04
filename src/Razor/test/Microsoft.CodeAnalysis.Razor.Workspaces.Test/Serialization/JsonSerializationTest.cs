@@ -90,7 +90,7 @@ public class JsonSerializationTest(ITestOutputHelper testOutput) : ToolingTestBa
     {
         // Arrange
         var legacyDocument = new DocumentSnapshotHandle("/path/to/file.cshtml", "file.cshtml", RazorFileKind.Legacy);
-        var componentDocument = new DocumentSnapshotHandle("/path/to/otherfile.razor", "otherfile.razor", RazorFileKind.Component);
+        var componentDocument = new DocumentSnapshotHandle("/path/to/otherfile.tazor", "otherfile.tazor", RazorFileKind.Component);
         var projectInfo = new RazorProjectInfo(
             new ProjectKey("/path/to/obj/"),
             "/path/to/project.csproj",

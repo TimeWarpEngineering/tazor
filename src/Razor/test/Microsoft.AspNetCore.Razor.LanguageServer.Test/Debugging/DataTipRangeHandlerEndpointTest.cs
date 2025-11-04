@@ -77,7 +77,7 @@ public sealed class DataTipRangeHandlerEndpointTest(ITestOutputHelper testOutput
         Assert.True(hoverSpans.Length == 1, "Test authoring failure: Expected only one 'hover' span.");
 
         var codeDocument = CreateCodeDocument(output);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         // Act
         var result = await GetDataTipRangeAsync(codeDocument, razorFilePath, position);

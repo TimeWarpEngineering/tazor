@@ -1468,8 +1468,8 @@ public class DocumentFormattingTest(FormattingTestContext context, HtmlFormattin
     public async Task LargeFile()
     {
         await RunFormattingTestAsync(
-            input: RazorTestResources.GetResourceText("FormattingTest.razor"),
-            expected: RazorTestResources.GetResourceText("FormattingTest_Expected.razor"),
+            input: RazorTestResources.GetResourceText("FormattingTest.tazor"),
+            expected: RazorTestResources.GetResourceText("FormattingTest_Expected.tazor"),
             allowDiagnostics: true);
     }
 

@@ -51,7 +51,7 @@ public class HtmlVirtualDocumentFactoryTest : ToolingTestBase
     public void TryCreateFor_NonRazorLSPBuffer_ReturnsFalse()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(provider => provider.GetOrCreate(It.IsAny<ITextBuffer>()) == uri, MockBehavior.Strict);
         var factory = new HtmlVirtualDocumentFactory(_contentTypeRegistryService, _textBufferFactoryService, _textDocumentFactoryService, uriProvider, TestLanguageServerFeatureOptions.Instance, telemetryReporter: null);
 
@@ -70,7 +70,7 @@ public class HtmlVirtualDocumentFactoryTest : ToolingTestBase
     public void TryCreateFor_RazorLSPBuffer_ReturnsHtmlVirtualDocumentAndTrue()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(provider => provider.GetOrCreate(_razorLSPBuffer) == uri, MockBehavior.Strict);
         Mock.Get(uriProvider).Setup(p => p.AddOrUpdate(It.IsAny<ITextBuffer>(), It.IsAny<Uri>())).Verifiable();
         var factory = new HtmlVirtualDocumentFactory(_contentTypeRegistryService, _textBufferFactoryService, _textDocumentFactoryService, uriProvider, TestLanguageServerFeatureOptions.Instance, telemetryReporter: null);

@@ -39,7 +39,7 @@ public class DefaultLSPDocumentManagerTest : ToolingTestBase
         _textBuffer.ChangeContentType(contentType, editTag: null);
         var snapshot = _textBuffer.CurrentSnapshot;
 
-        _uri = new Uri("C:/path/to/file.razor");
+        _uri = new Uri("C:/path/to/file.tazor");
         _uriProvider = Mock.Of<FileUriProvider>(provider => provider.GetOrCreate(_textBuffer) == _uri, MockBehavior.Strict);
         Mock.Get(_uriProvider).Setup(p => p.Remove(It.IsAny<ITextBuffer>())).Verifiable();
         var testVirtualDocument = new TestVirtualDocument();
@@ -165,8 +165,8 @@ public class DefaultLSPDocumentManagerTest : ToolingTestBase
         // Arrange
         var changeListenerLazy = CreateChangeListenerForContentTypes(new[] { _lspDocumentSnapshot.Snapshot.ContentType.TypeName });
 
-        var testVirtualDocument1 = new TestVirtualDocument(new Uri("C:/path/to/doc1.razor.g.cs"));
-        var testVirtualDocument2 = new TestVirtualDocument(new Uri("C:/path/to/doc2.razor.g.cs"));
+        var testVirtualDocument1 = new TestVirtualDocument(new Uri("C:/path/to/doc1.tazor.g.cs"));
+        var testVirtualDocument2 = new TestVirtualDocument(new Uri("C:/path/to/doc2.tazor.g.cs"));
 
         var lspDocument = new DefaultLSPDocument(_uri, _textBuffer, new[] { testVirtualDocument1, testVirtualDocument2 });
         var lspDocumentFactory = Mock.Of<LSPDocumentFactory>(factory => factory.Create(_textBuffer) == lspDocument, MockBehavior.Strict);
@@ -255,7 +255,7 @@ public class DefaultLSPDocumentManagerTest : ToolingTestBase
 
         public override ITextBuffer TextBuffer => throw new NotImplementedException();
 
-        public override VirtualDocumentSnapshot CurrentSnapshot { get; } = new TestVirtualDocumentSnapshot(new Uri("C:/path/to/something.razor.g.cs"), 123);
+        public override VirtualDocumentSnapshot CurrentSnapshot { get; } = new TestVirtualDocumentSnapshot(new Uri("C:/path/to/something.tazor.g.cs"), 123);
 
         public override int HostDocumentVersion => 123;
 

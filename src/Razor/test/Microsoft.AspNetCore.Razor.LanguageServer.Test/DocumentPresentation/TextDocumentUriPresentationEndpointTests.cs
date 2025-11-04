@@ -28,8 +28,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
         var projectManager = CreateProjectSnapshotManager();
 
         var hostProject = TestHostProject.Create("c:/path/project.csproj");
-        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.razor");
-        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/MyTagHelper.razor");
+        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.tazor");
+        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/MyTagHelper.tazor");
 
         await projectManager.UpdateAsync(updater =>
         {
@@ -38,7 +38,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
             updater.AddDocument(hostProject.Key, hostDocument2, EmptyTextLoader.Instance);
         });
 
-        var droppedUri = new Uri("file:///c:/path/MyTagHelper.razor");
+        var droppedUri = new Uri("file:///c:/path/MyTagHelper.tazor");
         var builder = TagHelperDescriptorBuilder.CreateTagHelper("MyTagHelper", "MyAssembly");
         builder.SetTypeName(
             fullName: "TestRootNamespace.MyTagHelper",
@@ -91,8 +91,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
         var projectManager = CreateProjectSnapshotManager();
 
         var hostProject = TestHostProject.Create("c:/path/project.csproj");
-        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.razor");
-        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/MyTagHelper.razor");
+        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.tazor");
+        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/MyTagHelper.tazor");
 
         await projectManager.UpdateAsync(updater =>
         {
@@ -101,7 +101,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
             updater.AddDocument(hostProject.Key, hostDocument2, EmptyTextLoader.Instance);
         });
 
-        var droppedUri = new Uri("file:///c:/path/MyTagHelper.razor");
+        var droppedUri = new Uri("file:///c:/path/MyTagHelper.tazor");
         var builder = TagHelperDescriptorBuilder.CreateTagHelper("MyTagHelper", "MyAssembly");
         builder.SetTypeName(
             fullName: "TestRootNamespace.MyTagHelper",
@@ -131,8 +131,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
             Range = LspFactory.CreateSingleLineRange(line: 0, character: 1, length: 1),
             Uris =
             [
-                new Uri("file:///c:/path/MyTagHelper.razor.cs"),
-                new Uri("file:///c:/path/MyTagHelper.razor.css"),
+                new Uri("file:///c:/path/MyTagHelper.tazor.cs"),
+                new Uri("file:///c:/path/MyTagHelper.tazor.css"),
                 droppedUri,
             ]
         };
@@ -159,8 +159,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
         var projectManager = CreateProjectSnapshotManager();
 
         var hostProject = TestHostProject.Create("c:/path/project.csproj");
-        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.razor");
-        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/fetchdata.razor");
+        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.tazor");
+        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/fetchdata.tazor");
 
         await projectManager.UpdateAsync(updater =>
         {
@@ -169,7 +169,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
             updater.AddDocument(hostProject.Key, hostDocument2, EmptyTextLoader.Instance);
         });
 
-        var droppedUri = new Uri("file:///c:/path/fetchdata.razor");
+        var droppedUri = new Uri("file:///c:/path/fetchdata.tazor");
         var builder = TagHelperDescriptorBuilder.CreateTagHelper("FetchData", "MyAssembly");
         builder.SetTypeName(
             fullName: "TestRootNamespace.FetchData",
@@ -226,8 +226,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
     {
         // Arrange
         var codeDocument = CreateCodeDocument("<div></div>");
-        var uri = new Uri("file://path/test.razor");
-        var droppedUri = new Uri("file:///c:/path/MyTagHelper.razor");
+        var uri = new Uri("file://path/test.tazor");
+        var droppedUri = new Uri("file:///c:/path/MyTagHelper.tazor");
 
         var documentContextFactory = CreateDocumentContextFactory(uri, codeDocument);
         var documentContext = CreateDocumentContext(uri, codeDocument);
@@ -257,7 +257,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
         // Arrange
         var codeDocument = CreateCodeDocument("<div></div>");
 
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContextFactory = CreateDocumentContextFactory(uri, codeDocument);
         var documentContext = CreateDocumentContext(uri, codeDocument);
 
@@ -272,7 +272,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
             [
                 new Uri("file:///c:/path/SomeOtherFile.cs"),
                 new Uri("file:///c:/path/Bar.Foo"),
-                new Uri("file:///c:/path/MyTagHelper.razor"),
+                new Uri("file:///c:/path/MyTagHelper.tazor"),
             ]
         };
 
@@ -292,7 +292,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
         var codeDocument = CreateCodeDocument("<div></div>");
 
         var droppedUri = new Uri("file:///c:/path/MyTagHelper.cshtml");
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContextFactory = CreateDocumentContextFactory(uri, codeDocument);
         var documentContext = CreateDocumentContext(uri, codeDocument);
 
@@ -322,8 +322,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
         var projectManager = CreateProjectSnapshotManager();
 
         var hostProject = TestHostProject.Create("c:/path/project.csproj");
-        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.razor");
-        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/fetchdata.razor");
+        var hostDocument1 = TestHostDocument.Create(hostProject, "c:/path/index.tazor");
+        var hostDocument2 = TestHostDocument.Create(hostProject, "c:/path/fetchdata.tazor");
 
         await projectManager.UpdateAsync(updater =>
         {
@@ -332,8 +332,8 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
             updater.AddDocument(hostProject.Key, hostDocument2, EmptyTextLoader.Instance);
         });
 
-        var droppedUri1 = new Uri("file:///c:/path/fetchdata.razor.cs");
-        var droppedUri2 = new Uri("file:///c:/path/fetchdata.razor");
+        var droppedUri1 = new Uri("file:///c:/path/fetchdata.tazor.cs");
+        var droppedUri2 = new Uri("file:///c:/path/fetchdata.tazor");
         var builder = TagHelperDescriptorBuilder.CreateTagHelper("FetchData", "MyAssembly");
         builder.SetTypeName(
             fullName: "TestRootNamespace.FetchData",
@@ -384,7 +384,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
     {
         // Arrange
         var codeDocument = CreateCodeDocument("@counter");
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
         var documentContextFactory = CreateDocumentContextFactory(uri, codeDocument);
 
@@ -411,7 +411,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
     {
         // Arrange
         var codeDocument = CreateCodeDocument("<div></div>");
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
 
         var documentContextFactory = CreateDocumentContextFactory(uri, codeDocument);
@@ -439,7 +439,7 @@ public class TextDocumentUriPresentationEndpointTests(ITestOutputHelper testOutp
     {
         // Arrange
         var codeDocument = CreateCodeDocument("<div></div>");
-        var uri = new Uri("file://path/test.razor");
+        var uri = new Uri("file://path/test.tazor");
         var documentContext = CreateDocumentContext(uri, codeDocument);
 
         var documentContextFactory = CreateDocumentContextFactory(uri, codeDocument);

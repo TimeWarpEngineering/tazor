@@ -90,13 +90,13 @@
         <note />
       </trans-unit>
       <trans-unit id="IncompatibleProject_NoAdditionalFiles">
-        <source>The Razor editor utilizes the Razor Source Generator, which requires *.razor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has no Razor documents that are AdditionalFiles, so the editing experience will be limited. Is it using the Razor SDK? No more messages will be logged for this project.</source>
-        <target state="translated">Razor 编辑器使用 Razor 源生成器，这要求 *.razor 和 *.cshtml 文件是项目中的 AdditionalFile。{0} 似乎来自“{1}”，其中不包含任何为 AdditionalFile 的 Razor 文档，因此编辑体验将受到限制。它使用的是 Razor SDK 吗?对于此项目，将不会记录更多消息。</target>
+        <source>The Razor editor utilizes the Razor Source Generator, which requires *.tazor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has no Razor documents that are AdditionalFiles, so the editing experience will be limited. Is it using the Razor SDK? No more messages will be logged for this project.</source>
+        <target state="translated">Razor 编辑器使用 Razor 源生成器，这要求 *.tazor 和 *.cshtml 文件是项目中的 AdditionalFile。{0} 似乎来自“{1}”，其中不包含任何为 AdditionalFile 的 Razor 文档，因此编辑体验将受到限制。它使用的是 Razor SDK 吗?对于此项目，将不会记录更多消息。</target>
         <note />
       </trans-unit>
       <trans-unit id="IncompatibleProject_NotAnAdditionalFile">
-        <source>The Razor editor utilizes the Razor Source Generator, which requires *.razor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has Razor documents but this file is not an AdditionalFile, so the editing experience will be limited. No more messages will be logged for this project.</source>
-        <target state="translated">Razor 编辑器使用 Razor 源生成器，这要求 *.razor 和 *.cshtml 文件是项目中的 AdditionalFile。{0} 似乎来自“{1}”，其中包含 Razor 文档，但此文件不是 AdditionalFile，因此编辑体验将受到限制。对于此项目，将不会记录更多消息。</target>
+        <source>The Razor editor utilizes the Razor Source Generator, which requires *.tazor and *.cshtml files to be AdditionalFiles in the project. {0} appears to come from '{1}', which has Razor documents but this file is not an AdditionalFile, so the editing experience will be limited. No more messages will be logged for this project.</source>
+        <target state="translated">Razor 编辑器使用 Razor 源生成器，这要求 *.tazor 和 *.cshtml 文件是项目中的 AdditionalFile。{0} 似乎来自“{1}”，其中包含 Razor 文档，但此文件不是 AdditionalFile，因此编辑体验将受到限制。对于此项目，将不会记录更多消息。</target>
         <note />
       </trans-unit>
       <trans-unit id="Invalid_Offset">

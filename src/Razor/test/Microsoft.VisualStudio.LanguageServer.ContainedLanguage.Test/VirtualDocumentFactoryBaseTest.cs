@@ -50,7 +50,7 @@ public class VirtualDocumentFactoryBaseTest : ToolingTestBase
     public void TryCreateFor_IncompatibleHostDocumentBuffer_ReturnsFalse()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(provider => provider.GetOrCreate(It.IsAny<ITextBuffer>()) == uri, MockBehavior.Strict);
         var factory = new TestVirtualDocumentFactory(_contentTypeRegistry, _textBufferFactoryService, _textDocumentFactoryService, uriProvider);
 
@@ -68,7 +68,7 @@ public class VirtualDocumentFactoryBaseTest : ToolingTestBase
     public void TryCreateFor_ReturnsLanguageVirtualDocumentAndTrue()
     {
         // Arrange
-        var uri = new Uri("C:/path/to/file.razor");
+        var uri = new Uri("C:/path/to/file.tazor");
         var uriProvider = Mock.Of<FileUriProvider>(provider => provider.GetOrCreate(_hostLSPBuffer) == uri, MockBehavior.Strict);
         Mock.Get(uriProvider).Setup(p => p.AddOrUpdate(It.IsAny<ITextBuffer>(), It.IsAny<Uri>())).Verifiable();
         var factory = new TestVirtualDocumentFactory(_contentTypeRegistry, _textBufferFactoryService, _textDocumentFactoryService, uriProvider);

@@ -48,7 +48,7 @@ public class RazorDiagnosticsBenchmark : RazorLanguageServerBenchmarkBase
         SourceMappings = GetSourceMappings();
         GeneratedCode = GetGeneratedCode();
         Diagnostics = BuildDiagnostics();
-        var razorFilePath = "file://C:/path/test.razor";
+        var razorFilePath = "file://C:/path/test.tazor";
         var uri = new Uri(razorFilePath);
         Request = new VSInternalDocumentDiagnosticsParams
         {

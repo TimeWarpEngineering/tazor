@@ -32,7 +32,7 @@ internal class RazorComponentSearchEngine(ILoggerFactory loggerFactory) : IRazor
     /// <remarks>
     ///  This method makes several assumptions about the nature of components. First,
     ///  it assumes that a component a given name "Name" will be located in a file
-    ///  "Name.razor". Second, it assumes that the namespace the component is present in
+    ///  "Name.tazor". Second, it assumes that the namespace the component is present in
     ///  has the same name as the assembly its corresponding tag helper is loaded from.
     ///  Implicitly, this method inherits any assumptions made by TrySplitNamespaceAndType.
     /// </remarks>

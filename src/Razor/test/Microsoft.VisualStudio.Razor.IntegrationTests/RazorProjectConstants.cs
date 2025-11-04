@@ -12,17 +12,17 @@ public static class RazorProjectConstants
 
     private static readonly string s_pagesDir = Path.Combine("Pages");
     private static readonly string s_sharedDir = Path.Combine("Shared");
-    internal static readonly string FetchDataRazorFile = Path.Combine(s_pagesDir, "FetchData.razor");
-    internal static readonly string CounterRazorFile = Path.Combine(s_pagesDir, "Counter.razor");
-    internal static readonly string IndexRazorFile = Path.Combine(s_pagesDir, "Index.razor");
+    internal static readonly string FetchDataRazorFile = Path.Combine(s_pagesDir, "FetchData.tazor");
+    internal static readonly string CounterRazorFile = Path.Combine(s_pagesDir, "Counter.tazor");
+    internal static readonly string IndexRazorFile = Path.Combine(s_pagesDir, "Index.tazor");
     // Temporarily don't use this because of a startup issue with creating new files
-    //internal static readonly string ModifiedIndexRazorFile = Path.Combine(s_pagesDir, "ModifiedIndex.razor");
-    internal static readonly string SemanticTokensFile = Path.Combine(s_pagesDir, "SemanticTokens.razor");
-    internal static readonly string MainLayoutFile = Path.Combine(s_sharedDir, "MainLayout.razor");
-    internal static readonly string NavMenuFile = Path.Combine(s_sharedDir, "NavMenu.razor");
-    internal static readonly string SurveyPromptFile = Path.Combine(s_sharedDir, "SurveyPrompt.razor");
+    //internal static readonly string ModifiedIndexRazorFile = Path.Combine(s_pagesDir, "ModifiedIndex.tazor");
+    internal static readonly string SemanticTokensFile = Path.Combine(s_pagesDir, "SemanticTokens.tazor");
+    internal static readonly string MainLayoutFile = Path.Combine(s_sharedDir, "MainLayout.tazor");
+    internal static readonly string NavMenuFile = Path.Combine(s_sharedDir, "NavMenu.tazor");
+    internal static readonly string SurveyPromptFile = Path.Combine(s_sharedDir, "SurveyPrompt.tazor");
     internal static readonly string ErrorCshtmlFile = Path.Combine(s_pagesDir, "Error.cshtml");
-    internal static readonly string ImportsRazorFile = "_Imports.razor";
+    internal static readonly string ImportsRazorFile = "_Imports.tazor";
     internal static readonly string ProjectFile = $"{BlazorProjectName}.csproj";
 
     internal static readonly string IndexPageContent = @"@page ""/""

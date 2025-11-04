@@ -88,8 +88,8 @@ public class GenerateJsonFiles(ITestOutputHelper testOutput) : ToolingTestBase(t
             JsonFile.TagHelpers("Tooling", "BlazorServerApp.TagHelpers.json"),
             JsonFile.TagHelpers("Tooling", "taghelpers.json"),
             JsonFile.TagHelpers("Tooling", "Telerik", "Kendo.Mvc.Examples.taghelpers.json"),
-            JsonFile.RazorProjectInfo("Tooling", "project.razor.json"),
-            JsonFile.RazorProjectInfo("Tooling", "Telerik", "Kendo.Mvc.Examples.project.razor.json")
+            JsonFile.RazorProjectInfo("Tooling", "project.tazor.json"),
+            JsonFile.RazorProjectInfo("Tooling", "Telerik", "Kendo.Mvc.Examples.project.tazor.json")
         };
 
     private static RazorProjectInfo DeserializeProjectInfoFromFile(string filePath)

@@ -16,7 +16,7 @@ Tools>Options>Environment>Preview Features>Enable LSP powered Razor editor.
 
 The above bits aren't yet public though, so if you have to use a master build set an environment variable under the name `Razor.LSP.Editor` to `true`, making sure you launch the VS instance afterward, so it can pick upt the ENV change. To set the environment variable in powershell you can use the following syntax: `${env:Razor.LSP.Editor}="true"`
 
-After doing either of the above running the `Microsoft.VisualStudio.RazorExtension` project will then result in `.razor` and `.cshtml` files being opened with our LSP editor.
+After doing either of the above running the `Microsoft.VisualStudio.RazorExtension` project will then result in `.tazor` and `.cshtml` files being opened with our LSP editor.
 
 ## FAQ
 

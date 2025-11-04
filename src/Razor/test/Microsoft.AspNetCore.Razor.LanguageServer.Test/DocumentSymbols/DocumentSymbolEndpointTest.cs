@@ -77,7 +77,7 @@ public class DocumentSymbolEndpointTest(ITestOutputHelper testOutput) : SingleSe
             """;
 
         var codeDocument = CreateCodeDocument(input);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath);
 
@@ -98,7 +98,7 @@ public class DocumentSymbolEndpointTest(ITestOutputHelper testOutput) : SingleSe
     {
         TestFileMarkupParser.GetSpans(input, out input, out ImmutableDictionary<string, ImmutableArray<TextSpan>> spansDict);
         var codeDocument = CreateCodeDocument(input);
-        var razorFilePath = "C:/path/to/file.razor";
+        var razorFilePath = "C:/path/to/file.tazor";
 
         await using var languageServer = await CreateLanguageServerAsync(codeDocument, razorFilePath,
             capabilitiesUpdater: c => c.TextDocument!.DocumentSymbol = new DocumentSymbolSetting() { HierarchicalDocumentSymbolSupport = hierarchical });

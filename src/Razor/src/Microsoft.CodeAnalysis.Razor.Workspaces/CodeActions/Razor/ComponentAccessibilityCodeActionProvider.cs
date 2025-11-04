@@ -103,7 +103,7 @@ internal class ComponentAccessibilityCodeActionProvider(IFileSystem fileSystem) 
         var directoryName = Path.GetDirectoryName(path);
         Assumes.NotNull(directoryName);
 
-        var newComponentPath = Path.Combine(directoryName, $"{startTag.Name.Content}.razor");
+        var newComponentPath = Path.Combine(directoryName, $"{startTag.Name.Content}.tazor");
         if (_fileSystem.FileExists(newComponentPath))
         {
             return;

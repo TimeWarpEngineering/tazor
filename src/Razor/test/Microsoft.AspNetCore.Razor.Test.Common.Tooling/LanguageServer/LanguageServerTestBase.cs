@@ -80,7 +80,7 @@ public abstract class LanguageServerTestBase(ITestOutputHelper testOutput) : Too
             });
         });
 
-        var importDocumentName = fileKind == RazorFileKind.Legacy ? "_ViewImports.cshtml" : "_Imports.razor";
+        var importDocumentName = fileKind == RazorFileKind.Legacy ? "_ViewImports.cshtml" : "_Imports.tazor";
         var defaultImportDocument = TestRazorSourceDocument.Create(
             """
                 @using BlazorApp1

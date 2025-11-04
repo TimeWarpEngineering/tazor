@@ -40,7 +40,7 @@ public class DefaultRazorProjectItemTest
         var fileInfo = new FileInfo(Path.Combine(TestFolder, "Home.cshtml"));
 
         // Act
-        var projectItem = new DefaultRazorProjectItem("/", "/Home.razor", "Home.razor", fileKind: null, fileInfo, cssScope: null);
+        var projectItem = new DefaultRazorProjectItem("/", "/Home.tazor", "Home.tazor", fileKind: null, fileInfo, cssScope: null);
 
         // Assert
         Assert.Equal(RazorFileKind.Component, projectItem.FileKind);

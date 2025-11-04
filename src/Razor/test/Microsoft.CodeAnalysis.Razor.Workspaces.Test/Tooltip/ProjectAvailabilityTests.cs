@@ -20,7 +20,7 @@ public class ProjectAvailabilityTests(ITestOutputHelper testOutput) : ToolingTes
         var projectManager = CreateProjectSnapshotManager();
         var componentAvailabilityService = new TestComponentAvailabilityService(projectManager);
 
-        var availability = await componentAvailabilityService.GetProjectAvailabilityTextAsync("file.razor", "MyTagHelper", DisposalToken);
+        var availability = await componentAvailabilityService.GetProjectAvailabilityTextAsync("file.tazor", "MyTagHelper", DisposalToken);
 
         Assert.Null(availability);
     }
@@ -43,8 +43,8 @@ public class ProjectAvailabilityTests(ITestOutputHelper testOutput) : ToolingTes
             displayName: "project");
 
         var hostDocument = new HostDocument(
-            "C:/path/to/file.razor",
-            "file.razor",
+            "C:/path/to/file.tazor",
+            "file.tazor",
             RazorFileKind.Component);
 
         var projectManager = CreateProjectSnapshotManager();
@@ -88,8 +88,8 @@ public class ProjectAvailabilityTests(ITestOutputHelper testOutput) : ToolingTes
             displayName: "project2");
 
         var hostDocument = new HostDocument(
-            "C:/path/to/file.razor",
-            "file.razor",
+            "C:/path/to/file.tazor",
+            "file.tazor",
             RazorFileKind.Component);
 
         var projectManager = CreateProjectSnapshotManager();
@@ -137,8 +137,8 @@ public class ProjectAvailabilityTests(ITestOutputHelper testOutput) : ToolingTes
             displayName: "project2");
 
         var hostDocument = new HostDocument(
-            "C:/path/to/file.razor",
-            "file.razor",
+            "C:/path/to/file.tazor",
+            "file.tazor",
             RazorFileKind.Component);
 
         var projectManager = CreateProjectSnapshotManager();
@@ -182,8 +182,8 @@ public class ProjectAvailabilityTests(ITestOutputHelper testOutput) : ToolingTes
             displayName: "project2");
 
         var hostDocument = new HostDocument(
-            "C:/path/to/file.razor",
-            "file.razor",
+            "C:/path/to/file.tazor",
+            "file.tazor",
             RazorFileKind.Component);
 
         var projectManager = CreateProjectSnapshotManager();

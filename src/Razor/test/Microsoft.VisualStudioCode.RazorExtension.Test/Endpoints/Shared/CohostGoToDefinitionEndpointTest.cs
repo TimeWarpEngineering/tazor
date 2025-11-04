@@ -144,13 +144,13 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
             """;
 
         var result = await GetGoToDefinitionResultAsync(input, RazorFileKind.Component,
-            additionalFiles: (FilePath("SurveyPrompt.razor"), surveyPrompt.Text));
+            additionalFiles: (FilePath("SurveyPrompt.tazor"), surveyPrompt.Text));
 
         Assert.NotNull(result.Value.Second);
         var locations = result.Value.Second;
         var location = Assert.Single(locations);
 
-        Assert.Equal(FileUri("SurveyPrompt.razor"), location.DocumentUri.GetRequiredParsedUri());
+        Assert.Equal(FileUri("SurveyPrompt.tazor"), location.DocumentUri.GetRequiredParsedUri());
         var text = SourceText.From(surveyPrompt.Text);
         var range = text.GetRange(surveyPrompt.Span);
         Assert.Equal(range, location.Range);
@@ -176,13 +176,13 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
             """;
 
         var result = await GetGoToDefinitionResultAsync(input, RazorFileKind.Component,
-            additionalFiles: (FilePath("SurveyPrompt.razor"), surveyPrompt.Text));
+            additionalFiles: (FilePath("SurveyPrompt.tazor"), surveyPrompt.Text));
 
         Assert.NotNull(result.Value.Second);
         var locations = result.Value.Second;
         var location = Assert.Single(locations);
 
-        Assert.Equal(FileUri("SurveyPrompt.razor"), location.DocumentUri.GetRequiredParsedUri());
+        Assert.Equal(FileUri("SurveyPrompt.tazor"), location.DocumentUri.GetRequiredParsedUri());
         var text = SourceText.From(surveyPrompt.Text);
         var range = text.GetRange(surveyPrompt.Span);
         Assert.Equal(range, location.Range);
@@ -208,13 +208,13 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
             """;
 
         var result = await GetGoToDefinitionResultAsync(input, RazorFileKind.Component,
-            additionalFiles: (FilePath("SurveyPrompt.razor"), surveyPrompt.Text));
+            additionalFiles: (FilePath("SurveyPrompt.tazor"), surveyPrompt.Text));
 
         Assert.NotNull(result.Value.Second);
         var locations = result.Value.Second;
         var location = Assert.Single(locations);
 
-        Assert.Equal(FileUri("SurveyPrompt.razor"), location.DocumentUri.GetRequiredParsedUri());
+        Assert.Equal(FileUri("SurveyPrompt.tazor"), location.DocumentUri.GetRequiredParsedUri());
         var text = SourceText.From(surveyPrompt.Text);
         var range = text.GetRange(surveyPrompt.Span);
         Assert.Equal(range, location.Range);
@@ -245,13 +245,13 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
             """;
 
         var result = await GetGoToDefinitionResultAsync(input, RazorFileKind.Component,
-            additionalFiles: (FilePath("SurveyPrompt.razor"), surveyPrompt.Text));
+            additionalFiles: (FilePath("SurveyPrompt.tazor"), surveyPrompt.Text));
 
         Assert.NotNull(result.Value.Second);
         var locations = result.Value.Second;
         var location = Assert.Single(locations);
 
-        Assert.Equal(FileUri("File1.razor"), location.DocumentUri.GetRequiredParsedUri());
+        Assert.Equal(FileUri("File1.tazor"), location.DocumentUri.GetRequiredParsedUri());
         var text = SourceText.From(input.Text);
         var range = text.GetRange(input.Span);
         Assert.Equal(range, location.Range);
@@ -374,7 +374,7 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
             """;
 
         var result = await GetGoToDefinitionResultAsync(input, RazorFileKind.Component,
-            additionalFiles: (FilePath("SurveyPrompt.razor"), surveyPrompt.Text));
+            additionalFiles: (FilePath("SurveyPrompt.tazor"), surveyPrompt.Text));
 
         Assert.NotNull(result.Value.Second);
         var locations = result.Value.Second;
@@ -894,7 +894,7 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
     {
         var input = """
             @{
-                var path = "~/Pages/Cou$$nter.razor";
+                var path = "~/Pages/Cou$$nter.tazor";
             }
             """;
 
@@ -909,20 +909,20 @@ public class CohostGoToDefinitionEndpointTest(ITestOutputHelper testOutputHelper
             """;
 
         var result = await GetGoToDefinitionResultAsync(input, RazorFileKind.Component,
-            additionalFiles: (FilePath("Pages/Counter.razor"), counterFileContent));
+            additionalFiles: (FilePath("Pages/Counter.tazor"), counterFileContent));
 
         Assert.NotNull(result.Value.Second);
         var locations = result.Value.Second;
         var location = Assert.Single(locations);
 
-        Assert.Equal(FileUri("Pages/Counter.razor"), location.DocumentUri.GetRequiredParsedUri());
+        Assert.Equal(FileUri("Pages/Counter.tazor"), location.DocumentUri.GetRequiredParsedUri());
     }
 
     [Theory, WorkItem("https://github.com/dotnet/razor/issues/4325")]
     [InlineData("~/Pages/Counter")]
     [InlineData("Not a file")]
     [InlineData("~/Program.cs")]
-    [InlineData("File.razor is cool")]
+    [InlineData("File.tazor is cool")]
     public async Task StringLiteral_NotFileReference(string literalContents)
     {
         var input = $$"""
