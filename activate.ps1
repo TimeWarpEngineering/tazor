@@ -11,6 +11,10 @@ if ($MyInvocation.CommandOrigin -eq 'runspace') {
     exit 1
 }
 
+if (-not $env:DISABLE_CUSTOM_PROMPT) {
+    $env:DISABLE_CUSTOM_PROMPT = 1
+}
+
 function deactivate ([switch]$init) {
 
     # reset old environment variables
