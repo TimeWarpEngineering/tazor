@@ -3,7 +3,7 @@
 # Build Sample Application
 #
 # This script automates the workflow for building and testing changes using the sample application.
-# It must be run from a shell that has sourced activate.ps1 first.
+# It automatically (re)activates the repository's local .NET environment.
 #
 
 [CmdletBinding()]
@@ -27,25 +27,21 @@ function Write-Error {
     Write-Host "    ✗ $Message" -ForegroundColor Red
 }
 
-# Activate environment if not already activated
-Write-Step "Checking environment..."
+# Activate environment (idempotent)
+Write-Step "Configuring environment..."
+
+$activateScript = Join-Path $PSScriptRoot "activate.ps1"
+if (-not (Test-Path $activateScript)) {
+    Write-Error "Cannot find activate.ps1 at: $activateScript"
+    exit 1
+}
+
+Write-Host "    Refreshing repository .NET environment..." -ForegroundColor Yellow
+. "$activateScript"
 
 if (-not $env:DOTNET_ROOT) {
-    Write-Host "    Environment not activated. Activating now..." -ForegroundColor Yellow
-
-    $activateScript = Join-Path $PSScriptRoot "activate.ps1"
-    if (-not (Test-Path $activateScript)) {
-        Write-Error "Cannot find activate.ps1 at: $activateScript"
-        exit 1
-    }
-
-    # Source the activate script
-    . $activateScript
-
-    if (-not $env:DOTNET_ROOT) {
-        Write-Error "Failed to activate environment"
-        exit 1
-    }
+    Write-Error "Failed to activate environment"
+    exit 1
 }
 
 Write-Success "Environment is activated (DOTNET_ROOT: $env:DOTNET_ROOT)"

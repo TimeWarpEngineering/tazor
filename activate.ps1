@@ -36,13 +36,20 @@ function deactivate ([switch]$init) {
 deactivate -init
 
 $_OLD_PATH = $env:PATH
-# Tell dotnet where to find itself
-$env:DOTNET_ROOT = "$PSScriptRoot\.dotnet"
-${env:DOTNET_ROOT(x86)} = "$PSScriptRoot\.dotnet\x86"
+
+$dotnetRoot = [System.IO.Path]::Combine($PSScriptRoot, '.dotnet')
+$env:DOTNET_ROOT = $dotnetRoot
+
+if ($IsWindows) {
+    ${env:DOTNET_ROOT(x86)} = [System.IO.Path]::Combine($PSScriptRoot, '.dotnet', 'x86')
+}
+
 # Tell dotnet not to look beyond the DOTNET_ROOT folder for more dotnet things
 $env:DOTNET_MULTILEVEL_LOOKUP = 0
+
 # Put dotnet first on PATH
-$env:PATH = "${env:DOTNET_ROOT};${env:PATH}"
+$pathSeparator = [System.IO.Path]::PathSeparator
+$env:PATH = "${env:DOTNET_ROOT}${pathSeparator}${env:PATH}"
 
 # Set the shell prompt
 if (-not $env:DISABLE_CUSTOM_PROMPT) {
@@ -57,9 +64,22 @@ if (-not $env:DISABLE_CUSTOM_PROMPT) {
 }
 
 Write-Host -f Magenta "Enabled the .NET Core environment. Execute 'deactivate' to exit."
-if (-not (Test-Path "${env:DOTNET_ROOT}\dotnet.exe")) {
-    Write-Host -f Yellow ".NET Core has not been installed yet. Run $PSScriptRoot\restore.cmd to install it."
+
+$dotnetExecutable = if ($IsWindows) {
+    Join-Path $env:DOTNET_ROOT 'dotnet.exe'
+} else {
+    Join-Path $env:DOTNET_ROOT 'dotnet'
+}
+
+if (-not (Test-Path $dotnetExecutable)) {
+    $restoreScript = if ($IsWindows) {
+        Join-Path $PSScriptRoot 'restore.cmd'
+    } else {
+        Join-Path $PSScriptRoot 'restore.sh'
+    }
+
+    Write-Host -f Yellow ".NET Core has not been installed yet. Run $restoreScript to install it."
 }
 else {
-    Write-Host "dotnet = ${env:DOTNET_ROOT}\dotnet.exe"
+    Write-Host "dotnet = $dotnetExecutable"
 }
