@@ -158,33 +158,48 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 
 ## Implementation Strategy
 
-### Recommended Approach: All-at-Once
-Since this is a fork and not shipping to customers yet, do the change atomically in a single commit to avoid maintaining dual code paths.
+### Current Reality Check (Nov 2025)
+- Generator, MSBuild, and samples prefer `.tazor`, but many services still infer `Legacy` file kind, cascading into thousands of failing tests (missing diagnostics, null hovers, semantic token diffs, VSCode cohost exceptions).
+- Immediate priority is to re-establish component classification and discovery for `.tazor` across compiler, workspace, and language server layers.
 
-**Advantages**:
-- Clean, simple changeset
-- No dual-extension support code
-- Easier to reason about
-- Single commit to revert if needed
+### Step 1 – Centralize Extension Constants
+1. Audit canonical extension sources (`FileKinds`, `ComponentFileKindClassifier`, `ProjectEngineFactory`, path helpers).
+2. Introduce shared helpers listing `.tazor` (primary) plus optional `.razor` compatibility until tests green.
+3. Update unit tests that assert supported extensions.
 
-**Process**:
-1. Use search/replace for all `.razor` string references
-2. Manually verify each change is appropriate
-3. Update sample app files
-4. Test thoroughly
-5. Commit as single atomic change
+### Step 2 – Restore Component FileKind Inference
+1. Ensure `DefaultRazorProjectItem` / `DefaultRazorProjectFileSystem` return `FileKinds.Component` for `.tazor` (fixes `DefaultRazorProjectEngineIntegrationTest` and `DefaultRazorProjectItemTest`).
+2. Update `ComponentFileKindClassifier` and related detection points to prefer `.tazor`.
+3. Re-run `Microsoft.AspNetCore.Razor.Language.Test` to confirm expected inference.
 
-### Search Patterns
-Use these patterns to find all references:
+### Step 3 – Project System & Workspace Wiring
+1. Update `RemoteProjectSnapshot`, `ProjectSnapshotManager`, `RazorDocumentServiceBase`, cohosting interceptors, and any document factories so `.tazor` resolves to Razor contexts (address VSCode “Document is not a Razor document” failures).
+2. Verify tag helper, generated document, and source document factories include `.tazor` paths.
+3. Re-run `Microsoft.CodeAnalysis.Razor.Workspaces.Test` and `Microsoft.VisualStudioCode.RazorExtension.Test` suites.
 
+### Step 4 – Language Server Features
+1. Propagate `.tazor` awareness through completion, folding, semantic tokens, and diagnostics pipelines.
+2. Refresh semantic token baselines if token classifications shift.
+3. Re-run `Microsoft.AspNetCore.Razor.LanguageServer.Test` to validate completions, folds, and tokens.
+
+### Step 5 – Targeted Cleanup
+1. After tests pass, sweep remaining `.razor` literals (commands, docs, tooling messages) and replace with `.tazor` where intended.
+2. Document any deliberate `.razor` compatibility paths maintained for migration.
+
+### Step 6 – End-to-End Verification
+1. Execute `./build.sh -test` (or equivalent) and archive updated HTML reports.
+2. Record pass/fail status per suite in this kanban card with log links.
+3. Decide when to drop temporary `.razor` fallbacks once confidence is high.
+
+### Search Patterns (cleanup phase)
 ```bash
-# Find .razor string literals
+# Find .razor string literals (post-classification fixes)
 grep -r '\.razor' --include="*.cs" --include="*.csproj" --include="*.props" --include="*.targets"
 
-# Find _razor in variable names/file names
+# Find _razor naming references
 grep -r '_razor' --include="*.cs" --include="*.csproj"
 
-# Find "razor" in file paths
+# Find generated file suffix references
 grep -r 'razor\.g\.cs' --include="*.cs"
 ```
 
