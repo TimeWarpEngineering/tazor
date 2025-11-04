@@ -21,7 +21,7 @@ This task focuses ONLY on the file extension change. Other transitions (SDK inde
 - Core compiler, tooling, and tests now consume `.tazor` files exclusively (commit `f739e9c2d0`).
 - `./build.sh` succeeds on Linux; Windows/VSIX validation still pending.
 - VS host assets now vend in-repo rule files (`RazorConfiguration.xaml`, etc.) rather than pulling from `Microsoft.NET.Sdk.Razor`.
-- `./build-sample.ps1` now succeeds on Linux after switching the toolset target to `Content Update="**/*.tazor"` and removing unsupported metadata; Windows run still queued.
+- `./build-sample.ps1` now re-activates the repo environment automatically and succeeds on Linux PowerShell and bash; Windows run still queued.
 - Documentation and diagnostic string sweep remain open follow-ups.
 
 ## Acceptance Criteria
@@ -143,7 +143,7 @@ if (additionalFile.Path.EndsWith(".tazor", StringComparison.OrdinalIgnoreCase))
 ### Phase 3: Build System Changes
 - [x] Update MSBuild targets/props to include `*.tazor`
 - [ ] Update NuGet.config if needed (not currently required)
-- [x] Update build scripts (PowerShell variant validated on Linux; Windows still to run)
+- [x] Update build scripts (PowerShell variant validated on Linux and WSL PowerShell; Windows still to run)
 
 ### Phase 4: Sample Application Migration
 - [x] Rename all `.razor` files to `.tazor` in sample app
